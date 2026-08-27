@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Juristi – perusta",
+    "displayName": "Legal core",
     "shortDescription": "Läpileikkaava perusta suomalaiseen juridiseen työhön: lakikieli, pykäläviittaukset, suomen kieli, oikeustutkimus (Finlex/oik.ai) ja juridisen asiakirjan tarkis…",
     "longDescription": "Läpileikkaava perusta suomalaiseen juridiseen työhön: lakikieli ja pykäläviittaukset, suomen kielen oikeinkirjoitus, oikeustutkimus voimassa olevasta laista ja oikeuskäytännöstä (Finlex/oik.ai-MCP), sekä juridisen asiakirjan monivaiheinen tarkistus. Pohja, johon muut käytäntöaluekohtaiset plugarit nojaavat.",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Juristi – perusta -plugaria Suomen oikeuden tehtävään."
+      "Käytä Legal core -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"

@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Ympäristö ja kaavoitus",
+    "displayName": "Environment and planning",
     "shortDescription": "Suomen ympäristö- ja kaavoitusoikeus: ympäristöluvat ja valvonta (YSL 527/2014), kaavoitus ja rakentaminen uuden rakentamislain (751/2023) ja alueidenkäyttölai…",
     "longDescription": "Suomen ympäristö- ja kaavoitusoikeus uudistuneen lainsäädännön mukaan: ympäristöluvat ja valvonta (YSL 527/2014), kaavoitus ja rakentaminen (alueidenkäyttölaki ja rakentamislaki 751/2023 uusine lupineen) sekä ympäristövastuut ja ympäristö-DD transaktioissa. Huomioi 2026 viranomaisuudistuksen (Lupa- ja valvontavirasto).",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Ympäristö ja kaavoitus -plugaria Suomen oikeuden tehtävään."
+      "Käytä Environment and planning -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"
