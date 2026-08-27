@@ -14,7 +14,7 @@ Act") in a Finnish context.
 | **ai-obligations** | The obligations by role (provider/deployer) and risk class, plus the Annex IV technical documentation. |
 | **ai-compliance** | The deadlines for application, the penalties (Article 99), the threshold for systemic risk in a GPAI model (10²⁵ FLOPs) and the fundamental rights impact assessment (FRIA, Article 27). |
 
-## Data source (`.mcp.json`)
+## Data source (`mcp.json`)
 
 - **EU AI Act MCP** ([`@lexbeam-software/eu-ai-act-mcp`](https://github.com/lexbeam-software/eu-ai-act-mcp)) –
   open (MIT), **deterministic** (no LLM in the loop), citations based on EUR-Lex.
