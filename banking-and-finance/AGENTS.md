@@ -1,4 +1,4 @@
-# Banking and finance — shared safeguards and operating principles
+# Banking and finance — shared guardrails and operating principles
 
 The instructions in this file apply to **every** skill in this domain. SKILL.md says
 *what* to do; this file is the **safety net**.

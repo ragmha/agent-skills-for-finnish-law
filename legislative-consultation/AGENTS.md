@@ -1,4 +1,4 @@
-# Consultation statements — shared safeguards and operating principles
+# Legislative consultation — shared guardrails and operating principles
 
 The instructions in this file apply to **every** skill in this domain. SKILL.md says
 *what* to do; this file is the **safety net**.

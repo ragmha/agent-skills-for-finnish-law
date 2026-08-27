@@ -1,4 +1,4 @@
-# Legislative drafting — shared safeguards and operating principles
+# Legislative drafting — shared guardrails and operating principles
 
 The instructions in this file apply to **every** skill in this domain. An individual skill (`skills/<name>/SKILL.md`) says *what* to do; this file is the **safety net** that prevents the typical mistakes regardless of which skill is running.
 

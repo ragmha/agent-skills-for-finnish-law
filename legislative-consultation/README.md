@@ -1,4 +1,4 @@
-# Consultation statements
+# Legislative consultation
 
 Drafting a consultation statement (lausunto) on a legislative reform or a draft act from any
 respondent's point of view: municipality, city, joint municipal authority, government agency,

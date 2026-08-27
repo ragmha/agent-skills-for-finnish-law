@@ -1,7 +1,7 @@
 # Legal core
 
 The cross-cutting foundation for Finnish legal work. This domain is the base that the
-practice-area domains (legislative drafting, consultation statements, contracts, employment law,
+practice-area domains (legislative drafting, legislative consultation, contracts, employment law,
 data protection, administrative law, dispute resolution) build on.
 
 > **Every output is a draft that needs checking – not legal advice.** Final responsibility rests
