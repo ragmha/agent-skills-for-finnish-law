@@ -1,5 +1,11 @@
 # Agent Skills for Finnish Law
 
+**A fork of [akunikkola/claude-for-legal-finland](https://github.com/akunikkola/claude-for-legal-finland)**,
+translated to English and restructured around vendor-neutral Agent Skills. The original Finnish
+collection by Aku Nikkola remains the authoritative source; this fork exists to make the material
+readable in English and usable by any agent harness. The Finnish original governs — see the
+translation notice below.
+
 Open-source [Agent Skills](https://agentskills.io/specification.md) for Finnish legal work: legal
 language, section references and legal sources **on the terms of Finnish law**.
 
@@ -129,4 +135,4 @@ SKILL.md and rests on genuine sources, and the `AGENTS.md` guardrails are the sa
 
 ## Licence
 
-[MIT](LICENSE) © 2026 Aku Nikkola.
+[MIT](LICENSE) © 2026 Aku Nikkola (original) · Raghib Hasan (English translation and vendor-neutral restructure)

@@ -212,6 +212,12 @@ existed. Run both.
 
 ## Fork provenance
 
+This is a fork of [`akunikkola/claude-for-legal-finland`](https://github.com/akunikkola/claude-for-legal-finland),
+translated to English and restructured around vendor-neutral Agent Skills. The original Finnish
+collection by Aku Nikkola remains the authoritative source; this fork is not an official
+translation and is not endorsed by the upstream author. Licensed MIT, © 2026 Aku Nikkola
+(original) and Raghib Hasan (English translation and vendor-neutral restructure).
+
 | | |
 |---|---|
 | Upstream | `https://github.com/akunikkola/claude-for-legal-finland` |
