@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Lainvalmistelu",
+    "displayName": "Legislative drafting",
     "shortDescription": "Säädösvalmistelun apuri: Lainkirjoittajan opas (säädösten rakenne, kieli, viittaaminen, johtolause), hallituksen esitysten laatimisohjeet (HELO), lainvalmistel…",
     "longDescription": "Säädösvalmistelun apuri: Lainkirjoittajan opas (säädösten rakenne, kieli, viittaaminen, johtolause), hallituksen esitysten laatimisohjeet (HELO), lainvalmistelun prosessiopas ja lakikielen merkit ja taivutusmuodot. Perustuu virallisiin oppaisiin.",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Lainvalmistelu -plugaria Suomen oikeuden tehtävään."
+      "Käytä Legislative drafting -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"

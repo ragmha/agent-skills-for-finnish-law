@@ -52,15 +52,16 @@ Suojaus jää paikalleen henkivakuutuksena, mutta skill kantaa tarvitsemansa tie
    `.codex-plugin/plugin.json`, `agents/openai.yaml`) käsin.
 6. **Aja validaattori ja testit ennen pushia:**
    - `node scripts/validate.mjs`
+   - `node scripts/check-invariants.mjs`
    - `node scripts/check-output-language.mjs`
-   - `node evals/check-scenarios.mjs`
+   - `node scripts/check-safety-mechanisms.mjs`
+   - `node scripts/check-citations.mjs`
+   - `node scripts/check-descriptions.mjs`
    - `node --test tests/*.test.mjs`
 7. **Jos muutit skillin `description`-kenttää**, aja triggeritestit
    (`bash evals/run-trigger-tests.sh`, ks. [evals/README.md](evals/README.md)) —
    kuvaus on skillin triggeröitymisen ainoa signaali, ja huono muotoilu
    hukkaa skillin hiljaa. Huom: ajaa oikeita mallikutsuja (ei CI:hin).
-   Jos lisäsit tai uudelleennimesit skillin, päivitä myös
-   [evals/scenarios.json](evals/scenarios.json).
 8. **Jos tilastot muuttuvat** (plugari-, skilli- tai agenttimäärä,
    säädösrekisterin koko, versio), päivitä katselmussivu
    (`docs/index.html` + `docs/en/index.html`) ja regeneroi OG-jakokuvat —

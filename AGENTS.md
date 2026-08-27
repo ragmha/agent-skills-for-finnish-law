@@ -17,7 +17,7 @@ A collection of [Agent Skills](https://agentskills.io/specification.md) for Finn
 Finlex. Each domain is a self-contained bundle — copy `<domain>/skills/*` into any harness that
 reads the Agent Skills format and it works, with no plugin system required.
 
-This is a hard fork of [`akunikkola/agent-skills-for-finnish-law`](https://github.com/akunikkola/agent-skills-for-finnish-law),
+This is a hard fork of [`akunikkola/claude-for-legal-finland`](https://github.com/akunikkola/claude-for-legal-finland),
 translated to English and de-vendored. See **Fork provenance** below.
 
 ---
@@ -69,23 +69,30 @@ schema — an `mcpServers` map of stdio (`command`, `args`) or http (`url`) entr
 `mcp.json` holds. `.mcp.json` exists only because Claude Code looks for that exact filename at
 plugin root, so it is generated rather than authored.
 
+**Why keep the plugin adapters at all?** The Agent Skills spec needs none of them — a conforming
+harness works by copying skill directories. The adapters are kept for one reason that is not
+convenience: `.mcp.json` is what wires Claude Code to the oik.ai/Finlex MCP server. That connection
+is the premise of this collection — "never quote a statute from memory when it can be verified."
+Without it a user installs the skills, gets no source verification, and the model silently falls
+back to memory, which looks like it is working. The adapters are also generated, so the marginal
+cost of keeping them is one script rather than 150 hand-maintained files. Supporting a third
+harness means adding a function to `scripts/generate-adapters.mjs`, not restructuring the
+repository.
+
 ---
 
 ## Commands
 
 ```bash
-node scripts/validate.mjs         # structure, frontmatter, dead links, Unicode
-node evals/check-scenarios.mjs    # every eval scenario resolves to a real domain and skill
-node --test tests/*.test.mjs      # note: `node --test tests/` fails; the glob is required
-bash scripts/check-generated.sh   # regenerate and fail if the tree drifted
+node scripts/validate.mjs        # structure, frontmatter, dead links, Unicode
+node --test tests/*.test.mjs     # note: `node --test tests/` fails; the glob is required
+bash scripts/check-generated.sh  # regenerate and fail if the tree drifted
 ```
 
 No dependencies. Node standard library only — there is deliberately no `package.json`, so a
 reviewer can clone and run the checks without installing anything.
 
-CI runs exactly these, so locally green means green in CI. The trigger evals themselves
-(`bash evals/run-trigger-tests.sh`) are the deliberate exception: each scenario is a real model
-call, so they are run by hand and never in CI.
+CI runs exactly these three, so locally green means green in CI.
 
 Generators:
 
@@ -133,13 +140,8 @@ node scripts/apply-rename.mjs --dry-run
 4. Update the domain `README.md` and, if the domain set changed, `marketplace.json`.
 5. Regenerate: `bash scripts/check-generated.sh`.
 6. Verify: `node scripts/validate.mjs` and `node --test tests/*.test.mjs`.
-7. If the skill is new or renamed, add or update its scenario in
-   [`evals/scenarios.json`](evals/scenarios.json) and run `node evals/check-scenarios.mjs`. That
-   check is offline and in CI; it exists because a scenario pointing at a skill that no longer
-   exists never triggers and never fails either.
-8. If you changed a `description`, run the trigger evals (`bash evals/run-trigger-tests.sh`, see
-   [`evals/README.md`](evals/README.md)). They cost real model calls and are not in CI, but a badly
-   worded description loses the skill silently.
+7. If you changed a `description`, run the trigger evals (`evals/`). They cost real model calls and
+   are not in CI, but a badly worded description loses the skill silently.
 
 ---
 
@@ -147,7 +149,7 @@ node scripts/apply-rename.mjs --dry-run
 
 | | |
 |---|---|
-| Upstream | `https://github.com/akunikkola/agent-skills-for-finnish-law` |
+| Upstream | `https://github.com/akunikkola/claude-for-legal-finland` |
 | Forked at | `6294330` |
 | Last ported upstream commit | `6294330` |
 

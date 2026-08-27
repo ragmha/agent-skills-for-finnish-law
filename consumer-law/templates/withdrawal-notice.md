@@ -9,6 +9,13 @@ Konventiot: [`references/template-standards.md`](../../references/template-stand
      älä täytä määräaikaa muistista. Ilmoituksen voi tehdä myös myyjän
      lomakkeella tai muulla yksiselitteisellä tavalla. -->
 
+## Output language
+
+Drafts are produced in **English by default**. If the user asks for Finnish, produce Finnish.
+
+Keep the Finnish term alongside the English one for legally operative concepts on first use, for
+example `notice period (irtisanomisaika)`.
+
 ---
 
 **Vastaanottaja:** [elinkeinonharjoittajan nimi, osoite ja sähköposti]

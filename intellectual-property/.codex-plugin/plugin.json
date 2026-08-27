@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Immateriaalioikeus",
+    "displayName": "Intellectual property",
     "shortDescription": "Suomen immateriaalioikeus: tavaramerkki ja toiminimi (544/2019 ja 128/1979), tekijänoikeus DSM-uudistuksineen (404/1961) ja liikesalaisuudet (595/2018) — rekis…",
     "longDescription": "Suomen immateriaalioikeus: tavaramerkin ja toiminimen suojastrategia ja sekaannusvaara-arvio (544/2019 ja 128/1979), tekijänoikeus DSM-uudistuksineen ja lisensointi (404/1961) sekä liikesalaisuuksien suojaohjelma ja loukkaustilanteet (595/2018). Markkinaoikeus, PRH ja EUIPO -kytkennät.",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Immateriaalioikeus -plugaria Suomen oikeuden tehtävään."
+      "Käytä Intellectual property -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"

@@ -81,6 +81,32 @@ unverifiable.
 **Section symbol.** `§` stays. Finnish inflects it with a colon (`7 §:ssä`); in English write
 `section 7` or `7 §` — never `§7`.
 
+### Never invent one either
+
+Dropping a citation is the obvious failure. Adding one is the dangerous failure: a fabricated
+number in the same `NNN/YYYY` shape reads exactly like a real statute, and nobody reviewing English
+prose will spot it. `scripts/check-citations.mjs` therefore checks both directions against
+[`citation-snapshot.json`](citation-snapshot.json), a per-file record of every citation in the
+repository taken before translation.
+
+| What the diff shows | Verdict |
+|---|---|
+| A citation was dropped, or occurs less often in a file than before | **Error** |
+| A number appears that this repository has never cited anywhere | **Error** — the invented-citation case |
+| A citation moved to another file, or was reused from elsewhere in the repo | Warning |
+| A statute listed in [`tracking/statutes.json`](../tracking/statutes.json) is cited for the first time | Warning |
+| A citation the file already had now occurs more often | Not reported |
+
+**Carry citations across; never add one.** If an English sentence seems to need a reference the
+Finnish did not give, write `[from memory — verify in Finlex]` and leave the number out. A visible
+gap is recoverable. A plausible wrong number is not.
+
+**No made-up example numbers in prose, either.** The gate reads every markdown file in the
+repository and cannot tell an illustration from a claim, so an invented statute number written to
+demonstrate a point fails CI exactly as an invented one written by mistake. Describe the shape
+(`NNN/YYYY`) instead. There is deliberately no way to mark a citation as exempt — an escape hatch
+would be used to silence real findings.
+
 ---
 
 ## 3. Statute name conventions
@@ -164,6 +190,22 @@ paragraph as a general caveat.
 `Vastuuvapaus:` → `Disclaimer:`. **Never delete a disclaimer.** Standard form:
 
 > **Disclaimer:** a draft or assessment for review — not legal advice.
+
+### The practice-profile heading — exact spelling required
+
+`legal-core/skills/practice-profile` writes organisation-specific conventions into every domain's
+`AGENTS.md` **under one exact heading**. If domains spell it differently, the skill writes under a
+heading that does not exist, or fails to find one — silently, in only some domains.
+
+The canonical English heading is, verbatim:
+
+```markdown
+## Practice profile (optional)
+```
+
+Sentence case. Not "Practice Profile", not "House practice", not "Practice profile" without the
+qualifier. `scripts/check-invariants.mjs` enforces that every domain `AGENTS.md` uses this exact
+form and that `legal-core/skills/practice-profile/SKILL.md` refers to the same string.
 
 ---
 

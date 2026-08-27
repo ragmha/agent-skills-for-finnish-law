@@ -8,6 +8,13 @@ Konventiot: [`references/template-standards.md`](../../references/template-stand
      havaitsemisesta — vähimmäisaika ja takaraja tarkistetaan lähteestä
      (skill ohjaa). Myöhästyminen voi kaventaa oikeuksia. -->
 
+## Output language
+
+Drafts are produced in **English by default**. If the user asks for Finnish, produce Finnish.
+
+Keep the Finnish term alongside the English one for legally operative concepts on first use, for
+example `notice period (irtisanomisaika)`.
+
 ---
 
 **Vastaanottaja:** [myyjän/palveluntarjoajan nimi ja osoite tai sähköposti]

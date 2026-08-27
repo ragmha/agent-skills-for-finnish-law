@@ -26,8 +26,14 @@ jobs:
       - name: Validoi rakenne ja frontmatter
         run: node scripts/validate.mjs
 
+      - name: Tarkista repon invariantit
+        run: node scripts/check-invariants.mjs
+
       - name: Tarkista tuotoskielen ilmoitukset
         run: node scripts/check-output-language.mjs
+
+      - name: Tarkista turvamekanismien eheys
+        run: node scripts/check-safety-mechanisms.mjs
 
       - name: Tarkista viittausten eheys
         run: node scripts/check-citations.mjs
@@ -35,9 +41,7 @@ jobs:
       - name: Tarkista kuvaukset
         run: node scripts/check-descriptions.mjs
 
-      # Offline only. The trigger evals themselves make real model calls and
-      # must never run in CI — see evals/README.md.
-      - name: Check eval scenarios resolve
+      - name: Tarkista eval-skenaariot
         run: node evals/check-scenarios.mjs
 
       - name: Tarkista että generoidut tiedostot ovat ajan tasalla
