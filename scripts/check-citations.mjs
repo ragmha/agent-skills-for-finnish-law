@@ -28,6 +28,14 @@ const SKIP = new Set(['node_modules', 'docs', 'dist', '.git']);
 const PATTERNS = [
   // statute number: 55/2001, 2016/679
   /\b\d{1,4}\/(?:19|20)\d{2}\b/g,
+  // Historical Finnish statutes, still in force and heavily cited:
+  // rikoslaki 39/1889 and oikeudenkäymiskaari 4/1734 (Swedish-era). The
+  // 19xx/20xx pattern above misses both, which left 33 references to two of
+  // the most fundamental statutes in Finnish law completely untracked — a
+  // translator could have deleted every Criminal Code citation and this gate
+  // would still have reported green. Bounded to 17xx-18xx so it does not
+  // start matching fractions or version strings.
+  /\b\d{1,4}\/1[78]\d{2}\b/g,
   // case identifier: KKO:2019:42, KHO:2021:7, MAO:123/2020
   /\b(?:KKO|KHO|MAO|KVL|EUT|EIT):\d{2,4}[:/]\d+\b/g,
   // preparatory works: HE 268/2014 vp
