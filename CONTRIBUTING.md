@@ -40,6 +40,42 @@ place as life insurance, but the skill carries the knowledge it needs itself.
   source hierarchy, the forms of case identifiers, discipline in examples). Never assert the content
   of a decision without checking it against the source.
 
+## Working on a gate
+
+The gates in `scripts/check-*.mjs` are what make the rules in `AGENTS.md` real. Two things about
+changing them are worth knowing before you start, because both have already cost real time here.
+
+**A negative test must prove its own mutation landed.** Every gate change needs a test that breaks
+the fix and confirms the gate notices. That test is worthless — worse than nothing — if the
+mutation silently fails to apply: a replacement that matches no text reports a working gate as
+broken, and a matcher you think you swapped but did not reports a real difference as zero. Both
+look like results. Assert the mutated text differs from the original *before* measuring, and abort
+loudly if it does not. Four lines, and it converts an entire class of false conclusion into a
+failure you cannot miss.
+
+Related: verify the behaviour, not the artifact you think produces it. Counting `\b` occurrences in
+two files told us nothing; running both matchers over one identical fixture told us everything.
+
+**The snapshot cannot guard the matcher.** `check-safety-mechanisms.mjs` and `check-citations.mjs`
+compare against a stored snapshot, so a broken matcher is caught only until someone re-snapshots —
+which is the documented workflow whenever counts legitimately change. Measured:
+
+| | |
+|---|---|
+| revert a matcher fix | gate exits 1 |
+| revert it **and re-snapshot** | every gate exits 0, count silently drops |
+
+So `tests/safety-matcher.test.mjs` asserts matcher behaviour on synthetic fixtures instead of on
+counts in the live tree. It does not move when content is edited and it survives a re-snapshot. If
+you change a matcher, extend those tests; do not rely on the snapshot to notice.
+
+**Enforce a rule everywhere it applies, not only where you first saw it break.** Every defect found
+in this repository's history had one shape: partial coverage that read as full coverage, because
+the part anyone checked did work. `\b` matched `KELTAINEN` but never `VIHREÄ`. The citation gate
+caught dropped citations but not invented ones. The fork-provenance rule read `AGENTS.md` while the
+identical broken URL sat on the public landing pages. When you add a case to
+`check-invariants.mjs`, ask what else is in scope for the rule you just wrote.
+
 ## Adding a skill
 
 1. Put the skill under the right domain: `<domain>/skills/<name>/SKILL.md`.
