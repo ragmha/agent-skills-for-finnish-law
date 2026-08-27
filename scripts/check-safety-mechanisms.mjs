@@ -50,17 +50,30 @@ const NOT_LETTER_BEFORE = '(?<!\\p{L})';
 const NOT_LETTER_AFTER = '(?!\\p{L})';
 const STEM = '\\p{L}*';
 
-// Multi-word markers are joined with \s+ rather than a literal space, because a
-// marker wrapped across a line is still the marker. Four real ones were
-// invisible for this reason — two of them human-review gates written as
-// `[confirm — requires a competition lawyer's\nassessment]`.
+// Multi-word markers tolerate a line wrap, because a marker broken across a
+// line is still the marker. Four real ones were invisible for this reason — two
+// of them human-review gates written as `[confirm — requires a competition
+// lawyer's\nassessment]`.
 //
-// This admits two prose false positives ("a draft that needs\nchecking"), which
+// At most ONE newline. An earlier version used \s+, which happily spanned a
+// blank line and joined two paragraphs into a marker that nobody wrote. That
+// was a false positive introduced by the wrap fix itself, so it is fixed here
+// rather than carried.
+//
+// This still admits one prose false positive ("the skills do\n not use"), which
 // is a real but pre-existing cost: `do not use` in ordinary single-line prose
 // already matches. Whitespace tolerance widens an existing looseness rather
 // than introducing a new one, and the alternative is four markers the gate can
 // never see — the same trade already settled for the inflection fix.
-const WS = '\\s+';
+const WS = '(?:[ \\t]+|[ \\t]*\\n[ \\t]*)';
+
+// Finnish builds compounds by prefixing, so the marker word is not at a word
+// boundary: `ympäristöjuristin arvioitava` and `hankintajuristin arvioitava`
+// are the same review gate as `juristin arvioitava`, but a preceding-letter
+// guard rejects all of them. This is the same class as the ASCII \b defect and
+// it is on the Finnish side, which is where the gate's "Finnish OR English, so
+// the count survives translation" premise actually lives.
+const COMPOUND = '\\p{L}*';
 
 const MECHANISMS = [
   {
@@ -100,7 +113,7 @@ const MECHANISMS = [
     id: 'human-review-gate',
     // "ihminen tarkistaa", "human reviews", "requires a lawyer's assessment"
     re: new RegExp(
-      `${NOT_LETTER_BEFORE}(ihminen${WS}(tarkista|vasta|hyväksy)${STEM}|human${WS}(review|approv)${STEM}|juristin${WS}(arvioitava|tarkistettava)|lawyer'?s${WS}assessment)`,
+      `${NOT_LETTER_BEFORE}(ihminen${WS}(tarkista|vasta|hyväksy)${STEM}|human${WS}(review|approv)${STEM}|${COMPOUND}juristin${WS}(arvioitava|tarkistettava)|lawyer'?s${WS}assessment)`,
       'giu',
     ),
     what: 'human-review gate',
