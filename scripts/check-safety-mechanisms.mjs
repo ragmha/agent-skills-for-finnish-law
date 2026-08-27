@@ -62,6 +62,18 @@ const SKIP = new Set(['node_modules', 'docs', 'dist', '.git']);
 // HEAD would have silently DROPPED a real gate in environment-and-planning and
 // failed the branch. Finnish terms that legitimately appear as a compound tail
 // therefore opt in to a compound head rather than relying on a broken \b.
+//
+// That near-miss was NOT found by reading the regex. It was found by counting
+// every mechanism across all 245 markdown files before and after the change and
+// requiring that no count anywhere decreased. Reasoning about a boundary rule
+// says it is more correct; only measurement says whether it still sees the real
+// corpus. If you change anything below, re-run that comparison, and treat any
+// decrease as a bug in your change rather than a stale count in the snapshot.
+//
+// tests/safety-gate.test.mjs asserts that every documented Finnish and English
+// form of every mechanism is still matched, one test per form, so a regex
+// "cleanup" that quietly drops one fails there by name instead of turning this
+// gate into something that reports green while seeing nothing.
 const NOT_LETTER = '[\\p{L}\\p{N}]';
 const OPEN = `(?<!${NOT_LETTER})`;
 const CLOSE = `(?!${NOT_LETTER})`;

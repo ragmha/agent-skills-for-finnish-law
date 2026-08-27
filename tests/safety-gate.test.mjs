@@ -199,3 +199,67 @@ test('a mechanism is not matched across a blank line', () => {
   assert.equal(status, 1, output);
   assert.match(output, /three-tier certainty marker/);
 });
+
+// --- every documented form must be visible ---------------------------------
+//
+// The bugs above were all the same shape: a form that reads perfectly well but
+// that the matcher could not see. `VIHREÄ` was invisible while `KELTAINEN` and
+// `PUNAINEN` worked, and two of three risk colours matching is exactly the
+// condition under which nobody investigates - the gate looks alive.
+//
+// So each documented form gets its own fixture and its own test. The snapshot
+// says the mechanism occurs once; if the matcher is blind to that form the gate
+// reports it lost and the test fails, naming the form. This is the guard for
+// the next person who "simplifies" a regex below.
+
+const FORMS = {
+  disclaimer: ['**Vastuuvapaus:** luonnos', 'Vastuuvapaus: luonnos', '**Disclaimer:** a draft'],
+  'risk-colour': ['VIHREÄ', 'KELTAINEN', 'PUNAINEN', 'GREEN', 'YELLOW', 'RED'],
+  'certainty-tier': [
+    'Varmistettu', 'Tarkistettava', 'Älä käytä', 'älä käytä', 'ala kayta',
+    'Verified', 'Needs checking', 'Do not use',
+  ],
+  'human-review-gate': [
+    'ihminen tarkistaa', 'ihminen vastaa', 'ihminen hyväksyy',
+    'juristin arvioitava', 'juristin tarkistettava', 'ympäristöjuristin arvioitava',
+    'human review', 'human reviews', 'human reviewer', 'human approval',
+    'human approves', "a lawyer's assessment", 'a lawyers assessment',
+  ],
+  'certainty-flag': [
+    '[tarkista]', '[varmista — juristin arvioitava]', '[muistinvarainen — tarkista Finlexistä]',
+    '[mallin laskelma — tarkista]', '[check]', '[confirm — requires review]',
+    '[from memory — verify in Finlex]', '[model calculation — check]',
+  ],
+};
+
+/** One-file fixture whose snapshot expects exactly one instance of `id`. */
+function runFormFixture(id, form) {
+  const root = mkdtempSync(join(tmpdir(), 'safety-form-'));
+  try {
+    mkdirSync(join(root, 'scripts'), { recursive: true });
+    mkdirSync(join(root, 'references'), { recursive: true });
+    mkdirSync(join(root, 'domain'), { recursive: true });
+    for (const script of ['check-safety-mechanisms.mjs', 'lib.mjs']) {
+      cpSync(join(ROOT, 'scripts', script), join(root, 'scripts', script));
+    }
+    writeFileSync(
+      join(root, 'references/safety-snapshot.json'),
+      JSON.stringify({ takenAt: '2026-01-01', files: { 'domain/one.md': { [id]: 1 } } }, null, 2),
+    );
+    writeFileSync(join(root, 'domain/one.md'), `# One\n\n${form}\n`);
+    return runGate(root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
+for (const [id, forms] of Object.entries(FORMS)) {
+  for (const form of forms) {
+    test(`${id} sees ${JSON.stringify(form)}`, () => {
+      const { status, output } = runFormFixture(id, form);
+
+      assert.equal(status, 0, `matcher is blind to this form:\n${output}`);
+    });
+  }
+}
+
