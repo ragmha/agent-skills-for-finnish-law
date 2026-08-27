@@ -58,10 +58,10 @@ Suojaus jää paikalleen henkivakuutuksena, mutta skill kantaa tarvitsemansa tie
    (`bash evals/run-trigger-tests.sh`, ks. [evals/README.md](evals/README.md)) —
    kuvaus on skillin triggeröitymisen ainoa signaali, ja huono muotoilu
    hukkaa skillin hiljaa. Huom: ajaa oikeita mallikutsuja (ei CI:hin).
-8. **Jos tilastot muuttuvat** (plugari-, skilli- tai agenttimäärä,
-   säädösrekisterin koko, versio), päivitä katselmussivu
-   (`docs/index.html` + `docs/en/index.html`) ja regeneroi OG-jakokuvat —
-   ohjeet ja renderöintikomennot: [docs/og-source.html](docs/og-source.html).
+8. **Jos tilastot muuttuvat** (oikeudenala-, skilli- tai agenttimäärä,
+   säädösrekisterin koko, versio), päivitä katselmussivut
+   (`docs/index.html` (EN, oletus) + `docs/fi/index.html`) ja regeneroi
+   OG-jakokuvat — ohjeet ja renderöintikomennot: [docs/og-source.html](docs/og-source.html).
 
 CI ajaa täsmälleen samat tarkistukset (`check-generated.sh` + validaattori +
 testit), joten paikallisesti vihreä tarkoittaa vihreää myös CI:ssä.
