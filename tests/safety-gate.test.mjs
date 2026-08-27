@@ -15,6 +15,23 @@
 //
 // None of these were visible from the gate's output: it reported green. They
 // are pinned here so they cannot return.
+//
+// Verifying that these tests still catch those bugs requires reverting the GATE
+// against the commit that predates the fix. Do not use `git stash` for it: stash
+// reverts to HEAD, so once the fix is committed it measures the fix against
+// itself and returns a confident green. That happened here - 49/49 "passing"
+// against what was assumed to be the old matcher - and it is the same mechanism
+// that produced two earlier false conclusions in this work. Name the ref:
+//
+//   git show <pre-fix-ref>:scripts/check-safety-mechanisms.mjs \
+//     > scripts/check-safety-mechanisms.mjs
+//   node --test tests/safety-gate.test.mjs   # must FAIL, naming each blind form
+//   git checkout -- scripts/check-safety-mechanisms.mjs
+//
+// The expected failures are the asymmetry itself: VIHREÄ, Älä käytä, human
+// reviews/reviewer/approval/approves fail, while KELTAINEN, PUNAINEN, GREEN,
+// YELLOW and RED pass. If everything fails, you reverted too much; if nothing
+// fails, you reverted nothing.
 
 import { cpSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';

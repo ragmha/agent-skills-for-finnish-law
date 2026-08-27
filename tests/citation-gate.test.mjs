@@ -6,6 +6,19 @@
 // The fixture is synthetic rather than a copy of the repository. The live tree
 // is being translated continuously, so asserting against it would make these
 // tests fail for reasons that have nothing to do with the gate.
+//
+// If you are checking that these tests actually catch a regression, revert the
+// GATE against the commit that predates the fix - not with `git stash`, which
+// reverts to HEAD and, once the fix is committed, measures the fix against
+// itself and reports a confident green. Three separate people hit that exact
+// mechanism while verifying this work: each accepted a passing result without
+// confirming what it had been run against. Name the ref explicitly:
+//
+//   git show <pre-fix-ref>:scripts/check-citations.mjs > scripts/check-citations.mjs
+//   node --test tests/citation-gate.test.mjs   # must FAIL, and name the forms
+//   git checkout -- scripts/check-citations.mjs
+//
+// A negative test that has never been observed failing is not evidence.
 
 import { cpSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
