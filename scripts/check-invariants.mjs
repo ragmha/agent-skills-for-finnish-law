@@ -471,6 +471,46 @@ for (const rel of PROSE_FILES) {
 }
 
 // ---------------------------------------------------------------------------
+// 11. The rename must not have rewritten a segment inside an external URL
+//
+// scripts/apply-rename.mjs replaces path segments, and a segment-exact match
+// does not know whether it is looking at a repository path or a URL. It hit
+// two third-party links:
+//
+//   kuntaliitto.fi/lausunnot        -> kuntaliitto.fi/legislative-consultation
+//   oikeusministerio.fi/lainvalmistelu -> oikeusministerio.fi/legislative-drafting
+//
+// Both 404. Nothing caught them: validate.mjs resolves relative markdown links
+// only, so an absolute URL is never followed, and a link that still parses and
+// still looks plausible reads as fine. These are the sources a drafter is being
+// sent to, so a dead one is a quiet failure of the thing the file exists for.
+//
+// The repository's OWN GitHub URLs legitimately contain a domain slug —
+// github.com/<owner>/<repo>/tree/main/<domain> is correct — so those are
+// excluded by name rather than by pattern guesswork.
+// ---------------------------------------------------------------------------
+
+const ownRepo = 'agent-skills-for-finnish-law';
+const URL_RE = /https?:\/\/[^\s`)\]<>"']+/g;
+const slugSegment = new RegExp(`/(?:${domainSlugs.join('|')})(?![A-Za-z0-9-])`);
+
+for (const rel of ls('*')) {
+  if (!/\.(md|json|html|ya?ml)$/.test(rel)) continue;
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+
+  for (const url of readFileSync(full, 'utf8').match(URL_RE) ?? []) {
+    if (url.includes(ownRepo)) continue;
+    if (slugSegment.test(url)) {
+      fail(
+        'external URL',
+        `${rel}: ${url} — an external URL whose path contains a domain slug; the rename rewrites segments and cannot tell a URL from a repository path`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Report
 // ---------------------------------------------------------------------------
 
@@ -478,7 +518,7 @@ console.log('\nrepository invariants');
 console.log('  rules checked: fork provenance, statute registry, statute watch, rename map,');
 console.log('                 subagent naming, stale domain slugs, practice-profile heading,');
 console.log('                 guardrail references, pointer shims, documented commands,');
-console.log('                 stated counts\n');
+console.log('                 stated counts, external URLs\n');
 
 for (const f of failures) console.log(`  ✗  ${f.rule}: ${f.detail}`);
 
