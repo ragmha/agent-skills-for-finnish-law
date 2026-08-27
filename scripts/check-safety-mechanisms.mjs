@@ -86,8 +86,14 @@ const MECHANISMS = [
     id: 'certainty-flag',
     // [tarkista] [varmista — ...] [muistinvarainen — ...] [mallin laskelma — ...]
     // [check] [confirm — ...] [from memory — ...] [model calculation — ...]
+    //
+    // `vastine` / `equivalent` are the bilingual-legal-language domain's own
+    // flag: `[vastine varmistettava]` -> `[equivalent to be confirmed]`, which
+    // marks a term the agent could not verify. In a translation domain, an
+    // invented term IS the central hazard, so that flag is a safety mechanism —
+    // and it matched neither language's pattern, so it was unprotected in both.
     re: new RegExp(
-      `\\[(?:tarkista|varmista|muistinvarainen|mallin${WS}laskelma|check|confirm|from${WS}memory|model${WS}calculation)${NOT_LETTER_AFTER}[^\\]]*\\]`,
+      `\\[(?:tarkista|varmista|muistinvarainen|mallin${WS}laskelma|vastine|check|confirm|from${WS}memory|model${WS}calculation|equivalent)${NOT_LETTER_AFTER}[^\\]]*\\]`,
       'giu',
     ),
     what: 'inline certainty flag',

@@ -102,7 +102,7 @@
       "certainty-flag": 5
     },
     "bilingual-legal-language/AGENTS.md": {
-      "certainty-flag": 1,
+      "certainty-flag": 2,
       "certainty-tier": 5,
       "human-review-gate": 2
     },
@@ -119,6 +119,7 @@
     },
     "bilingual-legal-language/skills/legal-translation/SKILL.md": {
       "disclaimer": 1,
+      "certainty-flag": 3,
       "certainty-tier": 1
     },
     "company-law/agents/material-mapper.md": {

@@ -116,6 +116,16 @@ test('the certainty tier survives subject-verb agreement', () => {
   assert.equal(count(body, 'certainty-tier'), 3);
 });
 
+test("a domain's own uncertainty flag is protected in both languages", () => {
+  // bilingual-legal-language marks a term it could not verify with
+  // [vastine varmistettava] -> [equivalent to be confirmed]. In a translation
+  // domain an invented term is the central hazard, so that is a safety
+  // mechanism — and it matched neither language's pattern, leaving it
+  // unprotected on both sides of the translation.
+  assert.equal(count('Mark it `[vastine varmistettava]`.', 'certainty-flag'), 1);
+  assert.equal(count('Mark it `[equivalent to be confirmed]`.', 'certainty-flag'), 1);
+});
+
 // ---------------------------------------------------------------------------
 // Line wraps — a marker broken across a line is still the marker, but a marker
 // spanning a BLANK line is two paragraphs the matcher glued together.
