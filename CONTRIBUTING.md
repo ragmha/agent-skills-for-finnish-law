@@ -42,8 +42,8 @@ place as life insurance, but the skill carries the knowledge it needs itself.
 
 ## Working on a gate
 
-The gates in `scripts/check-*.mjs` are what make the rules in `AGENTS.md` real. Two things about
-changing them are worth knowing before you start, because both have already cost real time here.
+The gates in `scripts/check-*.mjs` are what make the rules in `AGENTS.md` real. Three things about
+changing them are worth knowing before you start, because all three have already cost real time here.
 
 **A negative test must prove its own mutation landed.** Every gate change needs a test that breaks
 the fix and confirms the gate notices. That test is worthless — worse than nothing — if the

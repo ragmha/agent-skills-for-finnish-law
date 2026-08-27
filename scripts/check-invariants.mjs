@@ -383,13 +383,102 @@ for (const ref of new Set(agentsMd.match(/scripts\/[a-z0-9-]+\.(?:mjs|sh)/g) ?? 
 }
 
 // ---------------------------------------------------------------------------
+// 10. Counts stated in prose must match the collection
+//
+// README.md, AGENTS.md, SKILLS.md, QUICKSTART.md and both landing pages all
+// state "24 domains", "78 skills", "6 subagents", "105 statutes". Every one of
+// those is mechanically derivable, and every one silently goes stale the moment
+// a domain or skill is added — the docs session had to verify all four by hand,
+// which is exactly the work a gate should be doing.
+//
+// This is the narrow version on purpose. The landing pages also carry
+// per-domain cards reading "Contracts 2 skills · 1 subagent", and a rule that
+// compared those against 78 and 6 would be red for a reason nobody could fix —
+// which is how a gate gets ignored.
+//
+// A card is identified by the domain slug it links to, taken from
+// marketplace.json rather than guessed. That is precise and stays correct when
+// domains are added. An earlier attempt truncated each file at the first line
+// matching a card shape, which silently swallowed README.md entirely: its
+// summary line "24 domains · 78 skills · 6 subagents" has the same shape as a
+// card, so every count in the file went unchecked while the rule reported
+// green. Exactly the failure this rule exists to prevent, in the rule itself.
+const domainSlugs = readJSON(join(ROOT, 'marketplace.json')).plugins.map((p) =>
+  p.source.replace(/^\.\//, ''),
+);
+
+// A card is either a line naming a domain directory, or a line with the card's
+// own shape — "9 skills · 2 subagents" — and no collection word on it. The
+// second test is needed because one card carries its slug on the adjacent line,
+// and it is safe because the collection summary that has the same shape
+// ("24 domains · 78 skills · 6 subagents") always states the domain count too.
+const CARD_SHAPE = /\d+\s+(?:skills?|skilliä|skilli)\s*·\s*\d+\s+(?:subagents?|aliagenttia|aliagentti)/i;
+const COLLECTION_WORD = /(?:domains?|osaamisaluetta)/i;
+
+const isCardLine = (line) =>
+  domainSlugs.some((slug) => line.includes(slug)) ||
+  (CARD_SHAPE.test(line) && !COLLECTION_WORD.test(line));
+
+const countedSkills = ls('*/skills/*/SKILL.md').length;
+const countedAgents = ls('*/agents/*.md').length;
+const countedDomains = domainSlugs.length;
+const countedStatutes = (readJSON(join(ROOT, 'tracking/statutes.json')).statutes ?? []).length;
+
+const PROSE_FILES = [
+  'README.md',
+  'AGENTS.md',
+  'SKILLS.md',
+  'QUICKSTART.md',
+  'docs/index.html',
+  'docs/fi/index.html',
+];
+
+// Finnish forms are listed because the Finnish landing page states the same
+// totals in Finnish, and an English-only pattern would report it clean while
+// never reading it.
+//
+// The boundary is (?!\p{L}) with the u flag, not \b. `säädöstä` and `skilliä`
+// end in ä, and \b is defined against [A-Za-z0-9_], so a trailing \b made those
+// two patterns silently unmatchable — the exact defect this repository has now
+// hit four times, reproduced inside the rule written to catch stale prose. A
+// negative test on the Finnish page is what surfaced it; the English half was
+// green throughout.
+const NL = '(?!\\p{L})';
+const COUNT_CLAIMS = [
+  ['domains', countedDomains, new RegExp(`(\\d{1,4})\\s+(?:practice-area\\s+)?(?:domains?|osaamisaluetta)${NL}`, 'giu')],
+  ['subagents', countedAgents, new RegExp(`(\\d{1,4})\\s+(?:subagents?|aliagenttia|aliagentti)${NL}`, 'giu')],
+  ['statutes', countedStatutes, new RegExp(`(\\d{1,4})\\s+(?:verified\\s+)?(?:statutes?|säädöstä)${NL}`, 'giu')],
+  ['skills', countedSkills, new RegExp(`(\\d{1,4})\\s+(?:skills?|skilliä|skilli)${NL}`, 'giu')],
+];
+
+for (const rel of PROSE_FILES) {
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+
+  for (const line of readFileSync(full, 'utf8').split('\n')) {
+    if (isCardLine(line)) continue;
+    for (const [label, actual, pattern] of COUNT_CLAIMS) {
+      for (const m of line.matchAll(pattern)) {
+        if (Number(m[1]) !== actual) {
+          fail(
+            'stated count',
+            `${rel} says "${m[0].trim()}" but the collection has ${actual} ${label}`,
+          );
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Report
 // ---------------------------------------------------------------------------
 
 console.log('\nrepository invariants');
 console.log('  rules checked: fork provenance, statute registry, statute watch, rename map,');
 console.log('                 subagent naming, stale domain slugs, practice-profile heading,');
-console.log('                 guardrail references, pointer shims, documented commands\n');
+console.log('                 guardrail references, pointer shims, documented commands,');
+console.log('                 stated counts\n');
 
 for (const f of failures) console.log(`  ✗  ${f.rule}: ${f.detail}`);
 
