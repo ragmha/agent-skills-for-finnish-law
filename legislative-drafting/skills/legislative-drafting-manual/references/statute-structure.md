@@ -54,6 +54,12 @@ Sections are numbered consecutively throughout the statute.
 
 #### An example of subsection numbering
 
+> `[check]` The model text below writes the subsection number **inline** (`2 momentti. …`). That
+> form is not verified against Lainkirjoittajan opas, and in Finlex a momentti is an unnumbered
+> paragraph — the numbering is how it is *referred to*, not how it is *written*. This block is
+> model text a drafter copies, so a wrong convention here propagates into a real bill. Confirm at
+> source before using it, and see the same caution at the second example below.
+
 ```
 1 §
 
@@ -113,6 +119,9 @@ The number of a section is marked with the § symbol:
 
 Where a section has several parts (subsections), the number of the first subsection is left out. The other subsections are numbered 2 momentti, 3 momentti and so on.
 
+> `[check]` Same caution as the first example: the inline `2 momentti.` form in the block below is
+> unverified against Lainkirjoittajan opas and conflicts with how a momentti appears in Finlex.
+
 Example:
 ```
 5 §
@@ -127,6 +136,13 @@ Ensimmäinen momentti (numerointi jätetään pois).
 ### Chapters
 
 Where a statute is divided into chapters, the chapters are numbered with Roman numerals (I, II, III and so on) or using Arabic numerals (1, 2, 3 and so on). The sections under each chapter are numbered consecutively.
+
+> `[check]` The Roman-numeral alternative in the sentence above is **not verified against
+> Lainkirjoittajan opas** and it conflicts with the rest of this collection: `legal-language-guide`
+> gives the chapter form as `2 luku`, and all 31 chapter references elsewhere in this repository are
+> Arabic (`OYL 13:2`, `OK 17:...`). Use Arabic unless a drafter confirms otherwise at source. This
+> needs a legislative drafter's confirmation before the sentence is changed — it is a statement
+> about drafting convention, not a typo.
 
 ## The principles of arranging a statute
 

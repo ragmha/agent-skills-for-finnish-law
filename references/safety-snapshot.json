@@ -231,6 +231,7 @@
     },
     "CONTRIBUTING.md": {
       "certainty-flag": 1,
+      "risk-colour": 2,
       "certainty-tier": 1,
       "human-review-gate": 1
     },
@@ -602,6 +603,10 @@
     },
     "legislative-drafting/skills/legislative-drafting-manual/references/enacting-formula.md": {
       "certainty-tier": 6
+    },
+    "legislative-drafting/skills/legislative-drafting-manual/references/statute-structure.md": {
+      "certainty-flag": 3,
+      "certainty-tier": 2
     },
     "legislative-drafting/skills/legislative-drafting-manual/references/types-of-statutes.md": {
       "certainty-tier": 1
