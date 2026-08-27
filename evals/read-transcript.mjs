@@ -11,8 +11,8 @@
 // Usage:  <transcript> | node evals/read-transcript.mjs <candidate-skill>...
 //
 // Prints key=value lines:
-//   status=ok | error
-//   reason=<free text>          (only when status=error)
+//   status=ok | unmeasured | error
+//   reason=<free text>          (when status is not ok)
 //   confidence=high | low | none
 //   skills=<space separated>
 //
@@ -142,14 +142,32 @@ if (!sawJson && raw.trim().startsWith('{')) {
 // Text fallback (only when there was nothing structured to read)
 // ---------------------------------------------------------------------------
 
-// Every harness puts a catalogue of available skills in the system prompt, so
-// a naive "line mentions a skill name" match reports the whole domain as
-// triggered. That happened in practice against a real copilot transcript, and
-// a false pass is worse than a false miss: it hides the regression these evals
-// exist to catch. So the fallback must see something that looks like an
-// *action*, and must refuse anything that looks like a listing.
+// This fallback is a heuristic over prose, and prose does not carry a reliable
+// signal that a skill was invoked. Two separate false passes proved that:
+//
+//   1. A real copilot transcript listed every available skill in the system
+//      prompt, so a naive name match reported all nine as triggered.
+//   2. `\bus\w*\b` matched the Finnish words 'usein' and 'uskottava', and
+//      `\bcall\w*\b` matched the phrase 'was not called' — the exact opposite
+//      of an invocation.
+//
+// Each fix was another guess about text I had not imagined, so the fallback no
+// longer decides anything. Its result is reported as UNMEASURED, never as a
+// pass: every harness this runner supports emits structured events, so a
+// text-only transcript means the adapter needs fixing, not that the skill
+// description regressed. A false pass would hide the regression these evals
+// exist to catch; refusing to score is the honest answer.
 const CATALOGUE = /<\/?skill\b|<\/?available_skills\b|<name>|<description>/i;
-const INVOCATION = /\b(?:invok|call|run|ran|us|load|activat|trigger|launch|select|appl)\w*\b/i;
+// Explicit forms, not prefixes: 'us' + \w* swallowed half of Finnish.
+const INVOCATION = new RegExp(
+  String.raw`\b(?:invoke[sd]?|invoking|invocation|call(?:s|ed|ing)?|run(?:s|ning)?|ran` +
+    String.raw`|use[sd]?|using|load(?:s|ed|ing)?|activate[sd]?|activating` +
+    String.raw`|trigger(?:s|ed|ing)?|launch(?:es|ed|ing)?|select(?:s|ed|ing)?` +
+    String.raw`|appl(?:y|ies|ied|ying))\b`,
+  'i',
+);
+// 'X was not called' is not an invocation, and neither is 'instead of X'.
+const NEGATION = /\b(?:not|never|without|no|instead|rather|cannot|can't|didn't|isn't|wasn't|unavailable|skipped)\b|n't\b/i;
 const MAX_FALLBACK_HITS = 2;
 
 let confidence = found.size > 0 ? 'high' : 'none';
@@ -160,6 +178,7 @@ if (found.size === 0 && !sawJson) {
     if (!/skill/i.test(line)) continue;
     if (CATALOGUE.test(line)) continue;
     if (!INVOCATION.test(line)) continue;
+    if (NEGATION.test(line)) continue;
 
     const onThisLine = candidates.filter((candidate) => line.includes(candidate));
     // Several names on one line is a list, not an invocation.
@@ -169,7 +188,6 @@ if (found.size === 0 && !sawJson) {
 
   if (found.size > MAX_FALLBACK_HITS) {
     // A whole domain's worth of matches is a catalogue that slipped through.
-    // Report nothing rather than a pass nobody can trust.
     note = `text fallback matched ${found.size} skills and was discarded as a catalogue`;
     found.clear();
   }
@@ -226,8 +244,19 @@ if (status === 'ok') {
   }
 }
 
+// A text-only transcript cannot establish that a skill ran, so it is reported
+// as unmeasured rather than scored. This is structural: no amount of regex
+// tuning can make prose a reliable signal, and the runner must not be able to
+// turn a guess into a green pass.
+if (status === 'ok' && !sawJson) {
+  status = 'unmeasured';
+  reason =
+    'harness produced no structured events; a text transcript cannot prove a skill ran' +
+    (found.size > 0 ? ` (text suggested: ${[...found].join(' ')})` : '');
+}
+
 process.stdout.write(`status=${status}\n`);
-if (status === 'error') process.stdout.write(`reason=${reason.replace(/\s+/g, ' ')}\n`);
+if (status !== 'ok') process.stdout.write(`reason=${reason.replace(/\s+/g, ' ')}\n`);
 process.stdout.write(`confidence=${confidence}\n`);
 // A discarded catalogue must be visible: silently reporting no trigger would
 // look identical to a genuine miss, and the two need different fixes.

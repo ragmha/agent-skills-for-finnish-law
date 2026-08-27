@@ -220,15 +220,44 @@ test('reader reports nothing when a structured transcript shows no skill call', 
   assert.equal(report.skills, '');
 });
 
-test('reader falls back to text only when there is nothing structured, and says so', () => {
+test('a text-only transcript is reported as unmeasured, never as a pass', () => {
   const report = readTranscript('Invoking skill legal-writing to fix the citation.', CANDIDATES);
+  // The heuristic may still surface what it saw, but it must not be scorable.
+  assert.equal(report.status, 'unmeasured');
   assert.equal(report.confidence, 'low');
-  assert.equal(report.skills, 'legal-writing');
+  assert.match(report.reason, /cannot prove a skill ran/);
 });
 
 test('reader does not treat prose that merely names a skill as a trigger', () => {
   const report = readTranscript('The answer draws on legal-writing conventions.', CANDIDATES);
   assert.equal(report.skills, '');
+  assert.equal(report.status, 'ok');
+});
+
+// Regression: `\bus\w*\b` matched the Finnish words 'usein' and 'uskottava'.
+// Half the scenarios prompt in Finnish, so this had a real blast radius.
+test('invocation matching does not fire on Finnish words that start with an English stem', () => {
+  for (const line of [
+    'Skilli on usein legal-research -tyyppinen kysymys.',
+    'Skillin vastaus on uskottava legal-writing kannalta.',
+  ]) {
+    const report = readTranscript(line, CANDIDATES);
+    assert.equal(report.skills, '', `matched on: ${line}`);
+    assert.equal(report.status, 'ok', `scored on: ${line}`);
+  }
+});
+
+// Regression: `\bcall\w*\b` matched 'was not called' — the opposite of an
+// invocation — and reported it as a trigger.
+test('a negated statement is not read as an invocation', () => {
+  for (const line of [
+    'This skill was not called: legal-writing.',
+    'The skill legal-research is unavailable, so nothing ran.',
+    "We didn't use the skill legal-writing here.",
+  ]) {
+    const report = readTranscript(line, CANDIDATES);
+    assert.equal(report.skills, '', `matched on: ${line}`);
+  }
 });
 
 // This is the failure that actually happened against a real copilot transcript:
@@ -256,6 +285,30 @@ test('reader discards a fallback match set large enough to be a catalogue', () =
 test('reader ignores a line that lists several skills at once', () => {
   const report = readTranscript(`Available skills to run: ${CANDIDATES.join(', ')}`, CANDIDATES);
   assert.equal(report.skills, '');
+});
+
+// The structural guarantee: no prose transcript, however it is worded, can be
+// counted as a pass. Guards below it are defence in depth; this is the floor.
+test('no text-only transcript can ever be scored as a pass', () => {
+  const wordings = [
+    'Invoking skill legal-writing now.',
+    'Ran the skill legal-writing successfully.',
+    'skill: legal-writing (applied)',
+    'Using skill legal-research to check the statute.',
+  ];
+  for (const wording of wordings) {
+    const report = readTranscript(wording, CANDIDATES);
+    assert.notEqual(report.status, 'ok', `scorable as a pass: ${wording}`);
+  }
+});
+
+test('the runner treats an unmeasured result as a skip, not a pass or a miss', () => {
+  const source = readFileSync(RUNNER, 'utf8');
+  assert.match(source, /if \[ "\$status" = "unmeasured" \]/);
+  // It must land in the skip counter before any pass/miss branch can see it.
+  const unmeasuredAt = source.indexOf('"$status" = "unmeasured"');
+  const passAt = source.indexOf('pass=$((pass + 1))');
+  assert.ok(unmeasuredAt > 0 && unmeasuredAt < passAt, 'unmeasured is checked after scoring');
 });
 
 test('a real structured transcript is never routed through the text fallback', () => {

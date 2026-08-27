@@ -102,18 +102,26 @@ the miss. Skipped scenarios are counted and called out separately in the
 summary — a skip is not a pass.
 
 Detection reports a confidence level. A structured tool call naming a skill is
-`high`. If a harness emits no structured events at all, a plain-text fallback
-reports `low`, marked in the output.
+`high` and is the only thing that can score a pass.
 
-The fallback is deliberately hard to satisfy. Every harness lists its available
-skills in the system prompt, so a naive "this line names a skill" match reports
-the entire domain as triggered — that happened for real against a copilot
-transcript, turning a miss into a nine-skill pass. The fallback therefore skips
-anything that looks like a catalogue (`<skill>`, `<name>`, several skill names
-on one line), requires wording that looks like an action rather than a listing,
-and discards its own result entirely if it matches more than two skills, saying
-so via a `note=` line. A false pass would hide the very regression these tests
-exist to catch, so ambiguity resolves to "no trigger".
+**A text-only transcript is reported as `unmeasured`, never as a pass.** The
+fallback is a heuristic over prose, and prose does not carry a reliable signal
+that a skill ran. Two separate false passes proved it:
+
+1. A real copilot transcript listed every available skill in its system prompt,
+   so a naive name match reported all nine `legal-core` skills as triggered.
+2. `\bus\w*\b` matched the Finnish words `usein` and `uskottava`, and
+   `\bcall\w*\b` matched `was not called` — the exact opposite of an
+   invocation.
+
+Each fix was another guess about text nobody had imagined, so the fallback no
+longer decides anything. It still skips catalogue-shaped lines, requires
+action-like wording, rejects negation, and discards its own result above two
+matches (emitting `note=`) — but those are now defence in depth. The floor is
+structural: every harness this runner supports emits structured events, so a
+text-only transcript means **the adapter needs fixing**, not that a description
+regressed. Unmeasured scenarios are counted with skips and called out in the
+summary, because an unverified domain is not a passing one.
 
 **Adding a harness:** write the three functions and add the name to `RUNNERS`.
 If its transcript uses a shape `read-transcript.mjs` does not recognise, extend
