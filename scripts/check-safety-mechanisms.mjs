@@ -50,6 +50,18 @@ const NOT_LETTER_BEFORE = '(?<!\\p{L})';
 const NOT_LETTER_AFTER = '(?!\\p{L})';
 const STEM = '\\p{L}*';
 
+// Multi-word markers are joined with \s+ rather than a literal space, because a
+// marker wrapped across a line is still the marker. Four real ones were
+// invisible for this reason — two of them human-review gates written as
+// `[confirm — requires a competition lawyer's\nassessment]`.
+//
+// This admits two prose false positives ("a draft that needs\nchecking"), which
+// is a real but pre-existing cost: `do not use` in ordinary single-line prose
+// already matches. Whitespace tolerance widens an existing looseness rather
+// than introducing a new one, and the alternative is four markers the gate can
+// never see — the same trade already settled for the inflection fix.
+const WS = '\\s+';
+
 const MECHANISMS = [
   {
     id: 'disclaimer',
@@ -62,7 +74,7 @@ const MECHANISMS = [
     // [tarkista] [varmista — ...] [muistinvarainen — ...] [mallin laskelma — ...]
     // [check] [confirm — ...] [from memory — ...] [model calculation — ...]
     re: new RegExp(
-      `\\[(?:tarkista|varmista|muistinvarainen|mallin laskelma|check|confirm|from memory|model calculation)${NOT_LETTER_AFTER}[^\\]]*\\]`,
+      `\\[(?:tarkista|varmista|muistinvarainen|mallin${WS}laskelma|check|confirm|from${WS}memory|model${WS}calculation)${NOT_LETTER_AFTER}[^\\]]*\\]`,
       'giu',
     ),
     what: 'inline certainty flag',
@@ -79,7 +91,7 @@ const MECHANISMS = [
     id: 'certainty-tier',
     // Varmistettu / Tarkistettava / Älä käytä -> Verified / Needs checking / Do not use
     re: new RegExp(
-      `${NOT_LETTER_BEFORE}(varmistettu|tarkistettava|älä käytä|ala kayta|verified|needs checking|do not use)${NOT_LETTER_AFTER}`,
+      `${NOT_LETTER_BEFORE}(varmistettu|tarkistettava|älä${WS}käytä|ala${WS}kayta|verified|needs${WS}checking|do${WS}not${WS}use)${NOT_LETTER_AFTER}`,
       'giu',
     ),
     what: 'three-tier certainty marker',
@@ -88,7 +100,7 @@ const MECHANISMS = [
     id: 'human-review-gate',
     // "ihminen tarkistaa", "human reviews", "requires a lawyer's assessment"
     re: new RegExp(
-      `${NOT_LETTER_BEFORE}(ihminen (tarkista|vasta|hyväksy)${STEM}|human (review|approv)${STEM}|juristin (arvioitava|tarkistettava)|lawyer'?s assessment)`,
+      `${NOT_LETTER_BEFORE}(ihminen${WS}(tarkista|vasta|hyväksy)${STEM}|human${WS}(review|approv)${STEM}|juristin${WS}(arvioitava|tarkistettava)|lawyer'?s${WS}assessment)`,
       'giu',
     ),
     what: 'human-review gate',

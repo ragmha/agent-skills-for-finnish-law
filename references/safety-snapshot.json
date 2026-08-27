@@ -151,7 +151,7 @@
     "competition-law/AGENTS.md": {
       "certainty-flag": 2,
       "certainty-tier": 4,
-      "human-review-gate": 2
+      "human-review-gate": 3
     },
     "competition-law/README.md": {
       "certainty-tier": 2
@@ -523,14 +523,15 @@
     },
     "intellectual-property/skills/trademarks-and-trade-names/SKILL.md": {
       "disclaimer": 1,
-      "certainty-flag": 2
+      "certainty-flag": 2,
+      "human-review-gate": 1
     },
     "legal-core/agents/deadline-scanner.md": {
       "certainty-flag": 1,
       "certainty-tier": 2
     },
     "legal-core/agents/source-checker.md": {
-      "certainty-tier": 10
+      "certainty-tier": 12
     },
     "legal-core/AGENTS.md": {
       "certainty-flag": 3,
@@ -561,7 +562,7 @@
     },
     "legal-core/skills/legal-research/SKILL.md": {
       "certainty-flag": 3,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 1
     },
     "legal-core/skills/legal-writing/references/sources.md": {
@@ -674,7 +675,7 @@
     },
     "references/firm-adoption.md": {
       "certainty-flag": 1,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 1
     },
     "references/glossary.md": {
