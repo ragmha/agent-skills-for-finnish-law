@@ -23,16 +23,6 @@ example `notice period (irtisanomisaika)`.
 
 **[Name of the käräjäoikeus]** (mandatory)
 
-## Output language
-
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
-
-Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
-
 ## HAASTEHAKEMUS
 
 **Matter:** [the nature of the matter, for example debt recovery / damages]

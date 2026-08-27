@@ -218,3 +218,18 @@ test('a declaration inside the document body is an error, not merely present', (
   assert.equal(status, 1, output);
   assert.match(output, /inside the document body/);
 });
+
+test('a declaration above the body does not excuse a second one inside it', () => {
+  // The first version of this gate took the FIRST match, so a template that
+  // declared correctly at the top and then repeated the block inside the
+  // document passed. That was live in statement-of-claim.md — a filing that
+  // goes to a käräjäoikeus — and no gate saw it, because the check it had to
+  // pass was satisfied by the copy in the right place.
+  const { status, output } = withFixture(
+    () => makeTemplateFixture(`# Template\n\n${DECLARATION}${BODY}\n${DECLARATION}`),
+    'check-output-language.mjs',
+  );
+
+  assert.equal(status, 1, output);
+  assert.match(output, /inside the document body/);
+});
