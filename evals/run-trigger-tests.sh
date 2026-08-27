@@ -243,9 +243,16 @@ while IFS=$'\t' read -r id domain expected lang known_miss prompt; do
     exit 2
   fi
 
+  # A text-only transcript proves nothing either way, so it is neither a pass
+  # nor a miss. Scoring it would let a prose guess stand in for evidence.
+  if [ "$status" = "unmeasured" ]; then
+    skipped=$((skipped + 1))
+    echo "  -  $label - unmeasured: $reason"
+    continue
+  fi
+
   marker=""
-  if [ "$confidence" = "low" ]; then marker=" (low confidence: plain-text transcript)"; fi
-  if [ -n "$detect_note" ]; then marker="$marker (detection note: $detect_note)"; fi
+  if [ -n "$detect_note" ]; then marker=" (detection note: $detect_note)"; fi
 
   if printf ' %s ' "$invoked" | grep -q -- " $expected "; then
     pass=$((pass + 1))
@@ -267,7 +274,7 @@ echo
 echo "$pass triggered - $known known miss(es) - $fail unexpected miss(es) - $skipped skipped"
 
 if [ "$skipped" -gt 0 ]; then
-  echo "! $skipped scenario(s) were skipped, so those domains are unmeasured — that is not a pass."
+  echo "! $skipped scenario(s) were skipped or unmeasured, so those domains are unverified — that is not a pass."
 fi
 
 if [ "$fail" -gt 0 ]; then
