@@ -57,6 +57,26 @@ corporate finance there is wider freedom of contract, but adjustment (OikTL sect
 36) and the protection of a guarantor (361/1999: the mandatory protection of a private
 guarantor) set limits. Identify the party's position before drafting the terms.
 
+## "AML" means two different things in this domain — always disambiguate
+
+`AML` is used here for **two unrelated bodies of law**, sometimes on the same page:
+
+| Written | Means | Statute |
+|---|---|---|
+| AML | anti-money laundering | laki rahanpesun ja terrorismin rahoittamisen estämisestä 444/2017, and the EU AML package |
+| AML | arvopaperimarkkinalaki (the Securities Markets Act) | 746/2012 |
+
+Both are established usage and neither is invented here, so neither is dropped. But the collision is
+real: `finance-fundamentals.md` introduces `AML` as 746/2012, while `AGENTS.md` and
+`anti-money-laundering/SKILL.md` use the same three letters for money-laundering regulation. An
+agent that reads one and then the other can cite 746/2012 for a money-laundering question, or
+444/2017 for a disclosure obligation — a wrong statute number, which is the failure this collection
+exists to prevent.
+
+**So never write a bare `AML`.** Give the number on every use — `AML 746/2012` or `AML 444/2017` —
+or write the name out. If a passage does not make clear which one it means, treat it as `[check]`
+before relying on it.
+
 ## From the source, not from memory
 
 Check the provisions with the **`legal-core:legal-research` skill** (oik.ai/Finlex)

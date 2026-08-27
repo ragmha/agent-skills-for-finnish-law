@@ -69,10 +69,10 @@ thresholds from the source.
 ## Regular and other disclosure obligations
 
 - The financial statements, the half-year report and any interim reports
-  — the requirements from AML and from the exchange's rules `[check]`.
+  — the requirements from AML 746/2012 and from the exchange's rules `[check]`.
 - Consistency: a profit warning when the guidance no longer holds —
   assessing the threshold and the structure of the release.
-- **Notification of major holdings** (AML): notifying significant
+- **Notification of major holdings** (AML 746/2012): notifying significant
   holdings — the thresholds and the calculation (including financial
   instruments) from the source; the obligations of both the notifying
   party and the company.
@@ -84,7 +84,7 @@ thresholds from the source.
   basic information document in small offerings `[check]`. Due diligence
   for a listing → the `company-law:corporate-transactions` framework +
   the market-specific parts.
-- **A public takeover bid** (AML + the Helsinki Takeover Code): the
+- **A public takeover bid** (AML 746/2012 + the Helsinki Takeover Code): the
   mandatory bid threshold, the consideration and the offer document,
   equal treatment — the details from the source; the Finnish Securities
   Market Association's Takeover Code as a comply-or-explain basis.
