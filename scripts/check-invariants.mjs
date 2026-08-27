@@ -222,14 +222,67 @@ for (const rel of ls('*.md')) {
 }
 
 // ---------------------------------------------------------------------------
+// 7. The practice-profile heading must be spelled identically everywhere
+//
+// legal-core/skills/practice-profile writes into every domain's AGENTS.md under
+// one exact heading. If domains spell it differently the skill writes under a
+// heading that does not exist, or fails to find one — silently, and in only
+// some domains. Nothing else couples 24 files to one string, and nothing else
+// would notice it breaking.
+//
+// Both spellings are accepted while translation is in flight; the invariant is
+// that all 24 agree with each other.
+// ---------------------------------------------------------------------------
+
+const HEADING_FI = '## Käytäntöprofiili (valinnainen)';
+const HEADING_EN = '## Practice profile (optional)';
+
+const headingSeen = new Map();
+
+for (const entry of readJSON(join(ROOT, 'marketplace.json')).plugins) {
+  const rel = `${entry.source.replace(/^\.\//, '')}/AGENTS.md`;
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+
+  const text = readFileSync(full, 'utf8');
+  const found = text.includes(HEADING_EN)
+    ? HEADING_EN
+    : text.includes(HEADING_FI)
+      ? HEADING_FI
+      : null;
+
+  if (!found) {
+    const loose = text.match(/^##+\s*(?:practice profile|käytäntöprofiili).*$/im)?.[0];
+    fail(
+      'practice profile heading',
+      loose
+        ? `${rel}: heading is '${loose.trim()}', expected '${HEADING_EN}' or '${HEADING_FI}'`
+        : `${rel}: no practice-profile heading found`,
+    );
+    continue;
+  }
+
+  if (!headingSeen.has(found)) headingSeen.set(found, []);
+  headingSeen.get(found).push(rel);
+}
+
+if (headingSeen.size > 1) {
+  const summary = [...headingSeen.entries()]
+    .map(([h, files]) => `'${h}' in ${files.length}`)
+    .join(', ');
+  fail(
+    'practice profile heading',
+    `domains disagree on the heading (${summary}) — practice-profile writes under one exact string`,
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Report
 // ---------------------------------------------------------------------------
 
 console.log('\nrepository invariants');
-console.log(
-  '  rules checked: fork provenance, statute registry, statute watch, rename map,\n' +
-    '                 subagent naming, stale domain slugs\n',
-);
+console.log('  rules checked: fork provenance, statute registry, statute watch, rename map,');
+console.log('                 subagent naming, stale domain slugs, practice-profile heading\n');
 
 if (staleInSkills > 0) {
   console.log(
