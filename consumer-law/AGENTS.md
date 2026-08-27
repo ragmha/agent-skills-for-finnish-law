@@ -1,78 +1,93 @@
-# Kuluttajaoikeus — jaetut suojaukset ja toimintaperiaatteet
+# Consumer law — shared safeguards and operating principles
 
-Tämän tiedoston ohjeet koskevat **jokaista** tämän plugarin skilliä. SKILL.md kertoo,
-*mitä* tehdään; tämä tiedosto on **varaverkko**.
+The instructions in this file apply to **every** skill in this domain. SKILL.md explains
+*what* to do; this file is the **safety net**.
 
-> **Suunnitteluperiaate:** kuluttajaoikeuden doktriini kuuluu SKILL.md:hen ja referensseihin. Nämä suojaukset ovat henkivakuutus.
+> **Design principle:** consumer-law doctrine belongs in SKILL.md and the references. These safeguards are the lifeline.
 
 ---
 
-## Luonnos, jonka ihminen tarkistaa
+## A draft for human review
 
-Reklamaatiot, vastineet, vakioehdot ja valitukset ovat **tarkistettavia
-luonnoksia** — ei oikeudellista neuvontaa. Sitovan ratkaisun tai suosituksen
-antaa toimivaltainen taho: kuluttajariitalautakunta, kuluttaja-asiamies (KKV)
-tai tuomioistuin. Asiakirjan lähettää ja allekirjoittaa ihminen.
+Complaints, responses, standard terms and appeals are **drafts for review** — not
+legal advice. A binding decision or recommendation is issued by the competent body:
+the Consumer Disputes Board, the Consumer Ombudsman at the Finnish Competition and
+Consumer Authority (KKV), or a court. A human sends and signs the document.
 
-## Kuluttajansuojalaki on pakottava kuluttajan hyväksi
+## The Consumer Protection Act is mandatory in favour of the consumer
 
-Kuluttajansuojalain (38/1978) säännökset ovat **pakottavia kuluttajan eduksi**:
-sopimusehto, joka heikentää kuluttajan lakisääteisiä oikeuksia, on häntä
-kohtaan **mitätön**. Tämä on plugarin ydin. Kun laadit ehtoja tai vastausta
-elinkeinonharjoittajalle, et voi sopia kuluttajan lakisääteisiä oikeuksia pois;
-kun avustat kuluttajaa, hänen vähimmäisoikeutensa tulevat suoraan laista
-sopimuksesta riippumatta.
+The provisions of the Consumer Protection Act (kuluttajansuojalaki 38/1978) are
+**mandatory in favour of the consumer**: a contractual term that weakens the
+consumer's statutory rights is **void** against the consumer. This is the core of
+the domain. When drafting terms or a response for a trader, you cannot contract out
+of the consumer's statutory rights; when assisting a consumer, their minimum rights
+arise directly from the Act regardless of the contract.
 
-## Soveltuvuus: kuluttaja vai elinkeinonharjoittaja?
+## Scope: consumer or trader?
 
-KSL koskee elinkeinonharjoittajan ja **kuluttajan** (luonnollinen henkilö,
-joka hankkii pääasiassa muuhun kuin elinkeinotoimintaan) välisiä sopimuksia.
-Tarkista aina ensin, onko kyse kuluttajakaupasta:
+The Consumer Protection Act applies to contracts between a trader and a
+**consumer** (a natural person who acquires goods or services mainly for purposes
+other than business activity). Always check first whether the transaction is a
+consumer transaction:
 
-- **B2C** → kuluttajansuojalaki (tämä plugari).
-- **B2B / yksityishenkilöiden välinen kauppa** → yleinen sopimusoikeus ja
-  kauppalaki (355/1987) → `contracts`-plugari. Älä sovella KSL:ää näihin.
+- **B2C** → Consumer Protection Act (this domain).
+- **B2B / transactions between private individuals** → general contract law and
+  the Sale of Goods Act (kauppalaki 355/1987) → `contracts` domain. Do not apply
+  the Consumer Protection Act to these.
 
-## Laki muuttuu — EU-direktiivit uudistavat lukuja
+## The law changes — EU directives revise chapters
 
-KSL:ää on uudistettu paljon EU-direktiivien myötä (mm. tavarankaupan,
-digitaalisen sisällön ja palvelujen sekä omnibus-uudistukset). **Lukujen sisältö
-ja numerointi ovat muuttuneet** — älä luota muistinvaraiseen lukurakenteeseen,
-vaan tarkista voimassa oleva sisältö lähteestä.
+The Consumer Protection Act has been amended extensively following EU directives
+(including reforms concerning the sale of goods, digital content and services, and
+the Omnibus Directive). **The content and numbering of chapters have changed** —
+do not rely on the chapter structure from memory; check the current text at source.
 
-## Määräajat ja kulujen enimmäismäärät aina lähteestä
+## Always verify deadlines and cost caps at source
 
-**Älä esitä peruuttamisaikaa, reklamaatioaikaa, takuun kestoa tai perintäkulujen
-enimmäismäärää muistista.** Peruuttamisoikeuden pituus, virheilmoituksen
-kohtuullinen aika, ne kuukaudet/vuodet ja kuluttajasaatavan perintäkulujen
-laissa säädetyt enimmäismäärät tarkistetaan laista tai `[tarkista]`-merkinnällä;
-ne on osin sidottu lakiin pakottavina.
+**Do not state from memory any withdrawal period, complaint period, guarantee
+duration or maximum debt-collection charge.** Verify in the legislation the length
+of the withdrawal period, the reasonable period for notifying a defect, any relevant
+months or years, and statutory caps on the costs of collecting consumer debts, or
+mark them `[check]`; some are mandatory statutory rules.
 
-## Hyvä perintätapa
+## Good debt-collection practice
 
-Kuluttajasaatavan perinnässä (513/1999) on noudatettava **hyvää perintätapaa**:
-ei aiheettomia tai kohtuuttomia kuluja, ei painostusta, ei perintää
-riitautetusta tai vanhentuneesta saatavasta perusteettomasti. Perintäkulujen
-enimmäismäärät ja maksuvaatimuksen sisältövaatimukset ovat laissa. **Älä laadi
-aggressiivista tai harhaanjohtavaa perintää** — kieltäydy ja kerro hyvän
-perintätavan vaatimukset.
+Collection of consumer debts under the Act on the Collection of Debts (laki
+saatavien perinnästä 513/1999) must comply with **good debt-collection practice
+(hyvä perintätapa)**: no unfounded or unreasonable costs, no pressure, and no
+unjustified collection of a disputed or time-barred debt. The Act prescribes the
+maximum collection charges and the content requirements for a payment demand.
+**Do not draft aggressive or misleading collection communications** — refuse and
+explain the requirements of good debt-collection practice.
 
-## Lähteestä, ei muistista
+## Use sources, not memory
 
-Tarkista säännökset **`legal-core:legal-research`-skillillä** (oik.ai/Finlex),
-kuluttajariitalautakunnan ratkaisukäytäntö ja kuluttaja-asiamiehen linjaukset
-lähteestä. KKV:n ja kuluttaja-asiamiehen ohjeet ovat viranomaislähteitä
-(kkv.fi) — erottele laki ja viranomaiskäytäntö.
+Verify provisions with the **`legal-core:legal-research` skill** (oik.ai/Finlex).
+Check the Consumer Disputes Board's decisions and the Consumer Ombudsman's policies
+at source. KKV and Consumer Ombudsman guidance are authority sources (kkv.fi) —
+distinguish legislation from authority practice.
 
-## Jaetut standardit
+## Shared standards
 
-Säädös-, oikeuskäytäntö- ja esityöviittauksissa noudata markkinapaikan jaettua lähdestandardia [`references/citation-style.md`](../references/citation-style.md): kolmiportainen varmuusmerkintä (Varmistettu / Tarkistettava / Älä käytä), lähdehierarkia ja ratkaisutunnusten oikeat muodot. Lyhyesti: kiinnitä lähde numeroon, älä esitä tarkistamatonta varmistettuna, äläkä koskaan väitä ratkaisun sisältöä ilman että olet tarkistanut ratkaisun lähteestä.
+For references to legislation, case law and preparatory works, follow the
+marketplace's shared source standard in
+[`references/citation-style.md`](../references/citation-style.md): three-tier
+certainty marking (Verified / Needs checking / Do not use), the source hierarchy
+and correct decision-identifier formats. In short: attach the source to the number,
+do not present unverified material as verified, and never claim what a decision
+holds unless you have checked the decision at source.
 
-Vastuusta, ammattietiikasta (salassapito, esteellisyys, kuka saa edustaa) ja tietojenkäsittelystä (GDPR 28 art käsittelysopimus, anonymisointi ennen analyysiä): [`references/liability-and-security.md`](../references/liability-and-security.md). **Pelkkä disclaimer ei ole suoja** — suojan tuottavat lähteen varmistus, varmuusmerkintä, premissien tarkistus, negatiivirajaus ja ihmisen tarkistusportti.
+For liability, professional ethics (confidentiality, disqualification and who may
+represent a party) and data processing (GDPR Article 28 processing agreement and
+anonymisation before analysis), see
+[`references/liability-and-security.md`](../references/liability-and-security.md).
+**A disclaimer alone is not protection** — protection comes from source
+verification, certainty marking, checking premises, negative boundaries and the
+human-review gate.
 
-## Käytäntöprofiili (valinnainen)
+## Practice profile (optional)
 
-Organisaation vakioehdot, palautus- ja reklamaatiokäytännöt tai toimialakohtaiset
-linjaukset voi tallentaa tähän otsikon `## Käytäntöprofiili` alle. Talon linja ei
-voi heikentää kuluttajan pakottavia oikeuksia. Oletuksena tyhjä — älä keksi, vaan
-kysy käyttäjältä.
+The organisation's standard terms, return and complaint practices, or
+sector-specific policies may be recorded below under the heading
+`## Practice profile`. Internal policy cannot weaken the consumer's mandatory
+rights. Empty by default — do not invent content; ask the user.

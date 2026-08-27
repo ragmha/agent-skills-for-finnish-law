@@ -1,113 +1,115 @@
 ---
 name: distance-selling-and-withdrawal
 description: >
-  Etä- ja kotimyynnin tiedonantovelvollisuudet ja kuluttajan
-  peruuttamisoikeus (kuluttajansuojalaki 38/1978) sekä sopimaton ja
-  harhaanjohtava markkinointi. Käytä tätä skilliä, kun arvioidaan
-  verkkokaupan tai puhelinmyynnin ennakkotietoja, peruuttamisoikeutta ja
-  sen poikkeuksia, laaditaan peruuttamislomaketta tai -ohjetta,
-  arvioidaan markkinoinnin lainmukaisuutta tai laaditaan kuluttajalle
-  vastaus peruuttamistilanteessa. Triggeröi sanoista: etämyynti,
-  verkkokauppa, kotimyynti, peruuttamisoikeus, peruutusoikeus,
-  14 päivää, ennakkotiedot, tiedonantovelvollisuus, palautus,
-  markkinointi, sopimaton menettely, harhaanjohtava mainonta.
+  Information duties in distance and off-premises selling, the consumer's right
+  of withdrawal under the Consumer Protection Act (kuluttajansuojalaki 38/1978),
+  and unfair and misleading marketing. Use this skill when you assess pre-contract
+  information for online or telephone sales, the right of withdrawal and its
+  exceptions, draft a withdrawal form or instructions, assess whether marketing
+  is lawful, or draft a response to a consumer in a withdrawal situation.
+  Triggers include: distance selling, online shop, off-premises selling, right
+  of withdrawal, cancellation right, 14 days, pre-contract information,
+  information duty, return, marketing, unfair practice, misleading advertising.
 ---
 
-# Etämyynti ja peruuttaminen — ennakkotiedot, peruutus ja markkinointi
+# Distance selling and withdrawal — pre-contract information, withdrawal and marketing
 
-Tämä skill jäsentää etä- ja kotimyynnin pelisäännöt: ennen sopimusta
-annettavat tiedot, kuluttajan peruuttamisoikeus ja markkinoinnin
-lainmukaisuus. Kuluttajaoikeuden kartta:
+This skill structures the rules for distance and off-premises selling:
+pre-contract information, the consumer's right of withdrawal and lawful
+marketing. See the consumer-law map at
 `../consumer-sales-liability/references/consumer-law-fundamentals.md`.
 
-> **Vastuuvapaus:** luonnokset ovat tarkistettavia — ei oikeudellista
-> neuvontaa. Peruuttamisaika ja poikkeukset tarkistetaan lähteestä.
-> Katso `consumer-law/AGENTS.md`.
+> **Disclaimer:** drafts are for review — not legal advice. Verify the withdrawal
+> period and exceptions at source. See `consumer-law/AGENTS.md`.
 
 ## Output language
 
 Drafts are produced in **English by default**. If the user asks for Finnish, produce Finnish.
 
 Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+example `right of withdrawal (peruuttamisoikeus)`.
 
-## Tarkista laki lähteestä
+## Check the legislation at source
 
-Hae KSL:n etä- ja kotimyyntiä, peruuttamisoikeutta ja markkinointia
-koskevat luvut **`legal-core:legal-research`-skillillä** — lukurakenne on
-muuttunut EU-uudistuksissa. Peruuttamisajan pituus, poikkeukset ja
-tiedonantovelvollisuuden sisältö aina laista; KKV:n ohjeet kkv.fi:stä.
+Use the **`legal-core:legal-research` skill** to retrieve the chapters of the
+Consumer Protection Act governing distance and off-premises selling, the right
+of withdrawal and marketing — the chapter structure has changed following EU
+reforms. Always obtain from legislation the withdrawal period, exceptions and
+content of the information duty; obtain KKV guidance from kkv.fi.
 
-> **Pohja:** [`pohjat/withdrawal-notice.md`](../../templates/withdrawal-notice.md) — peruuttamisilmoituksen rakenteellinen luuranko.
+> **Template:** [`templates/withdrawal-notice.md`](../../templates/withdrawal-notice.md) — structural outline for a withdrawal notice.
 
-## Vaihe 1: Onko kyse etä- tai kotimyynnistä?
+## Step 1: Is this distance or off-premises selling?
 
-- **Etämyynti**: sopimus tehdään etäviestimellä ilman osapuolten
-  samanaikaista läsnäoloa (verkkokauppa, puhelin, posti).
-- **Kotimyynti**: sopimus tehdään muualla kuin elinkeinonharjoittajan
-  toimitiloissa (kotona, esittelytilaisuudessa).
-- Näihin liittyy korostettu tiedonantovelvollisuus ja peruuttamisoikeus.
-  Tavanomainen myymäläkauppa ei lähtökohtaisesti tuo peruuttamisoikeutta.
+- **Distance selling (etämyynti)**: the contract is concluded by means of
+  distance communication without the parties being simultaneously present
+  (online, telephone or post).
+- **Off-premises selling (kotimyynti)**: the contract is concluded somewhere
+  other than the trader's business premises (at home or at a demonstration).
+- These transactions involve enhanced information duties and a right of
+  withdrawal. An ordinary in-store purchase does not, as a rule, carry a right
+  of withdrawal.
 
-## Vaihe 2: Ennakkotiedot
+## Step 2: Pre-contract information
 
-Ennen sopimusta kuluttajalle on annettava määrämuotoiset tiedot, mm.:
+Before concluding the contract, the consumer must receive prescribed information,
+including:
 
-- tuotteen/palvelun pääominaisuudet, kokonaishinta kuluineen, toimitus;
-- elinkeinonharjoittajan tiedot;
-- **peruuttamisoikeus, sen määräaika ja käyttäminen** (tai tieto, ettei
-  oikeutta ole);
-- sopimuksen kesto ja päättäminen.
+- the main characteristics of the goods or service, total price including costs,
+  and delivery;
+- the trader's details;
+- the **right of withdrawal, its period and how to exercise it** (or notice that
+  no right exists);
+- the contract's duration and termination.
 
-Puutteelliset ennakkotiedot voivat **pidentää peruuttamisaikaa** ja
-siirtää tiettyjä kustannuksia elinkeinonharjoittajalle — `[tarkista
-seuraukset lähteestä]`.
+Incomplete pre-contract information may **extend the withdrawal period** and
+shift certain costs to the trader — `[check the consequences at source]`.
 
-## Vaihe 3: Peruuttamisoikeus
+## Step 3: Right of withdrawal
 
-1. **Määräaika**: kuluttaja saa peruuttaa etä- ja kotimyyntisopimuksen
-   määräajassa ilman syytä — `[tarkista pituus ja alkamishetki
-   lähteestä]` (alkaa yleensä tavaran vastaanotosta tai sopimuksen
-   teosta).
-2. **Peruuttamisen ilmoittaminen**: vapaamuotoisesti tai
-   peruuttamislomakkeella; laadi selkeä ohje ja lomake.
-3. **Palautus ja varojen palautus**: kuluttaja palauttaa tavaran,
-   elinkeinonharjoittaja palauttaa maksut; palautuskulujen ja
-   arvonalennuksen vastuunjako lähteestä.
-4. **Poikkeukset**: tietyt sopimukset jäävät peruuttamisoikeuden
-   ulkopuolelle (esim. mittatilaustuotteet, nopeasti pilaantuvat,
-   avattu sinetöity hygieniatuote, aloitettu digitaalinen sisältö
-   suostumuksin) — **tarkista poikkeuslista lähteestä**, älä oleta.
+1. **Period**: the consumer may withdraw from a distance or off-premises contract
+   within the applicable period without giving a reason — `[check the length and
+   commencement at source]` (it generally begins when goods are received or the
+   contract is concluded).
+2. **Giving notice of withdrawal**: in free form or using a withdrawal form;
+   draft clear instructions and a form.
+3. **Return and reimbursement**: the consumer returns the goods and the trader
+   reimburses payments; obtain from source the allocation of return costs and
+   liability for diminished value.
+4. **Exceptions**: certain contracts fall outside the right of withdrawal (for
+   example bespoke goods, perishable goods, opened sealed hygiene goods, and
+   digital content begun with consent) — **check the list of exceptions at
+   source**; do not assume.
 
-## Vaihe 4: Markkinointi
+## Step 4: Marketing
 
-- **Sopimaton menettely** (aggressiivinen tai harhaanjohtava) on
-  kielletty; olennaisten tietojen antamatta jättäminen voi olla
-  harhaanjohtavaa.
-- **Hintamerkinnät ja alennukset**: alennuksen vertailuhintaa koskevat
-  vaatimukset (omnibus) — tarkista lähteestä.
-- Kuluttaja-asiamies (KKV) valvoo ja voi puuttua menettelyyn.
+- **Unfair commercial practices** (aggressive or misleading) are prohibited;
+  omitting material information may be misleading.
+- **Price indications and reductions**: check at source the requirements for the
+  reference price used for a reduction under the Omnibus reform.
+- The Consumer Ombudsman at KKV supervises conduct and may intervene.
 
-## Vaihe 5: Erityistilanteet
+## Step 5: Special situations
 
-- **Puhelin- ja sähköpostimarkkinointi**, ei-toivottu suoramarkkinointi
-  ja suostumus — tietosuoja- ja sähköisen viestinnän sääntely limittyy
-  → `data-protection`.
-- **Tilausansat ja jatkuvat sopimukset**: selkeä irtisanominen ja
-  hinnankorotusten ehdot.
+- **Telephone and email marketing**, unsolicited direct marketing and consent —
+  data protection and electronic communications rules overlap →
+  `data-protection`.
+- **Subscription traps and continuing contracts**: clear termination with notice
+  and terms governing price increases.
 
-## Mitä tämä skill EI tee
+## What this skill does NOT do
 
-- **Ei vahvista peruuttamisaikaa, alkamishetkeä tai poikkeuksia
-  muistista** — laista tai `[tarkista]`.
-- **Ei oleta peruuttamisoikeutta myymäläkauppaan** ilman tarkistusta.
-- **Ei laadi harhaanjohtavaa markkinointia** eikä peruuttamisoikeutta
-  perusteetta rajoittavia ehtoja.
-- **Ei ratkaise riitaa** — ohjaa lautakuntaan tarvittaessa.
+- **It does not state the withdrawal period, its commencement or exceptions from
+  memory** — obtain them from legislation or use `[check]`.
+- **It does not assume a right of withdrawal for an in-store purchase** without
+  checking.
+- **It does not draft misleading marketing or terms that unjustifiably restrict
+  the right of withdrawal.**
+- **It does not resolve a dispute** — direct the matter to the Board where needed.
 
-## Jatka tästä
+## Continue from here
 
-- Tavaran tai palvelun virhe ja oikaisukeinot → /kuluttajaoikeus:kuluttajakaupan-virhevastuu
-- Riidan vieminen lautakuntaan ja perintä → /kuluttajaoikeus:kuluttajariita-ja-perinta
-- Suoramarkkinoinnin ja henkilötietojen sääntely → /tietosuoja:tietosuoja-arviointi
-- Säännöksen tai ohjeen tarkistus → /juristi:oikeustutkimus
+- Defects in goods or services and remedies → `consumer-sales-liability`
+- Taking a dispute to the Board and debt collection → `consumer-disputes-and-collection`
+- Direct marketing and personal-data rules → `data-protection:data-protection-assessment`
+- Verifying a provision or guidance → `legal-core:legal-research`

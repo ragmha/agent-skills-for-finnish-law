@@ -1,113 +1,120 @@
 ---
 name: consumer-disputes-and-collection
 description: >
-  Kuluttajariidan ratkaisukanavat ja kuluttajasaatavan hyvä perintätapa
-  (laki kuluttajariitalautakunnasta 8/2007, laki Kilpailu- ja
-  kuluttajavirastosta 661/2012 ja laki saatavien perinnästä 513/1999).
-  Käytä tätä skilliä, kun kuluttaja vie riidan kuluttajaneuvontaan tai
-  kuluttajariitalautakuntaan, valmistellaan valitusta tai vastausta
-  lautakuntaan, tai arvioidaan kuluttajasaatavan perinnän
-  lainmukaisuutta, perintäkuluja ja maksuvaatimuksen sisältöä.
-  Triggeröi sanoista: kuluttajariita, kuluttajariitalautakunta,
-  kuluttajaneuvonta, kuluttaja-asiamies, KKV, valitus, ratkaisusuositus,
-  perintä, perintäkulut, maksuvaatimus, hyvä perintätapa, viivästyskorko,
-  velkomus.
+  Routes for resolving consumer disputes and good practice in collecting consumer
+  debts under the Act on the Consumer Disputes Board (laki
+  kuluttajariitalautakunnasta 8/2007), the Act on the Finnish Competition and
+  Consumer Authority (laki Kilpailu- ja kuluttajavirastosta 661/2012), and the
+  Act on the Collection of Debts (laki saatavien perinnästä 513/1999). Use this
+  skill when a consumer takes a dispute to Consumer Advisory Services or the
+  Consumer Disputes Board, you prepare an application or response to the Board,
+  or you assess the lawfulness of collecting a consumer debt, collection charges
+  or the content of a payment demand. Triggers include: consumer dispute,
+  Consumer Disputes Board, Consumer Advisory Services, Consumer Ombudsman, KKV,
+  application, recommendation, debt collection, collection charges, payment
+  demand, good debt-collection practice, default interest, debt claim.
 ---
 
-# Kuluttajariita ja perintä — ratkaisukanavat ja hyvä perintätapa
+# Consumer disputes and debt collection — resolution routes and good practice
 
-Tämä skill jäsentää kuluttajariidan ratkaisukanavat ja kuluttajasaatavan
-perinnän pelisäännöt. Kuluttajaoikeuden kartta:
+This skill structures the routes for resolving consumer disputes and the rules
+for collecting consumer debts. See the consumer-law map at
 `../consumer-sales-liability/references/consumer-law-fundamentals.md`.
 
-> **Vastuuvapaus:** luonnokset ovat tarkistettavia — ei oikeudellista
-> neuvontaa. Perintäkulujen enimmäismäärät ja määräajat tarkistetaan
-> lähteestä. Katso `consumer-law/AGENTS.md`.
+> **Disclaimer:** drafts are for review — not legal advice. Verify maximum
+> collection charges and deadlines at source. See `consumer-law/AGENTS.md`.
 
-## Output language
+## Output language — filing requirement
 
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
+A draft may be produced in **English** for review, but the version actually
+**filed with the Consumer Disputes Board, a court or another Finnish authority
+must be in Finnish or Swedish** under the Language Act (kielilaki 423/2003; and
+the Code of Judicial Procedure (oikeudenkäymiskaari) for court documents). An
+English filing is not admissible.
+Always offer to produce the Finnish version and state plainly that the English
+text is a working translation only.
 
-Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+Keep the Finnish term alongside the English one for legally operative concepts
+on first use, for example `recommendation (ratkaisusuositus)`.
 
-## Tarkista laki ja käytäntö lähteestä
+## Check legislation and practice at source
 
-Hae lakien 8/2007 ja 513/1999 säännökset **`legal-core:legal-research`-skillillä**.
-Kuluttajariitalautakunnan ratkaisusuositukset vastaavista asioista ja
-perintäkulujen enimmäismäärät lähteestä. KKV:n ja kuluttaja-asiamiehen
-linjaukset kkv.fi:stä.
+Use the **`legal-core:legal-research` skill** to retrieve the provisions of
+8/2007 and 513/1999. Obtain comparable Consumer Disputes Board recommendations
+and maximum collection charges from source. Obtain KKV and Consumer Ombudsman
+policies from kkv.fi.
 
-## Osa A: Kuluttajariidan ratkaisukanavat
+## Part A: Routes for resolving consumer disputes
 
-### Vaihe 1: Suora yhteys ja neuvonta
+### Step 1: Direct contact and advice
 
-1. **Reklamaatio elinkeinonharjoittajalle ensin** — yksilöity vaatimus ja
-   vastausaika (→ `consumer-sales-liability`).
-2. **Kuluttajaneuvonta (KKV)** — maksuton sovitteluapu, jos vastaus ei
-   tyydytä.
+1. **First send a complaint notice to the trader** — a specific remedy sought
+   and a response period (→ `consumer-sales-liability`).
+2. **Consumer Advisory Services at KKV** — free conciliation assistance if the
+   response is unsatisfactory.
 
-### Vaihe 2: Kuluttajariitalautakunta
+### Step 2: Consumer Disputes Board
 
-- **Toimivalta ja edellytykset**: lautakunta antaa kirjallisia
-  **ratkaisusuosituksia** kuluttajan ja elinkeinonharjoittajan riitoihin;
-  käsittely on maksutonta. Eräät asiat ja arvorajat voivat rajata
-  toimivaltaa — `[tarkista lähteestä]`.
-- **Valituksen laadinta**: yksilöi osapuolet, hankinta, vaatimus
-  perusteineen, tapahtumat aikajärjestyksessä ja liitteet (sopimus,
-  reklamaatio, vastaus, kuitit).
-- **Vastauksen laadinta** elinkeinonharjoittajalle: vastaa vaatimuksiin
-  asiallisesti; muista, ettei pakottavia oikeuksia voi kiistää ehdolla.
-- **Suosituksen luonne**: ei täytäntöönpanokelpoinen kuten tuomio, mutta
-  noudatetaan laajalti; noudattamatta jättäminen voi johtaa julkisuuteen
-  tai oikeudenkäyntiin.
+- **Jurisdiction and conditions**: the Board issues written
+  **recommendations (ratkaisusuositukset)** in disputes between consumers and
+  traders; proceedings are free. Certain matters and value thresholds may limit
+  jurisdiction — `[check at source]`.
+- **Drafting the application**: identify the parties, purchase, remedy sought
+  and grounds; present the events chronologically; and list attachments
+  (contract, complaint notice, response and receipts).
+- **Drafting the trader's response**: respond to the claims properly; remember
+  that a term cannot exclude mandatory rights.
+- **Nature of a recommendation**: unlike a judgment, it is not enforceable, but
+  recommendations are widely followed; failure to comply may lead to publicity
+  or court proceedings.
 
-### Vaihe 3: Tuomioistuin
+### Step 3: Court
 
-- Sitova ratkaisu käräjäoikeudessa → `dispute-resolution:statement-of-claim`.
-  Huomioi oikeudenkäyntikuluriski ja mahdollinen ryhmäkanne/-valitus
-  erikseen. Lautakuntakäsittely ei estä tuomioistuinta.
+- The District Court issues a binding decision →
+  `dispute-resolution:statement-of-claim`. Consider separately the risk of legal
+  costs and any possible class action or appeal. Board proceedings do not
+  prevent court proceedings.
 
-## Osa B: Kuluttajasaatavan perintä
+## Part B: Collection of consumer debts
 
-### Vaihe 4: Hyvä perintätapa
+### Step 4: Good debt-collection practice
 
-Kun elinkeinonharjoittaja perii kuluttajalta (513/1999):
+When a trader collects a debt from a consumer under 513/1999:
 
-1. **Hyvä perintätapa** on pakottava: ei harhaanjohtavia tai
-   kohtuuttomia menettelyjä, ei painostusta, ei aiheettomia kuluja.
-2. **Riitautettua tai vanhentunutta saatavaa ei saa periä** kuin
-   asianmukaisesti; riitautus keskeyttää tavanomaisen perinnän
-   (asia ratkaistaan ensin).
-3. **Maksuvaatimuksen sisältö** ja **maksuajat** ovat laissa — tarkista
-   vaatimukset lähteestä.
-4. **Perintäkulujen enimmäismäärät** kuluttajasaatavassa ovat laissa ja
-   pakottavia — **älä esitä euromääriä muistista** `[tarkista]`.
-5. **Viivästyskorko** korkolain (633/1982) mukaan — korkokanta lähteestä.
+1. **Good debt-collection practice (hyvä perintätapa)** is mandatory: no
+   misleading or unreasonable practices, pressure or unfounded costs.
+2. **A disputed or time-barred debt must not be collected** except through the
+   appropriate procedure; disputing the debt suspends ordinary collection
+   (the matter must be resolved first).
+3. **The content of a payment demand** and **payment periods** are prescribed by
+   legislation — verify the requirements at source.
+4. **Maximum collection charges** for consumer debts are prescribed by
+   legislation and are mandatory — **do not state euro amounts from memory**
+   `[check]`.
+5. **Default interest** under the Interest Act (korkolaki 633/1982) — obtain the
+   rate from source.
 
-### Vaihe 5: Kuluttajan puolella
+### Step 5: Acting for the consumer
 
-- Tarkista saatavan peruste, vanhentuminen ja kulujen oikeellisuus;
-  laadi tarvittaessa riitautus ja yhteydenotto.
-- Liiallisista perintäkuluista tai hyvän perintätavan rikkomisesta voi
-  ilmoittaa valvojalle.
+- Check the basis of the debt, limitation and the accuracy of the charges; where
+  necessary, draft a notice disputing the debt and make contact.
+- Excessive collection charges or breaches of good debt-collection practice may
+  be reported to the supervisory authority.
 
-## Mitä tämä skill EI tee
+## What this skill does NOT do
 
-- **Ei esitä perintäkulujen enimmäismääriä, määräaikoja tai korkokantaa
-  muistista** — laista tai `[tarkista]`.
-- **Ei laadi hyvän perintätavan vastaista perintää** (painostus,
-  harhaanjohto, riitautetun saatavan perintä).
-- **Ei anna lautakunnan ratkaisua eikä tuomiota** — ne kuuluvat
-  lautakunnalle ja tuomioistuimelle.
+- **It does not state maximum collection charges, deadlines or the interest rate
+  from memory** — obtain them from legislation or use `[check]`.
+- **It does not draft collection communications contrary to good
+  debt-collection practice** (pressure, misleading statements or collection of
+  a disputed debt).
+- **It does not issue the Board's recommendation or a judgment** — those are for
+  the Board and the court.
 
-## Jatka tästä
+## Continue from here
 
-- Tavaran tai palvelun virhe ja reklamaatio → /kuluttajaoikeus:kuluttajakaupan-virhevastuu
-- Etämyynti ja peruuttamisoikeus → /kuluttajaoikeus:etamyynti-ja-peruuttaminen
-- Riidan vieminen käräjäoikeuteen → /riidanratkaisu:haastehakemus
-- Saatavan perintä, vanhentuminen ja ulosotto yleisesti → /insolvenssi:saatavien-perinta
-- Säännöksen tai ratkaisukäytännön tarkistus → /juristi:oikeustutkimus
+- Defects in goods or services and complaint notices → `consumer-sales-liability`
+- Distance selling and the right of withdrawal → `distance-selling-and-withdrawal`
+- Taking a dispute to the District Court → `dispute-resolution:statement-of-claim`
+- Debt collection, limitation and enforcement generally → `insolvency:debt-collection`
+- Verifying a provision or decisions → `legal-core:legal-research`

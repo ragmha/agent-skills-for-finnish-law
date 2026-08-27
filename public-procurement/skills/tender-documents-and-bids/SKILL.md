@@ -1,117 +1,126 @@
 ---
 name: tender-documents-and-bids
 description: >
-  Tarjouspyynnön laatiminen ja tarjouksen tekeminen julkisessa hankinnassa
-  (hankintalaki 1397/2016). Käytä tätä skilliä, kun hankintayksikkö laatii
-  tarjouspyyntöä, määrittelee soveltuvuusvaatimuksia tai vertailuperusteita
-  tai käsittelee ja vertailee saatuja tarjouksia – tai kun tarjoaja
-  analysoi tarjouspyyntöä, laatii tarjousta, kokoaa ryhmittymää, merkitsee
-  liikesalaisuuksia tai harkitsee kysymysten esittämistä. Triggeröi
-  sanoista: tarjouspyyntö, tarjous, vertailuperuste, soveltuvuusvaatimus,
-  kokonaistaloudellinen edullisuus, hinta-laatusuhde, ESPD,
-  tarjousvertailu, tarjouksen täsmentäminen, poikkeuksellisen alhainen
-  hinta, ryhmittymä, referenssivaatimus.
+  Drafting an invitation to tender and preparing a tender in public
+  procurement under the Act on Public Procurement and Concession Contracts
+  (hankintalaki 1397/2016). Use this skill when a contracting authority drafts
+  an invitation to tender, defines selection criteria or award criteria, or
+  handles and compares tenders received — or when a tenderer analyses an
+  invitation to tender, prepares a tender, forms a group of economic
+  operators, marks business secrets or considers submitting questions.
+  Triggers: invitation to tender, tender, award criterion, selection
+  criterion, most economically advantageous tender, price-quality ratio,
+  ESPD, tender comparison, clarification of a tender, abnormally low price,
+  group of economic operators, reference requirement.
 ---
 
-# Tarjouspyyntö ja tarjous — molemmat puolet pöytää
+# Invitation to tender and tender — both sides of the table
 
-Tämä skill palvelee sekä tarjouspyynnön laatijaa että tarjoajaa.
-**Selvitä ensin, kumpaa käyttäjä edustaa**, ja käytä vastaavaa osiota.
-Perusteet: `../procurement-planning/references/procurement-fundamentals.md`.
+This skill serves both the drafter of the invitation to tender
+(tarjouspyyntö) and the tenderer (tarjoaja). **First establish which party the
+user represents**, and use the corresponding section. Fundamentals:
+`../procurement-planning/references/procurement-fundamentals.md`.
 
-> **Vastuuvapaus:** luonnokset ovat tarkistettavia — ei oikeudellista
-> neuvontaa. Katso `public-procurement/AGENTS.md`. Määräajat ja
-> euromäärät lähteestä.
+> **Disclaimer:** drafts are for review — not legal advice. See
+> `public-procurement/AGENTS.md`. Retrieve deadlines and monetary amounts from
+> a source.
 
-## Output language
+## Output language — filing requirement
 
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
+A draft may be produced in **English** for review, but the version actually
+filed with the court or authority **must be in Finnish or Swedish** under the
+Language Act (kielilaki 423/2003) and, for Market Court (markkinaoikeus)
+filings, the applicable court rules. An English filing is not admissible.
+Always offer to produce the Finnish version and state plainly that the English
+text is a working translation only.
 
-Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+Keep the Finnish term alongside the English one for legally operative concepts
+on first use, for example `invitation to tender (tarjouspyyntö)`.
 
-## Hankintayksikölle: tarjouspyynnön laatiminen
+## For the contracting authority: drafting the invitation to tender
 
-### Rakenne
+### Structure
 
-1. **Hankinnan kohde** — tekninen eritelmä toiminnallisesti tai
-   standardein; ei merkkikohtaista vaatimusta ilman "tai vastaava"
-   -lisäystä; ympäristö- ja sosiaaliset näkökohdat sallittuja kohteen
-   kytkennällä.
-2. **Soveltuvuusvaatimukset** (tarjoajaa koskevat) — taloudellinen
-   tilanne, tekninen suorituskyky, referenssit; **suhteellisuus**:
-   vaatimus mitoitetaan hankinnan kokoon. EU-hankinnoissa ESPD-lomake.
-3. **Poissulkemisperusteet** — pakolliset ja harkinnanvaraiset
-   (lähteestä).
-4. **Vertailuperusteet** (tarjousta koskevat) — kokonaistaloudellinen
-   edullisuus: halvin hinta, kustannuksiltaan edullisin tai paras
-   hinta-laatusuhde. Painoarvot ja alakriteerit ilmoitetaan etukäteen;
-   vertailla saa **vain ilmoitetuilla perusteilla**.
-5. **Sopimusehdot** — luonnos mukaan tarjouspyyntöön
-   (→ `contracts:contract-drafting`); maksuehdot, sanktiot,
-   option käyttö.
-6. **Muotoseikat** — määräaika, toimitustapa, kysymykset ja vastaukset,
-   osatarjoukset ja vaihtoehtoiset tarjoukset (sallittu/kielletty).
+1. **Subject matter of the procurement (hankinnan kohde)** — define the
+   technical specification functionally or by standards; do not use a
+   brand-specific requirement without adding ‘or equivalent’; environmental
+   and social considerations are permitted where linked to the subject matter.
+2. **Selection criteria (soveltuvuusvaatimukset)** (concerning the tenderer) —
+   financial standing, technical capacity and references; **proportionality**:
+   calibrate the requirement to the size of the procurement. Use the ESPD form
+   for EU procurements.
+3. **Exclusion grounds (poissulkemisperusteet)** — mandatory and
+   discretionary (retrieve from a source).
+4. **Award criteria (vertailuperusteet)** (concerning the tender) — the most
+   economically advantageous tender: lowest price, lowest cost or best
+   price-quality ratio. State weightings and subcriteria in advance; compare
+   tenders **only on the announced criteria**.
+5. **Contract terms** — include a draft with the invitation to tender
+   (→ `contracts:contract-drafting`); payment terms, penalties and exercise of
+   options.
+6. **Formal matters** — deadline, method of submission, questions and answers,
+   lots and variant tenders (permitted/prohibited).
 
-**Kultainen sääntö:** soveltuvuusvaatimus karsii tarjoajan,
-vertailuperuste pisteyttää tarjouksen — **älä sekoita näitä**; sama
-seikka ei voi olla molempia samassa roolissa.
+**Golden rule:** a selection criterion eliminates a tenderer; an award
+criterion scores a tender — **do not confuse them**; the same factor cannot
+serve both roles.
 
-### Tarjousten käsittely
+### Handling tenders
 
-1. Saapuminen määräajassa; myöhästynyt hylätään.
-2. Soveltuvuus ja poissulkemisperusteet.
-3. **Tarjouspyynnönmukaisuus** — olennaisesti puutteellinen tarjous
-   hylätään; **täsmennyttäminen** on sallittua vain rajoitetusti
-   (epäolennaiset puutteet, tasapuolisesti — rajat lähteestä; tarjousta
-   ei saa parantaa).
-4. **Poikkeuksellisen alhainen hinta** — selvityspyyntö ennen hylkäämistä.
-5. **Vertailu** ilmoitetuilla perusteilla; pisteytys ja sanalliset
-   perustelut dokumentoidaan niin, että tarjoaja näkee sijoittumisensa
-   syyt (→ päätösperustelut, 123 §).
+1. Receipt by the deadline; reject a late tender.
+2. Selection criteria and exclusion grounds.
+3. **Compliance with the invitation to tender
+   (tarjouspyynnönmukaisuus)** — reject a materially deficient tender;
+   **clarification (täsmennyttäminen)** is permitted only to a limited extent
+   (immaterial deficiencies, equally — retrieve the limits from a source; a
+   tender must not be improved).
+4. **Abnormally low price (poikkeuksellisen alhainen hinta)** — request an
+   explanation before rejection.
+5. **Compare** on the announced criteria; document scoring and written reasons
+   so that a tenderer can see why it was ranked as it was (→ reasons for the
+   decision, 123 §).
 
-## Tarjoajalle: tarjouksen tekeminen
+## For the tenderer: preparing the tender
 
-1. **Analysoi tarjouspyyntö** heti: ehdottomat vaatimukset listaksi,
-   epäselvyydet kysymyksiksi (kysymysajan määräpäivä kalenteriin
-   `[mallin laskelma — tarkista]`). Tarjouspyynnön virheistä ei voi
-   valittaa enää tarjousajan jälkeen tehokkaasti — reagoi heti:
-   kysymys, oikaisuvaatimus tai valitus.
-2. **Tee tarjouspyynnönmukainen tarjous** — jokainen ehdoton vaatimus
-   täytetään ja se osoitetaan pyydetyllä tavalla; varauma tai oma
-   sopimusehto voi johtaa hylkäämiseen. Vastaa siihen mitä kysytään,
-   pyydetyssä muodossa.
-3. **Ryhmittymä ja alihankkijat** — yhteisen tarjouksen vastuut ja
-   resursseihin vetoaminen (sitoumukset mukaan); kilpailuoikeudellinen
-   raja: kilpailijoiden yhteistarjous vain, jos osallistuminen yksin ei
-   olisi mahdollista — epävarmassa tilanteessa kilpailuoikeudellinen
-   arvio `[varmista — juristin arvioitava]`.
-4. **Liikesalaisuudet** — merkitse perustellusti ja täsmällisesti;
-   kokonaishinta ei ole liikesalaisuus. Ylimitoitettu merkintä ei sido
-   hankintayksikköä.
-5. **Hinnoittelu** — poikkeuksellisen alhaiselta vaikuttavaan hintaan
-   varaudutaan selvityksellä; sisäinen hyväksyntä ja laskelmien
-   dokumentointi.
+1. **Analyse the invitation to tender** immediately: list mandatory
+   requirements and turn ambiguities into questions (enter the question
+   deadline in the calendar `[model calculation — check]`). Defects in the
+   invitation to tender cannot effectively be appealed after the tendering
+   period — respond immediately with a question, request for rectification
+   (oikaisuvaatimus) or appeal (valitus).
+2. **Prepare a compliant tender (tarjouspyynnönmukainen tarjous)** — satisfy
+   every mandatory requirement and demonstrate this in the requested manner;
+   a reservation or the tenderer's own contract term may lead to rejection.
+   Answer what is asked, in the requested format.
+3. **Group of economic operators and subcontractors (ryhmittymä ja
+   alihankkijat)** — address responsibility for the joint tender and reliance
+   on resources (include commitments); competition-law boundary: competitors
+   may submit a joint tender only if participation alone would not be possible
+   — in an uncertain case, obtain a competition-law assessment
+   `[confirm — requires a lawyer's assessment]`.
+4. **Business secrets (liikesalaisuudet)** — mark them precisely and with
+   reasons; the total price is not a business secret. Overbroad markings do
+   not bind the contracting authority.
+5. **Pricing** — prepare an explanation for a price that may appear abnormally
+   low; document internal approval and calculations.
 
-## Mitä tämä skill EI tee
+## What this skill does NOT do
 
-- **Ei laadi syrjivää tarjouspyyntöä** eikä räätälöi vaatimuksia
-  yhdelle toimittajalle — kieltäydy ja ehdota neutraali muotoilu.
-- **Ei avusta tarjoajien kielletyssä yhteistyössä** (kartellit,
-  hintatietojen vaihto) — kieltäydy ja kerro kilpailulain riski.
-- **Ei vahvista määräaikoja tai kynnysarvoja muistista** — lähteestä.
-- **Ei tee vertailupäätöstä** — se laatii vertailun luonnoksen ja
-  perustelut, päätöksen tekee toimivaltainen.
-- **Ei jätä tarjousta** — tarkistuslistat ja luonnokset menevät
-  ihmiselle ennen määräaikaa.
+- **It does not draft a discriminatory invitation to tender** or tailor
+  requirements to one supplier — refuse and propose neutral wording.
+- **It does not assist prohibited co-operation between tenderers** (cartels,
+  exchange of pricing information) — refuse and explain the risk under
+  competition law.
+- **It does not confirm deadlines or thresholds from memory** — use a source.
+- **It does not make the comparison decision** — it drafts the comparison and
+  reasons; the competent decision-maker makes the decision.
+- **It does not submit a tender** — checklists and drafts go to a human before
+  the deadline.
 
-## Jatka tästä
+## Continue from here
 
-- Päätöksen laatiminen, odotusaika ja muutoksenhaku → /julkiset-hankinnat:hankintapaatos-ja-muutoksenhaku
-- Menettelyn tai kynnysarvon tarkistus → /julkiset-hankinnat:hankinnan-suunnittelu
-- Sopimusluonnoksen lausekkeet → /sopimukset:sopimuksen-laatiminen
-- Liikesalaisuusmerkintöjen perusteet → /immateriaalioikeus:liikesalaisuudet
-- Tarjouspyynnön tai tarjouksen kieliasu → /juristi:asiakirjan-tarkistus
+- Draft the decision, apply the standstill period and seek remedies → /public-procurement:award-decision-and-remedies
+- Verify the procedure or threshold → /public-procurement:procurement-planning
+- Draft procurement-contract clauses → /contracts:contract-drafting
+- Grounds for business-secret markings → /intellectual-property:trade-secrets
+- Review the language of the invitation to tender or tender → /legal-core:document-review

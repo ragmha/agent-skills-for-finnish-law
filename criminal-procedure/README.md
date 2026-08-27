@@ -1,46 +1,48 @@
-# Rikosprosessi
+# Criminal procedure
 
-Suomen rikosprosessi oikeudellisen avustajan työhön: esitutkinta ja pakkokeinot,
-syyte ja puolustus sekä asianomistajan asema yksityisoikeudellisine vaatimuksineen.
+Finnish criminal procedure for the work of legal counsel: pre-trial investigation and coercive
+measures, prosecution and defence, and the position of the injured party, including civil claims.
 
-> **Tuotokset ovat avustajan työn tukea – ei oikeudellista neuvontaa eikä
-> puolustautumisohjeita ilman avustajaa.** Syyttömyysolettama ja
-> itsekriminointisuoja ohjaavat kaikkea; todisteiden hävittämistä tai todistajiin
-> vaikuttamista ei avusteta missään muodossa. Katso [`AGENTS.md`](AGENTS.md).
+> **Outputs support counsel's work – they are neither legal advice nor instructions for conducting
+> a defence without counsel.** The presumption of innocence and the privilege against
+> self-incrimination govern everything; no assistance is given with destroying evidence or
+> influencing witnesses in any form. See [`AGENTS.md`](AGENTS.md).
 
-## Skillit
+## Skills
 
-| Skill | Mitä tekee |
+| Skill | What it does |
 |---|---|
-| **esitutkinta-ja-pakkokeinot** | Esitutkinta (805/2011): epäillyn ja asianomistajan asema, kuulusteluvalmistautuminen, esitutkinnan rajoittaminen, loppulausunto. Pakkokeinot (806/2011): kiinniotto, pidätys ja vangitseminen, etsinnät ja takavarikko, salaiset pakkokeinot – edellytysten arviointi ja oikeusturvakeinot. Sisältää rikosprosessin perusteiden referenssin. |
-| **syyte-ja-vastaus** | Syyteharkinta ja haastehakemus (ROL 689/1997), vastaajan vastauksen ja puolustusstrategian jäsennys, todistelu (OK 17 luku), tuomioesitysmenettely (ROL 5 b luku), pääkäsittely ja muutoksenhaku. |
-| **asianomistajan-asema** | Asianomistajan oikeudet: yksityisoikeudelliset vaatimukset rikosprosessissa, vahingonkorvaus (412/1974) ja rikosvahinkolain korvaus (1204/2005), toissijainen syyteoikeus, avustaja ja tukihenkilö sekä lähestymiskielto (898/1998). |
+| **pre-trial-investigation-and-coercive-measures** | Pre-trial investigation under the Pre-trial Investigation Act (esitutkintalaki 805/2011): the position of the suspect and injured party, preparation for questioning, restriction of the pre-trial investigation and the final statement (loppulausunto). Coercive measures under the Coercive Measures Act (pakkokeinolaki 806/2011): apprehension, arrest and detention, searches and seizure, and covert coercive measures – assessment of the conditions and legal remedies. Includes the criminal procedure fundamentals reference. |
+| **charges-and-response** | Consideration of charges and the application for a summons under the Act on Criminal Procedure (laki oikeudenkäynnistä rikosasioissa 689/1997, "ROL"), structuring the defendant's response and defence strategy, evidence (OK Chapter 17), the proposed judgment procedure under Chapter 5b ROL, the main hearing and appeal. |
+| **injured-party-rights** | Rights of the injured party (asianomistaja): civil claims in criminal proceedings, damages under the Tort Liability Act (vahingonkorvauslaki 412/1974) and compensation under the Crime Damage Act (rikosvahinkolaki 1204/2005), the secondary right to prosecute, counsel and a support person, and a restraining order under the Act on Restraining Orders (laki lähestymiskiellosta 898/1998). |
 
-## Perustana varmistetut säädökset
+## Verified underlying statutes
 
-Lähteestä (Finlex) varmistettu: **laki oikeudenkäynnistä rikosasioissa
-(689/1997, "ROL")** ml. 5 b luvun tuomioesitysmenettely, **esitutkintalaki
-(805/2011)**, **pakkokeinolaki (806/2011)**, **rikoslaki (39/1889)**,
-**oikeusapulaki (257/2002)**, **vahingonkorvauslaki (412/1974)**,
-**rikosvahinkolaki (1204/2005)** ja **laki lähestymiskiellosta (898/1998)**.
-Tunnusmerkistöt, rangaistusasteikot, vanhentumisajat ja pakkokeinojen
-edellytykset tarkistetaan aina käytössä `legal-core:legal-research`-skillillä.
+Verified at source (Finlex): **Act on Criminal Procedure (laki oikeudenkäynnistä
+rikosasioissa 689/1997, "ROL")**, including the proposed judgment procedure in Chapter 5b;
+**Pre-trial Investigation Act (esitutkintalaki 805/2011)**; **Coercive Measures Act
+(pakkokeinolaki 806/2011)**; **Criminal Code (rikoslaki 39/1889)**; **Legal Aid Act
+(oikeusapulaki 257/2002)**; **Tort Liability Act (vahingonkorvauslaki 412/1974)**;
+**Crime Damage Act (rikosvahinkolaki 1204/2005)**; and **Act on Restraining Orders
+(laki lähestymiskiellosta 898/1998)**. Always use the `legal-core:legal-research` skill
+to verify the elements of an offence, sentencing ranges, limitation periods and the conditions
+for coercive measures at the time of use.
 
-## Liittyy
+## Related domains
 
-- **`legal-core`-plugari** – `legal-research` (KKO:n ennakkopäätökset),
-  `engagement-intake` (esteellisyys, määräaikaskannaus) ja `document-review`.
-- **`dispute-resolution`-plugari** – todistelun yleiset opit (OK 17 luku) ja
-  tuomion muutoksenhaun mekaniikka.
-- **`data-protection`-plugari** – rikostuomioihin ja rikkomuksiin liittyvien
-  henkilötietojen käsittely ja anonymisointi.
-- **`insolvency`-plugari** – velallisen rikokset talousrikosasioissa.
+- **`legal-core` domain** – `legal-research` (KKO precedents), `engagement-intake`
+  (disqualification and deadline scan) and `document-review`.
+- **`dispute-resolution` domain** – general principles of evidence under Chapter 17 OK and
+  the mechanics of appealing a judgment.
+- **`data-protection` domain** – processing and anonymising personal data relating to criminal
+  convictions and offences.
+- **`insolvency` domain** – debtor offences in financial-crime matters.
 
-## Asennus
+## Installation
 
 ```
 /plugin marketplace add ragmha/agent-skills-for-finnish-law
-/plugin install rikosprosessi@agent-skills-for-finnish-law
+/plugin install criminal-procedure@agent-skills-for-finnish-law
 ```
 
-oik.ai-konnektori: katso juuren [QUICKSTART.md](../QUICKSTART.md).
+For the oik.ai connector, see the root [QUICKSTART.md](../QUICKSTART.md).

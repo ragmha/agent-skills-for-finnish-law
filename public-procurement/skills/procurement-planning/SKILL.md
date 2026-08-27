@@ -1,123 +1,138 @@
 ---
 name: procurement-planning
 description: >
-  Julkisen hankinnan suunnittelu ja menettelyn valinta hankintalain
-  (1397/2016) mukaan. Käytä tätä skilliä, kun hankintayksikkö suunnittelee
-  kilpailutusta: soveltuuko hankintalaki, mikä on ennakoitu arvo ja
-  ylittyykö kansallinen tai EU-kynnysarvo, mikä menettely valitaan (avoin,
-  rajoitettu, neuvottelumenettely, puitejärjestely, dynaaminen järjestelmä),
-  onko suorahankinnalle perustetta, miten markkinakartoitus ja
-  hankintailmoitus Hilmassa tehdään. Käytä myös kun tarjoaja arvioi, onko
-  hankinta kilpailutettu oikein. Triggeröi sanoista: kilpailutus,
-  hankintalaki, kynnysarvo, ennakoitu arvo, hankintamenettely,
-  suorahankinta, puitejärjestely, markkinakartoitus, Hilma,
-  hankintailmoitus, pienhankinta, pilkkominen.
+  Planning a public procurement and selecting the procedure under the Act on
+  Public Procurement and Concession Contracts (hankintalaki 1397/2016). Use
+  this skill when a contracting authority plans a competitive tendering
+  exercise: whether the Act applies, the estimated value and whether a
+  national or EU threshold is exceeded, which procedure to select (open,
+  restricted, negotiated procedure, framework agreement, dynamic purchasing
+  system), whether grounds exist for a direct award, and how to conduct market
+  consultation and publish a contract notice in Hilma. Also use it when a
+  tenderer assesses whether the procurement was competed correctly. Triggers:
+  competitive tendering, procurement act, threshold, estimated value,
+  procurement procedure, direct award, framework agreement, market
+  consultation, Hilma, contract notice, low-value procurement, artificial
+  division.
 ---
 
-# Hankinnan suunnittelu — soveltamisala, arvo ja menettely
+# Procurement planning — scope, value and procedure
 
-Tämä skill jäsentää hankinnan suunnitteluvaiheen päätökset hankintalain
-(1397/2016) mukaan. Perusteet, menettelykartta ja periaatteet:
-`references/procurement-fundamentals.md` — lue se tehtävän alussa.
+This skill structures decisions at the procurement-planning stage under the
+Act on Public Procurement and Concession Contracts (hankintalaki 1397/2016).
+For the fundamentals, procedure map and principles, read
+`references/procurement-fundamentals.md` at the start of the task.
 
-> **Vastuuvapaus:** suunnitelmat ja luonnokset ovat tarkistettavia — ei
-> oikeudellista neuvontaa. Hankintapäätökset tekee toimivaltainen
-> viranomainen. Katso `public-procurement/AGENTS.md`.
+> **Disclaimer:** plans and drafts are for review — not legal advice. Award
+> decisions (hankintapäätökset) are made by the competent authority. See
+> `public-procurement/AGENTS.md`.
 
-## Output language
+## Output language — filing requirement
 
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
+A draft may be produced in **English** for review, but the version actually
+filed with the court or authority **must be in Finnish or Swedish** under the
+Language Act (kielilaki 423/2003) and, for Market Court (markkinaoikeus)
+filings, the applicable court rules. An English filing is not admissible.
+Always offer to produce the Finnish version and state plainly that the English
+text is a working translation only.
 
-Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+Keep the Finnish term alongside the English one for legally operative concepts
+on first use, for example `contract notice (hankintailmoitus)`.
 
-## Tarkista laki ja kynnysarvot lähteestä
+## Check the Act and thresholds against a source
 
-Hae hankintalain säännökset **`legal-core:legal-research`-skillillä** ja
-**voimassa olevat kynnysarvot lähteestä** (Finlex, Hilma, TEM) — EU-arvot
-tarkistetaan kahden vuoden välein. Erityisaloilla (vesi, energia,
-liikenne, posti) tarkista ensin, sovelletaanko erityisalojen
-hankintalakia (1398/2016).
+Retrieve the provisions of the Act on Public Procurement and Concession
+Contracts with the **`legal-core:legal-research` skill**, and retrieve the
+**current thresholds from a source** (Finlex, Hilma, Ministry of Economic
+Affairs and Employment) — EU values are revised every two years. In the
+special sectors (water, energy, transport and postal services), first check
+whether the Act on Procurement and Concession Contracts of Entities Operating
+in the Water, Energy, Transport and Postal Services Sectors (erityisalojen
+hankintalaki 1398/2016) applies.
 
-## Vaihe 1: Soveltuuko hankintalaki?
+## Stage 1: Does the Act apply?
 
-- **Onko hankkija hankintayksikkö?** Rajatapaukset (julkisoikeudellinen
-  laitos, tuettu hankinta, sidosyksikkö/in-house ja
-  horisontaaliyhteistyö) tarkistetaan lähteestä — sidosyksikköaseman
-  edellytykset ja ulosmyyntirajat ovat muuttuneet.
-- **Onko kyse hankintasopimuksesta?** Vastikkeellinen tavara-, palvelu-
-  tai rakennusurakkasopimus vs. avustus, vuokra tai oma tuotanto.
-- **Poikkeukset** soveltamisalasta (mm. tietyt palvelut) lähteestä.
+- **Is the purchaser a contracting authority (hankintayksikkö)?** Check
+  borderline cases (body governed by public law, subsidised contract, in-house
+  entity and horizontal co-operation) against a source — the requirements for
+  in-house status and limits on external sales have changed.
+- **Is this a public contract (hankintasopimus)?** A contract for pecuniary
+  interest concerning goods, services or works, as opposed to a grant, lease
+  or in-house provision.
+- Retrieve **exclusions** from scope (including certain services) from a
+  source.
 
-## Vaihe 2: Ennakoitu arvo ja kynnysarvot
+## Stage 2: Estimated value and thresholds
 
-1. Laske **ennakoitu arvo**: koko sopimuskausi optioineen ja
-   jatkomahdollisuuksineen, ilman arvonlisäveroa; puitejärjestelyssä
-   kaikkien suunniteltujen hankintojen arvo.
-2. Vertaa **kansalliseen ja EU-kynnysarvoon** `[tarkista voimassa olevat
-   arvot — Hilma/TEM]` — taso ratkaisee sovellettavat menettelysäännöt.
-3. **Pilkkomiskielto**: erien jakaminen tai laskentatavan valinta lain
-   välttämiseksi on kielletty. Erillisten hankintojen vs. yhden
-   kokonaisuuden rajanveto perustellaan ja dokumentoidaan.
-4. Kynnysarvon alittuessa kyse on **pienhankinnasta**: lain
-   menettelysäännöt eivät sovellu, mutta periaatteet ja organisaation
-   hankintaohje kyllä.
+1. Calculate the **estimated value (ennakoitu arvo)**: the entire contract
+   term, including options and extensions, excluding value added tax; for a
+   framework agreement, the value of all planned procurements.
+2. Compare it with the **national and EU thresholds** `[check current values —
+   Hilma/Ministry of Economic Affairs and Employment]` — the level determines
+   which procedural rules apply.
+3. **Prohibition on artificial division (pilkkomiskielto)**: dividing a
+   contract into lots or selecting a calculation method to avoid the law is
+   prohibited. Give reasons for and document the distinction between separate
+   procurements and a single whole.
+4. Below the threshold, it is a **low-value procurement (pienhankinta)**: the
+   Act's procedural rules do not apply, but the principles and the
+   organisation's procurement guidelines do.
 
-## Vaihe 3: Markkinakartoitus
+## Stage 3: Market consultation
 
-Ennen kilpailutusta saa — ja usein kannattaa — kartoittaa markkinaa ja
-käydä teknistä vuoropuhelua. Rajat: vuoropuheluun osallistuminen ei saa
-antaa toimittajalle etua kilpailutuksessa (tasapuolisuus), ja saadun
-tiedon käyttö dokumentoidaan. Tuota kartoitussuunnitelma: kysymykset,
-osallistujat, tietopyyntö (RFI) ja sen julkaisu Hilmassa.
+Before competitive tendering, the authority may — and often should — explore
+the market and conduct technical dialogue. Limits: participation in the
+dialogue must not give a supplier an advantage in the competitive tendering
+exercise (equal treatment), and the use of information obtained must be
+documented. Produce a market-consultation plan: questions, participants, a
+request for information (RFI) and its publication in Hilma.
 
-## Vaihe 4: Menettelyn valinta
+## Stage 4: Choice of procedure
 
-Käy menettelykartta (`references/procurement-fundamentals.md`) läpi hankinnan
-luonteen mukaan ja perustele valinta:
+Review the procedure map (`references/procurement-fundamentals.md`) according
+to the nature of the procurement and give reasons for the choice:
 
-- **Avoin tai rajoitettu** — selkeät, määriteltävissä olevat hankinnat.
-- **Neuvottelumenettelyt** — käyttöedellytykset (räätälöinti,
-  suunnittelu, aiempi tulokseton kilpailutus ym.) tarkistetaan
-  lähteestä ja dokumentoidaan.
-- **Puitejärjestely tai dynaaminen järjestelmä** — toistuvat hankinnat;
-  kesto- ja käyttörajat lähteestä.
-- **Suorahankinta** — perusteet ovat suppeita ja tyhjentäviä (mm. vain
-  yksi mahdollinen toimittaja, äärimmäinen kiire, jota hankintayksikkö
-  ei ole itse aiheuttanut). Käy peruste läpi lähteestä, dokumentoi se ja
-  kerro seuraamusriski; harkitse vapaaehtoista
-  suorahankintailmoitusta, joka käynnistää valitusajan.
+- **Open or restricted procedure (avoin tai rajoitettu menettely)** — clear,
+  definable procurements.
+- **Negotiated procedures (neuvottelumenettelyt)** — check the conditions for
+  use (customisation, design, a prior unsuccessful competition and so forth)
+  against a source and document them.
+- **Framework agreement or dynamic purchasing system (puitejärjestely tai
+  dynaaminen hankintajärjestelmä)** — recurring procurements; retrieve duration
+  and use limits from a source.
+- **Direct award (suorahankinta)** — the grounds are narrow and exhaustive
+  (including only one possible supplier, or extreme urgency not caused by the
+  contracting authority itself). Check the ground against a source, document
+  it and explain the risk of remedies; consider a voluntary direct-award
+  notice, which starts the appeal period.
 
-## Vaihe 5: Aikataulu ja ilmoittaminen
+## Stage 5: Timetable and publication
 
-- **Hankintailmoitus Hilmaan** (EU-hankinnoissa TED) — ilmoittamatta
-  jättäminen on vakavimpia hankintavirheitä.
-- Vähimmäismääräajat tarjouksille ja osallistumishakemuksille
-  menettelyittäin `[tarkista lähteestä]`; varaa todellinen aika
-  kysymyksille ja vastauksille.
-- Suunnittele koko polku taaksepäin sopimuksen tavoiteajankohdasta:
-  vertailu, päätös, odotusaika, mahdollinen muutoksenhaku.
+- **Contract notice in Hilma (hankintailmoitus)** (and TED for EU
+  procurements) — failure to publish a notice is one of the most serious
+  procurement errors.
+- Minimum time limits for tenders and requests to participate by procedure
+  `[check against a source]`; allow genuine time for questions and answers.
+- Plan the entire path backwards from the target date for the contract:
+  comparison, decision, standstill period and any appeal.
 
-## Mitä tämä skill EI tee
+## What this skill does NOT do
 
-- **Ei vahvista kynnysarvoja, määräaikoja tai prosentteja muistista** —
-  lähteestä tai `[tarkista]`.
-- **Ei tee hankintapäätöstä eikä julkaise ilmoituksia** — luonnokset
-  menevät toimivaltaiselle.
-- **Ei räätälöi hankintaa yhdelle toimittajalle** eikä auta
-  pilkkomaan hankintaa lain välttämiseksi — kieltäydy ja kerro riski.
-- **Ei arvioi tarjousten sisältöä** — se kuuluu vertailuvaiheeseen
-  (→ tarjouspyyntö-skill).
-- **Ei korvaa organisaation hankintaohjetta ja toimivaltasääntöjä** —
-  tarkista ne käytäntöprofiilista tai kysy.
+- **It does not confirm thresholds, deadlines or percentages from memory** —
+  use a source or `[check]`.
+- **It does not make an award decision or publish notices** — drafts go to the
+  competent decision-maker.
+- **It does not tailor a procurement to one supplier** or help divide a
+  procurement to avoid the law — refuse and explain the risk.
+- **It does not assess the content of tenders** — that belongs to the
+  comparison stage (→ tender-documents-and-bids skill).
+- **It does not replace the organisation's procurement guidelines and rules
+  on authority** — check them in the practice profile or ask.
 
-## Jatka tästä
+## Continue from here
 
-- Tarjouspyynnön laatiminen valitulle menettelylle → /julkiset-hankinnat:tarjouspyynto-ja-tarjous
-- Päätös, odotusaika ja muutoksenhakuriski → /julkiset-hankinnat:hankintapaatos-ja-muutoksenhaku
-- Säännöksen tai MAO-käytännön tarkistus → /juristi:oikeustutkimus
-- Hankintasopimuksen lausekkeet → /sopimukset:sopimuksen-laatiminen
-- Tekoälyjärjestelmän hankinnan erityisvaatimukset → /tekoalysaantely:tekoaly-velvoitteet
+- Draft an invitation to tender for the selected procedure → /public-procurement:tender-documents-and-bids
+- Decision, standstill period and appeal risk → /public-procurement:award-decision-and-remedies
+- Verify a provision or MAO case law → /legal-core:legal-research
+- Procurement-contract clauses → /contracts:contract-drafting
+- Special requirements for procuring an AI system → /ai-regulation:ai-obligations

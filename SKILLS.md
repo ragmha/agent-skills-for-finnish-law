@@ -174,9 +174,9 @@ Julkiset hankinnat hankintalain (1397/2016) mukaan sekä hankintayksikön että 
 
 | Skill | Kuvaus |
 |---|---|
-| [`award-decision-and-remedies`](public-procurement/skills/award-decision-and-remedies/SKILL.md) | Hankintapäätös, hankintaoikaisu ja muutoksenhaku markkinaoikeuteen julkisissa hankinnoissa (hankintalaki 1397/2016). Käytä tätä skilliä, kun hankintayksikkö laatii hankintapäätöstä perusteluineen, soveltaa odotusaikaa tai tekee hankintasop… |
-| [`procurement-planning`](public-procurement/skills/procurement-planning/SKILL.md) | Julkisen hankinnan suunnittelu ja menettelyn valinta hankintalain (1397/2016) mukaan. Käytä tätä skilliä, kun hankintayksikkö suunnittelee kilpailutusta: soveltuuko hankintalaki, mikä on ennakoitu arvo ja ylittyykö kansallinen tai EU-kynny… |
-| [`tender-documents-and-bids`](public-procurement/skills/tender-documents-and-bids/SKILL.md) | Tarjouspyynnön laatiminen ja tarjouksen tekeminen julkisessa hankinnassa (hankintalaki 1397/2016). Käytä tätä skilliä, kun hankintayksikkö laatii tarjouspyyntöä, määrittelee soveltuvuusvaatimuksia tai vertailuperusteita tai käsittelee ja v… |
+| [`award-decision-and-remedies`](public-procurement/skills/award-decision-and-remedies/SKILL.md) | Award decisions, procurement rectification and appeals to the Market Court in public procurement under the Act on Public Procurement and Concession Contracts (hankintalaki 1397/2016). Use this skill when a contracting authority drafts an a… |
+| [`procurement-planning`](public-procurement/skills/procurement-planning/SKILL.md) | Planning a public procurement and selecting the procedure under the Act on Public Procurement and Concession Contracts (hankintalaki 1397/2016). Use this skill when a contracting authority plans a competitive tendering exercise: whether th… |
+| [`tender-documents-and-bids`](public-procurement/skills/tender-documents-and-bids/SKILL.md) | Drafting an invitation to tender and preparing a tender in public procurement under the Act on Public Procurement and Concession Contracts (hankintalaki 1397/2016). Use this skill when a contracting authority drafts an invitation to tender… |
 
 ## Rikosprosessi
 
@@ -186,9 +186,9 @@ Suomen rikosprosessi avustajan työhön: esitutkinta ja pakkokeinot (805/2011 ja
 
 | Skill | Kuvaus |
 |---|---|
-| [`charges-and-response`](criminal-procedure/skills/charges-and-response/SKILL.md) | Rikosasian tuomioistuinvaihe Suomessa (laki oikeudenkäynnistä rikosasioissa 689/1997): syyteharkinta, haastehakemus, vastaajan vastaus ja puolustuksen jäsennys, todistelu, tuomioesitysmenettely ja pääkäsittely. Käytä tätä skilliä, kun syyt… |
-| [`injured-party-rights`](criminal-procedure/skills/injured-party-rights/SKILL.md) | Asianomistajan (rikoksen uhrin) asema ja oikeudet Suomen rikosprosessissa: yksityisoikeudelliset vaatimukset, vahingonkorvaus ja valtion korvaus, toissijainen syyteoikeus, avustaja ja tukihenkilö sekä lähestymiskielto. Käytä tätä skilliä,… |
-| [`pre-trial-investigation-and-coercive-measures`](criminal-procedure/skills/pre-trial-investigation-and-coercive-measures/SKILL.md) | Esitutkinta ja pakkokeinot Suomen rikosprosessissa (esitutkintalaki 805/2011, pakkokeinolaki 806/2011) avustajan näkökulmasta. Käytä tätä skilliä, kun päämies on saanut kutsun kuulusteluun tai tiedon rikosepäilystä, valmistaudutaan kuulust… |
+| [`charges-and-response`](criminal-procedure/skills/charges-and-response/SKILL.md) | The court stage of a criminal case in Finland under the Act on Criminal Procedure (laki oikeudenkäynnistä rikosasioissa 689/1997): consideration of charges, application for a summons, the defendant's response and structuring the defence, e… |
+| [`injured-party-rights`](criminal-procedure/skills/injured-party-rights/SKILL.md) | The position and rights of the injured party (asianomistaja) in Finnish criminal proceedings: civil claims, damages and state compensation, the secondary right to prosecute, counsel and a support person, and restraining orders. Use this sk… |
+| [`pre-trial-investigation-and-coercive-measures`](criminal-procedure/skills/pre-trial-investigation-and-coercive-measures/SKILL.md) | Pre-trial investigation and coercive measures in Finnish criminal procedure under the Pre-trial Investigation Act (esitutkintalaki 805/2011) and Coercive Measures Act (pakkokeinolaki 806/2011), from counsel's perspective. Use this skill wh… |
 
 ## Ympäristö ja kaavoitus
 
@@ -272,9 +272,9 @@ Suomen kuluttajaoikeus elinkeinonharjoittajan ja kuluttajan välisessä kaupassa
 
 | Skill | Kuvaus |
 |---|---|
-| [`consumer-disputes-and-collection`](consumer-law/skills/consumer-disputes-and-collection/SKILL.md) | Kuluttajariidan ratkaisukanavat ja kuluttajasaatavan hyvä perintätapa (laki kuluttajariitalautakunnasta 8/2007, laki Kilpailu- ja kuluttajavirastosta 661/2012 ja laki saatavien perinnästä 513/1999). Käytä tätä skilliä, kun kuluttaja vie ri… |
-| [`consumer-sales-liability`](consumer-law/skills/consumer-sales-liability/SKILL.md) | Kuluttajan oikeudet tavaran tai palvelun virhetilanteessa (kuluttajansuojalaki 38/1978). Käytä tätä skilliä, kun kuluttaja reklamoi viallisesta tuotteesta tai palvelusta, arvioidaan onko kyseessä virhe, valitaan oikaisukeino (korjaus, vaih… |
-| [`distance-selling-and-withdrawal`](consumer-law/skills/distance-selling-and-withdrawal/SKILL.md) | Etä- ja kotimyynnin tiedonantovelvollisuudet ja kuluttajan peruuttamisoikeus (kuluttajansuojalaki 38/1978) sekä sopimaton ja harhaanjohtava markkinointi. Käytä tätä skilliä, kun arvioidaan verkkokaupan tai puhelinmyynnin ennakkotietoja, pe… |
+| [`consumer-disputes-and-collection`](consumer-law/skills/consumer-disputes-and-collection/SKILL.md) | Routes for resolving consumer disputes and good practice in collecting consumer debts under the Act on the Consumer Disputes Board (laki kuluttajariitalautakunnasta 8/2007), the Act on the Finnish Competition and Consumer Authority (laki K… |
+| [`consumer-sales-liability`](consumer-law/skills/consumer-sales-liability/SKILL.md) | Consumer rights when goods or services are defective under the Consumer Protection Act (kuluttajansuojalaki 38/1978). Use this skill when a consumer complains about defective goods or services, you assess whether there is a defect, select… |
+| [`distance-selling-and-withdrawal`](consumer-law/skills/distance-selling-and-withdrawal/SKILL.md) | Information duties in distance and off-premises selling, the consumer's right of withdrawal under the Consumer Protection Act (kuluttajansuojalaki 38/1978), and unfair and misleading marketing. Use this skill when you assess pre-contract i… |
 
 ## Rikosoikeus (aineellinen)
 

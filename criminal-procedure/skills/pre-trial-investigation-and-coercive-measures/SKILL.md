@@ -1,130 +1,127 @@
 ---
 name: pre-trial-investigation-and-coercive-measures
 description: >
-  Esitutkinta ja pakkokeinot Suomen rikosprosessissa (esitutkintalaki
-  805/2011, pakkokeinolaki 806/2011) avustajan näkökulmasta. Käytä tätä
-  skilliä, kun päämies on saanut kutsun kuulusteluun tai tiedon
-  rikosepäilystä, valmistaudutaan kuulusteluun, arvioidaan pidätyksen tai
-  vangitsemisvaatimuksen edellytyksiä, kotietsinnän tai takavarikon
-  laillisuutta, laaditaan loppulausuntoa tai pyydetään tutkintatoimia tai
-  esitutkinnan rajoittamista. Käytä myös asianomistajan avustamiseen
-  esitutkinnassa. Triggeröi sanoista: esitutkinta, kuulustelu, rikosepäily,
-  epäilty, kiinniotto, pidätys, vangitseminen, kotietsintä, takavarikko,
-  matkustuskielto, salainen pakkokeino, loppulausunto, tutkinnanjohtaja.
+  Pre-trial investigation and coercive measures in Finnish criminal
+  procedure under the Pre-trial Investigation Act (esitutkintalaki
+  805/2011) and Coercive Measures Act (pakkokeinolaki 806/2011), from
+  counsel's perspective. Use this skill when the client has received a
+  summons for questioning or notice of a criminal suspicion; when preparing
+  for questioning; when assessing the conditions for arrest or a detention
+  request, or the lawfulness of a search or seizure; when drafting a final
+  statement; or when requesting investigative measures or restriction of
+  the investigation. Also use it to assist the injured party during the
+  pre-trial investigation. Triggers: pre-trial investigation, questioning,
+  criminal suspicion, suspect, apprehension, arrest, detention, search,
+  seizure, travel ban, covert coercive measure, final statement, lead
+  investigator.
 ---
 
-# Esitutkinta ja pakkokeinot — avustajan työkalu
+# Pre-trial investigation and coercive measures — counsel's tool
 
-Tämä skill jäsentää esitutkintavaiheen ja pakkokeinotilanteet avustajan
-näkökulmasta. Perusteet, prosessikaari ja pakkokeinokartta:
-`references/criminal-procedure-fundamentals.md` — lue se tehtävän alussa.
+This skill structures the pre-trial investigation stage and situations involving coercive
+measures from counsel's perspective. Read the fundamentals, procedural path and map of coercive
+measures at the start of the task:
+`references/criminal-procedure-fundamentals.md`.
 
-> **Vastuuvapaus:** tuotokset ovat avustajan työn tukea — ei
-> puolustautumisohjeita ilman avustajaa. Jos käyttäjä on itse epäiltynä
-> ilman avustajaa: **ensimmäinen neuvo on hankkia avustaja ennen
-> kuulustelua** (oikeusapu 257/2002; puolustajan määrääminen ROL:n
-> mukaan). Katso `criminal-procedure/AGENTS.md` — erityisesti negatiivirajaus
-> ja itsekriminointisuoja.
+> **Disclaimer:** outputs support counsel's work — they are not instructions for conducting a
+> defence without counsel. If the user is personally a suspect without counsel, **the first advice
+> is to obtain counsel before questioning** (legal aid under the Legal Aid Act (oikeusapulaki
+> 257/2002); appointment of defence counsel under ROL). See `criminal-procedure/AGENTS.md`,
+> especially the negative boundary and privilege against self-incrimination.
 
-## Output language
+## Output language — filing requirement
 
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
+Drafts may be produced in **English for review**, but the version actually filed with the court or
+authority **must be in Finnish or Swedish** under the Language Act (kielilaki 423/2003) and the Code
+of Judicial Procedure (oikeudenkäymiskaari), as applicable. An English filing is not admissible.
+Always offer to produce the Finnish version and state plainly that the English text is a working
+translation only.
 
 Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+example `final statement (loppulausunto)`.
 
-## Tarkista laki lähteestä
+## Check the law at source
 
-Hae ETL:n ja PKL:n säännökset (kuulustelun menettely, pakkokeinojen
-edellytykset, määräajat) **`legal-core:legal-research`-skillillä**. Epäillyn
-rikoksen tunnusmerkistö ja asteikko haetaan rikoslaista (39/1889)
-lähteestä — asteikko vaikuttaa pakkokeinojen käytettävyyteen.
+Retrieve the ETL and PKL provisions on questioning procedure, conditions for coercive measures and
+deadlines with the **`legal-core:legal-research` skill**. Retrieve the elements and sentencing
+range of the suspected offence from the Criminal Code (rikoslaki 39/1889) at source — the range
+affects whether coercive measures are available.
 
-## Vaihe 1: Tilannekuva heti
+## Stage 1: Establish the situation immediately
 
-- **Mikä epäily?** Rikosnimike, tekoaika ja -kuvaus; epäillyn asema
-  (epäilty / todistaja / asianomistaja — asema voi muuttua, ja
-  todistajana kuultavalla ei ole samoja oikeuksia).
-- **Missä vaiheessa tutkinta on?** Vapaudenmenetys käynnissä?
-  Vangitsemiskäsittely tulossa `[ajat — tarkista lähteestä]`?
-- **Määräajat ja kiireellisyys** → `legal-core:engagement-intake`
-  (määräaikaskannaus, esteellisyysmuistilista — useamman epäillyn
-  edustaminen vaatii eturistiriita-arvion).
+- **What is suspected?** The offence, time and description of the act; the person's status
+  (suspect / witness / injured party — status may change, and a person heard as a witness does not
+  have the same rights).
+- **What stage has the investigation reached?** Is deprivation of liberty ongoing? Is a detention
+  hearing (vangitsemiskäsittely) imminent `[times — check at source]`?
+- **Deadlines and urgency** → `legal-core:engagement-intake` (deadline scan and disqualification
+  checklist — representing several suspects requires a conflict-of-interest assessment).
 
-## Vaihe 2: Kuulusteluvalmistautuminen
+## Stage 2: Preparation for questioning
 
-Jäsennä avustajalle (älä rakenna kertomusta päämiehen puolesta):
+Structure the following for counsel; do not construct an account on the client's behalf:
 
-- **Oikeudet kirkkaiksi**: avustaja kuulustelussa, itsekriminointisuoja
-  ja vaikenemisoikeus, oikeus saada tieto epäilyn sisällöstä, tulkkaus.
-- **Linjavalinta on päämiehen ja avustajan** — kertomus, vaikeneminen
-  tai osittainen lausuma; skill listaa kunkin oikeudelliset seuraukset
-  (mm. tunnustuksen vaikutus, ks. tuomioesitys →
+- **Make the rights clear:** counsel during questioning, privilege against self-incrimination
+  (itsekriminointisuoja) and the right to remain silent, the right to be informed of the substance
+  of the suspicion, and interpretation.
+- **The client and counsel choose the position** — an account, silence or a partial statement. List
+  the legal consequences of each, including the effect of a confession; see proposed judgment
+  (tuomioesitys) →
   `charges-and-response`).
-- **Mitä EI tehdä**: kertomusten sovittaminen muiden kanssa, todisteisiin
-  koskeminen, yhteydenotot todistajiin — kieltäydy avustamasta näissä ja
-  kerro rikosoikeudellinen riski.
-- Kuulustelupöytäkirjan tarkastaminen ja korjaukset ennen
-  allekirjoitusta.
+- **What NOT to do:** align accounts with others, interfere with evidence or contact witnesses —
+  refuse to assist and explain the criminal-law risk.
+- Review and correct the record of questioning (kuulustelupöytäkirja) before signature.
 
-## Vaihe 3: Pakkokeinotilanteet
+## Stage 3: Situations involving coercive measures
 
-Kun pakkokeino on käytetty tai uhkaa:
+When a coercive measure has been used or is threatened:
 
-1. **Tunnista keino ja päättäjä** (pakkokeinokartta referenssissä).
-2. **Edellytysten arviointi**: rikosepäilyn vahvuus, asteikkokynnys
-   `[tarkista lähteestä]`, erityiset edellytykset (sotkemis-, pako-,
-   jatkamisvaara), **suhteellisuus ja vähimmän haitan periaate**.
-3. **Oikeusturvakeinot**: vangitsemisasian käsittely ja
-   uudelleenkäsittely, kantelu, etsinnän saattaminen tuomioistuimen
-   tutkittavaksi, takavarikon kumoamisvaatimus — keinot ja määräajat
-   lähteestä.
-4. **Vangitsemiskäsittelyyn valmistautuminen**: vaihtoehtojen
-   esittäminen (matkustuskielto), epäilyn ja erityisten edellytysten
-   riitauttaminen, kohtuullisuus.
+1. **Identify the measure and decision-maker** (see the map of coercive measures in the reference).
+2. **Assess the conditions:** strength of the criminal suspicion, sentencing-range threshold
+   `[check at source]`, specific conditions (risk of interference, absconding or continued
+   offending), **proportionality and the principle of least harm**.
+3. **Legal remedies:** hearing and rehearing of detention, complaint, referral of a search for
+   court review, and request to revoke a seizure — retrieve the remedies and deadlines at source.
+4. **Prepare for the detention hearing:** present alternatives such as a travel ban
+   (matkustuskielto), challenge the suspicion and specific conditions, and address reasonableness.
 
-## Vaihe 4: Aktiivinen puolustus esitutkinnassa
+## Stage 4: Active defence during the pre-trial investigation
 
-- **Tutkintapyynnöt**: epäillyllä on oikeus pyytää tutkintatoimia, jotka
-  voivat puhua hänen puolestaan (ETL:n tasapuolisuusperiaate) — laadi
-  yksilöity pyyntö.
-- **Esitutkinnan rajoittaminen tai päättäminen**: jäsennä perusteet
-  (ei rikosta, ei näyttöä, kustannusperuste — edellytykset lähteestä)
-  esitykseksi tutkinnanjohtajalle/syyttäjälle.
-- **Loppulausunto**: tehokkain kirjallinen vaikutuspaikka ennen
-  syyteharkintaa — jäsennä: näytön aukot, vaihtoehtoiset
-  tapahtumainkulut, tunnusmerkistön täyttymättömyys, menettelyvirheet
-  ja niiden vaikutus hyödynnettävyyteen, syyteharkintaan vaikuttavat
-  seikat. Sido jokainen väite esitutkinta-aineiston kohtaan.
+- **Requests for investigative measures (tutkintapyynnöt):** the suspect may request measures that
+  could support their position under ETL's principle of impartiality — draft a specific request.
+- **Restriction or termination of the pre-trial investigation:** structure the grounds (no
+  offence, no evidence or costs — retrieve the conditions at source) as a submission to the lead
+  investigator or prosecutor.
+- **Final statement (loppulausunto):** the most effective opportunity for written influence before
+  consideration of charges — structure gaps in the evidence, alternative sequences of events,
+  failure to satisfy the elements, procedural errors and their effect on admissibility, and matters
+  affecting consideration of charges. Tie every assertion to a passage in the pre-trial material.
 
-## Asianomistajan avustaminen esitutkinnassa
+## Assisting the injured party during the pre-trial investigation
 
-- Rikosilmoituksen täydentäminen ja yksilöinti; asianomistajan
-  kuulusteluun valmistautuminen.
-- **Vaatimusten varhainen kirjaaminen**: korvausvaatimusten perusteet ja
-  pyyntö syyttäjälle vaatimuksen ajamisesta → `injured-party-rights`.
-- Avustajan ja tukihenkilön määräämisen edellytykset lähteestä.
+- Supplement and specify the criminal complaint (rikosilmoitus); prepare the injured party for
+  questioning.
+- **Record claims early:** grounds for compensation claims and a request that the prosecutor pursue
+  the claim → `injured-party-rights`.
+- Retrieve at source the conditions for appointing counsel and a support person.
 
-## Mitä tämä skill EI tee
+## What this skill does NOT do
 
-- **Ei korvaa puolustajaa eikä anna puolustautumisohjeita ilman
-  avustajaa** — se tukee avustajan työtä.
-- **Ei rakenna kertomuksia, selityksiä tai alibeja** — se jäsentää
-  oikeudet, menettelyn ja aineiston.
-- **Ei avusta todisteiden hävittämisessä, todistajiin vaikuttamisessa
-  tai pakoilussa** — ehdoton kieltäytyminen (CLAUDE.md).
-- **Ei vahvista asteikkoja, kynnyksiä tai määräaikoja muistista** —
-  lähteestä tai `[tarkista]`.
-- **Ei arvioi syyllisyyttä** — se arvioi näyttöä, menettelyä ja
-  edellytyksiä syyttömyysolettaman pohjalta.
+- **It does not replace defence counsel or give instructions for conducting a defence without
+  counsel** — it supports counsel's work.
+- **It does not construct accounts, explanations or alibis** — it structures rights, procedure and
+  material.
+- **It does not assist with destroying evidence, influencing witnesses or evading the
+  authorities** — refuse absolutely (CLAUDE.md).
+- **It does not confirm sentencing ranges, thresholds or deadlines from memory** — use a source or
+  mark them `[check]`.
+- **It does not assess guilt** — it assesses evidence, procedure and conditions on the basis of the
+  presumption of innocence.
 
-## Jatka tästä
+## Continue from here
 
-- Syyteharkinnan jälkeen: vastaus ja pääkäsittely → /rikosprosessi:syyte-ja-vastaus
-- Asianomistajan vaatimukset → /rikosprosessi:asianomistajan-asema
-- Tunnusmerkistön tai pakkokeinosäännöksen tarkistus → /juristi:oikeustutkimus
-- Toimeksiannon aloitus ja esteellisyys → /juristi:toimeksianto
-- Loppulausunnon kieliasu ja rakenne → /juristi:asiakirjan-tarkistus
+- After consideration of charges: response and main hearing → `charges-and-response`
+- Injured party's claims → `injured-party-rights`
+- Verifying offence elements or a coercive-measures provision → `legal-core:legal-research`
+- Starting the engagement and disqualification → `legal-core:engagement-intake`
+- Language and structure of the final statement → `legal-core:document-review`

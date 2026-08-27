@@ -1,124 +1,141 @@
 ---
 name: award-decision-and-remedies
 description: >
-  Hankintapäätös, hankintaoikaisu ja muutoksenhaku markkinaoikeuteen
-  julkisissa hankinnoissa (hankintalaki 1397/2016). Käytä tätä skilliä,
-  kun hankintayksikkö laatii hankintapäätöstä perusteluineen, soveltaa
-  odotusaikaa tai tekee hankintasopimusta – tai kun tarjoaja on hävinnyt
-  kilpailutuksen ja arvioi hankintaoikaisun tai markkinaoikeusvalituksen
-  edellytyksiä, tai kun arvioidaan sopimusmuutoksen sallittavuutta
-  sopimuskaudella. Triggeröi sanoista: hankintapäätös, perustelut,
-  odotusaika, hankintaoikaisu, markkinaoikeusvalitus, hävitty kilpailutus,
-  hyvitysmaksu, tehottomuusseuraamus, suorahankinnasta valittaminen,
-  sopimusmuutos, olennainen muutos.
+  Award decisions, procurement rectification and appeals to the Market Court
+  in public procurement under the Act on Public Procurement and Concession
+  Contracts (hankintalaki 1397/2016). Use this skill when a contracting
+  authority drafts an award decision and reasons, applies the standstill
+  period or concludes a procurement contract — or when an unsuccessful
+  tenderer assesses the conditions for procurement rectification or a Market
+  Court appeal, or when the permissibility of a contract modification during
+  the contract term is assessed. Triggers: award decision, reasons, standstill
+  period, procurement rectification, Market Court appeal, unsuccessful
+  tender, compensation payment, ineffectiveness remedy, appeal against a
+  direct award, contract modification, material modification.
 ---
 
-# Hankintapäätös ja muutoksenhaku
+# Award decision and remedies
 
-Tämä skill kattaa hankinnan loppuvaiheen: päätöksen, odotusajan,
-sopimuksen tekemisen, hankintaoikaisun ja markkinaoikeusprosessin —
-molemmista näkökulmista. Pykäläotsikot 123 §, 128–129 §, 132–133 § ja
-146 § on vahvistettu lähteestä. Perusteet:
+This skill covers the final stage of procurement: the decision, standstill
+period, conclusion of the contract, procurement rectification
+(hankintaoikaisu) and Market Court proceedings (markkinaoikeusprosessi) — from
+both perspectives. The headings of 123 §, 128–129 §, 132–133 § and 146 § have
+been verified against the source. Fundamentals:
 `../procurement-planning/references/procurement-fundamentals.md`.
 
-> **Vastuuvapaus:** luonnokset ovat tarkistettavia — ei oikeudellista
-> neuvontaa. **Valitusajat ja odotusaika ovat prekluusiivisia** —
-> jokainen päivämäärä `[mallin laskelma — tarkista]` ja kalenterivastuu
-> ihmisellä. Katso `public-procurement/AGENTS.md`.
+> **Disclaimer:** drafts are for review — not legal advice. **Appeal periods
+> and the standstill period are preclusive** — mark every date
+> `[model calculation — check]`; a human is responsible for the calendar. See
+> `public-procurement/AGENTS.md`.
 
-## Output language
+## Output language — filing requirement
 
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
+A draft may be produced in **English** for review, but the version actually
+filed with the court or authority **must be in Finnish or Swedish** under the
+Language Act (kielilaki 423/2003) and, for Market Court (markkinaoikeus)
+filings, the applicable court rules. An English filing is not admissible.
+Always offer to produce the Finnish version and state plainly that the English
+text is a working translation only.
 
-Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+Keep the Finnish term alongside the English one for legally operative concepts
+on first use, for example `procurement rectification (hankintaoikaisu)`.
 
-## Tarkista määräajat lähteestä
+## Check deadlines against a source
 
-Hae valitusajat, odotusajan pituus ja hankintaoikaisun määräajat
-**`legal-core:legal-research`-skillillä** — älä muistista. MAO:n
-ratkaisukäytäntö haetaan lähteestä tunnuksineen.
+Retrieve the appeal periods, length of the standstill period and deadlines for
+procurement rectification with the **`legal-core:legal-research` skill** — do
+not rely on memory. Retrieve MAO case law from a source, including the case
+identifiers.
 
-## Hankintayksikölle: päätös ja sopimus
+## For the contracting authority: decision and contract
 
-1. **Hankintapäätös (123 §)** — kirjallinen, perusteltu päätös kaikista
-   tarjoajien asemaan vaikuttavista ratkaisuista. Perusteluista on
-   käytävä ilmi vertailun tulos ja syyt: pisteet, sanalliset perustelut
-   vertailuperusteittain, voittajan edut suhteessa muihin. Heikot
-   perustelut ovat yleinen kumoamisperuste — kirjoita niin, että
-   hävinnyt ymmärtää sijoituksensa syyt.
-2. **Tiedoksianto** valitusosoituksineen (sähköinen tiedoksianto;
-   muutoksenhakuohjeet markkinaoikeuteen ja hankintaoikaisuun).
-3. **Odotusaika (129 §)** — EU-kynnysarvon ylittävissä hankinnoissa
-   sopimusta ei saa tehdä ennen odotusajan päättymistä `[pituus —
-   tarkista lähteestä]`; valitus markkinaoikeuteen estää sopimuksen
-   tekemisen automaattisesti (automaattinen suspensio — poikkeukset
-   lähteestä).
-4. **Hankintasopimus (128 §)** — syntyy vasta kirjallisella
-   sopimuksella, ei päätöksen tiedoksiannolla. Sisältö = kilpailutettu
-   sisältö.
+1. **Award decision (hankintapäätös) (123 §)** — a written, reasoned decision
+   on all solutions affecting the position of tenderers. The reasons must show
+   the result of the comparison and why: scores, written reasons by award
+   criterion and the successful tenderer's advantages relative to the others.
+   Inadequate reasons are a common ground for annulment — write them so that
+   an unsuccessful tenderer understands why it was ranked as it was.
+2. **Notification (tiedoksianto)** with instructions for appeal (electronic
+   notification; instructions on appeal to the Market Court and procurement
+   rectification).
+3. **Standstill period (odotusaika) (129 §)** — for procurements exceeding the
+   EU threshold, the contract must not be concluded before the standstill
+   period expires `[length — check against a source]`; an appeal to the Market
+   Court automatically prevents conclusion of the contract (automatic
+   suspension — retrieve exceptions from a source).
+4. **Procurement contract (hankintasopimus) (128 §)** — it is formed only by a
+   written contract, not by notification of the decision. Its content must
+   equal the content put out to competition.
 
-## Hankintaoikaisu (132–133 §)
+## Procurement rectification (132–133 §)
 
-- Hankintayksikkö voi **itse korjata virheellisen päätöksensä** — omasta
-  aloitteesta tai asianosaisen vaatimuksesta; määräajat lähteestä.
-- Tarjoajalle: hankintaoikaisuvaatimus on nopea ja halpa, mutta **ei
-  jatka markkinaoikeuden valitusaikaa** — tee molemmat rinnakkain, jos
-  intressi on suuri.
-- Hankintaoikaisu ei edellytä asianosaisen suostumusta, mutta sopimuksen
-  tekeminen rajoittaa käyttöä — tarkista rajat lähteestä.
+- The contracting authority may **correct its own erroneous decision** — on
+  its own initiative or at a party's request; retrieve deadlines from a
+  source.
+- For the tenderer: a request for procurement rectification
+  (hankintaoikaisuvaatimus) is quick and inexpensive, but **does not extend the
+  time limit for an appeal to the Market Court** — pursue both in parallel if
+  the interest at stake is significant.
+- Procurement rectification does not require the party's consent, but
+  conclusion of the contract restricts its use — check the limits against a
+  source.
 
-## Tarjoajalle: valitus markkinaoikeuteen (146 §)
+## For the tenderer: appeal to the Market Court (146 §)
 
-1. **Arvioi peruste** — virhe menettelyssä: syrjivä vaatimus, vertailu
-   ilmoittamattomilla perusteilla, perusteluvirhe, väärä
-   tarjouspyynnönmukaisuusratkaisu, laiton suorahankinta.
-2. **Arvioi intressi** — realistinen mahdollisuus voittaa virheettömässä
-   menettelyssä (hyvitysmaksun edellytys); kuluriski ja
-   oikeudenkäyntimaksu; liikesuhde hankintayksikköön.
-3. **Määräaika** `[tarkista lähteestä — pääsääntö ja poikkeukset]`;
-   valitus käynnistää automaattisen suspension ennen sopimusta.
-4. **Vaatimukset**: ensisijaiset (päätöksen kumoaminen, virheen
-   korjaaminen, kielto) ja toissijaiset (hyvitysmaksu) — toissijaiset
-   on vaadittava heti; tehottomuusseuraamus ja muut seuraamukset
-   laittomassa suorahankinnassa (edellytykset lähteestä).
-5. **Kirjelmän rakenne**: päätös ja hankinta yksilöitynä, virheet
-   konkreettisesti tarjouspyyntöön ja päätökseen sidottuina, näyttö,
-   vaatimukset, täytäntöönpanoa koskevat vaatimukset.
+1. **Assess the ground** — a procedural error: a discriminatory requirement,
+   comparison on unannounced criteria, defective reasons, an incorrect
+   decision on compliance with the invitation to tender, or an unlawful
+   direct award.
+2. **Assess the interest** — a realistic possibility of winning in an
+   error-free procedure (a condition for a compensation payment
+   (hyvitysmaksu)); adverse-costs risk and court fee; the business relationship
+   with the contracting authority.
+3. **Deadline** `[check against a source — main rule and exceptions]`; before
+   the contract is concluded, the appeal triggers automatic suspension.
+4. **Relief sought (vaatimukset)**: primary relief (annulment of the decision,
+   correction of the error, prohibition) and secondary relief (compensation
+   payment) — secondary relief must be claimed at once; the ineffectiveness
+   remedy (tehottomuusseuraamus) and other remedies for an unlawful direct
+   award are subject to conditions that must be retrieved from a source.
+5. **Structure of the written submission (kirjelmä)**: identify the decision
+   and procurement; set out the errors concretely by reference to the
+   invitation to tender and decision; evidence; relief sought; requests
+   concerning enforcement.
 
-Jatkovalitus KHO:hon edellyttää valituslupaa →
-`administrative-law:administrative-appeal` prosessin yleisiin oppeihin.
+A further appeal to KHO requires leave to appeal →
+`administrative-law:administrative-appeal` for general principles of the
+procedure.
 
-## Sopimuskauden muutokset
+## Modifications during the contract term
 
-Hankintasopimusta ei saa **olennaisesti muuttaa** ilman uutta
-kilpailutusta. Jäsennä muutos: sallitut muutosperusteet (mm.
-sopimukseen kirjatut tarkistuslausekkeet, lisätilaukset, ennakoimattomat
-olosuhteet — euromääräiset ja prosenttirajat lähteestä) vs. olennainen
-muutos (kokonaisluonteen muuttuminen, hinnan merkittävä nousu, uusi
-toimittaja). Dokumentoi peruste; laiton muutos on suorahankinta
-seuraamuksineen.
+A procurement contract must not be **materially modified (olennaisesti
+muutettu)** without a new competitive procedure. Structure the modification:
+permitted grounds for modification (including review clauses written into the
+contract, additional orders and unforeseen circumstances — retrieve monetary
+and percentage limits from a source), as opposed to a material modification
+(a change in the overall nature, a significant price increase or a new
+supplier). Document the ground; an unlawful modification is a direct award
+and carries the corresponding remedies.
 
-## Mitä tämä skill EI tee
+## What this skill does NOT do
 
-- **Ei vahvista valitusaikoja, odotusajan pituutta tai seuraamusten
-  euromääriä muistista** — lähteestä tai `[tarkista]`.
-- **Ei jätä valitusta tai oikaisuvaatimusta** — ihminen allekirjoittaa
-  ja vastaa määräajasta.
-- **Ei ennusta markkinaoikeuden lopputulosta** — se jäsentää perusteet
-  ja riskit `[varmista — hankintajuristin arvioitava]`.
-- **Ei laadi näennäisperusteluja** virheelliselle päätökselle — jos
-  vertailussa on virhe, oikea neuvo on hankintaoikaisu.
-- **Ei käsittele sopimuskauden suoritushäiriöitä** (viivästys, virhe)
-  — ne ovat sopimusriitoja → `contracts` ja `dispute-resolution`.
+- **It does not confirm appeal periods, the length of the standstill period or
+  monetary amounts of remedies from memory** — use a source or `[check]`.
+- **It does not submit an appeal or request for rectification** — a human signs
+  it and is responsible for the deadline.
+- **It does not predict the outcome in the Market Court** — it structures the
+  grounds and risks `[confirm — requires a procurement lawyer's assessment]`.
+- **It does not draft sham reasons** for an erroneous decision — if the
+  comparison contains an error, the correct advice is procurement
+  rectification.
+- **It does not address failures in performance during the contract term**
+  (delay, defect) — these are contract disputes → `contracts` and
+  `dispute-resolution`.
 
-## Jatka tästä
+## Continue from here
 
-- Vertailun ja tarjouspyynnön virheiden analyysi → /julkiset-hankinnat:tarjouspyynto-ja-tarjous
-- Suorahankintaperusteen arviointi → /julkiset-hankinnat:hankinnan-suunnittelu
-- Säännöksen tai MAO/KHO-käytännön tarkistus → /juristi:oikeustutkimus
-- Hallintoprosessin yleiset opit (KHO-vaihe) → /hallinto-oikeus:muutoksenhaku
-- Valituskirjelmän kieliasu ja rakenne → /juristi:asiakirjan-tarkistus
+- Analyse defects in the comparison and invitation to tender → /public-procurement:tender-documents-and-bids
+- Assess grounds for direct award → /public-procurement:procurement-planning
+- Verify a provision or MAO/KHO case law → /legal-core:legal-research
+- General principles of administrative procedure (KHO stage) → /administrative-law:administrative-appeal
+- Review the language and structure of the appeal submission → /legal-core:document-review

@@ -1,48 +1,56 @@
-# Julkiset hankinnat
+# Public procurement
 
-Julkisten hankintojen koko kaari hankintalain (1397/2016) mukaan – sekä
-hankintayksikön että tarjoajan näkökulmasta: suunnittelu ja menettelyn valinta,
-tarjouspyyntö ja tarjous sekä hankintapäätös ja muutoksenhaku.
+The entire public-procurement lifecycle under the Act on Public Procurement
+and Concession Contracts (hankintalaki 1397/2016), from the perspectives of
+both the contracting authority and the tenderer: planning and choice of
+procedure, invitation to tender and tender, award decision and remedies.
 
-> **Luonnokset ovat tarkistettavia – ei oikeudellista neuvontaa.**
-> Kynnysarvot ja määräajat muuttuvat; ne haetaan aina lähteestä. Odotusaika ja
-> valitusajat ovat prekluusiivisia – kalenterivastuu on ihmisellä.
-> Katso [`AGENTS.md`](AGENTS.md).
+> **Drafts are for review — not legal advice.**
+> Thresholds and deadlines change; always retrieve them from a source. The
+> standstill period and appeal periods are preclusive — a human is responsible
+> for the calendar.
+> See [`AGENTS.md`](AGENTS.md).
 
-## Skillit
+## Skills
 
-| Skill | Mitä tekee |
+| Skill | What it does |
 |---|---|
-| **hankinnan-suunnittelu** | Soveltamisala ja kynnysarvot (lähteestä), ennakoidun arvon laskenta ja pilkkomiskielto, markkinakartoitus, menettelyn valinta (avoin, rajoitettu, neuvottelumenettelyt, puitejärjestely, suorahankinnan suppeat perusteet) ja ilmoittaminen Hilmassa. Sisältää hankintojen perusteiden referenssin. |
-| **tarjouspyynto-ja-tarjous** | Hankintayksikölle: tarjouspyynnön rakenne, soveltuvuusvaatimukset vs. vertailuperusteet, kokonaistaloudellinen edullisuus. Tarjoajalle: tarjouspyynnön analyysi, tarjouspyynnönmukainen tarjous, ryhmittymät ja liikesalaisuusmerkinnät. |
-| **hankintapaatos-ja-muutoksenhaku** | Hankintapäätös ja perustelut (123 §), odotusaika (129 §) ja sopimuksen tekeminen (128 §), hankintaoikaisu (132–133 §), valitus markkinaoikeuteen (146 §) seuraamuksineen sekä sopimusmuutosten rajat toteutusvaiheessa. |
+| **procurement-planning** | Scope and thresholds (from a source), calculation of estimated value and the prohibition on artificial division, market consultation, choice of procedure (open, restricted, negotiated procedures, framework agreement, the narrow grounds for direct award) and publication in Hilma. Includes a reference on procurement fundamentals. |
+| **tender-documents-and-bids** | For the contracting authority: structure of the invitation to tender, selection criteria versus award criteria, most economically advantageous tender. For the tenderer: analysis of the invitation to tender, a compliant tender, groups of economic operators and business-secret markings. |
+| **award-decision-and-remedies** | Award decision and reasons (123 §), standstill period (129 §) and conclusion of the contract (128 §), procurement rectification (hankintaoikaisu) (132–133 §), appeal to the Market Court (146 §) and its remedies, and the limits on contract modifications during performance. |
 
-## Perustana varmistetut säädökset
+## Verified underlying legislation
 
-Lähteestä (Finlex) varmistettu: **laki julkisista hankinnoista ja
-käyttöoikeussopimuksista (1397/2016)** – pykäläotsikot 123 § hankintaa koskeva
-päätös, 128 § hankintasopimuksen tekeminen, 129 § odotusaika, 132–133 §
-hankintaoikaisu, 146 § muutoksenhaun kohde ja rajoitukset – **laki vesi- ja
-energiahuollon, liikenteen ja postipalvelujen alalla toimivien yksiköiden
-hankinnoista ja käyttöoikeussopimuksista (1398/2016)** sekä **laki julkisista
-puolustus- ja turvallisuushankinnoista (1531/2011)**. Kynnysarvot ja muut
-euromäärät tarkistetaan käytössä lähteestä (Finlex, Hilma, TEM).
+Verified against the source (Finlex): **Act on Public Procurement and
+Concession Contracts (laki julkisista hankinnoista ja
+käyttöoikeussopimuksista 1397/2016)** — section headings: 123 § decision
+concerning procurement, 128 § conclusion of the procurement contract, 129 §
+standstill period, 132–133 § procurement rectification, 146 § subject matter
+and restrictions of appeal — **Act on Procurement and Concession Contracts of
+Entities Operating in the Water, Energy, Transport and Postal Services Sectors
+(laki vesi- ja energiahuollon, liikenteen ja postipalvelujen alalla toimivien
+yksiköiden hankinnoista ja käyttöoikeussopimuksista 1398/2016)** and **Act on
+Public Defence and Security Procurements (laki julkisista puolustus- ja
+turvallisuushankinnoista 1531/2011)**. Check thresholds and other monetary
+amounts against a source when used (Finlex, Hilma, Ministry of Economic Affairs
+and Employment).
 
-## Liittyy
+## Related domains
 
-- **`legal-core`-plugari** – `legal-research` (MAO:n ja KHO:n hankintakäytäntö),
-  `document-review` ja `engagement-intake`.
-- **`administrative-law`-plugari** – julkisuuslaki ja asiakirjapyynnöt
-  hankinnoissa; hankintayksikön päätöksenteko on julkista vallankäyttöä.
-- **`contracts`-plugari** – hankintasopimuksen lausekkeet.
-- **`ai-regulation`-plugari** – tekoälyjärjestelmien hankinta (AI Act
-  -velvoitteet käyttöönottajalle).
+- **`legal-core` domain** — `legal-research` (MAO and KHO procurement case
+  law), `document-review` and `engagement-intake`.
+- **`administrative-law` domain** — the Act on the Openness of Government
+  Activities and information requests in procurements; decision-making by a
+  contracting authority is an exercise of public power.
+- **`contracts` domain** — procurement-contract clauses.
+- **`ai-regulation` domain** — procurement of AI systems (AI Act obligations
+  for deployers).
 
-## Asennus
+## Installation
 
 ```
 /plugin marketplace add ragmha/agent-skills-for-finnish-law
 /plugin install julkiset-hankinnat@agent-skills-for-finnish-law
 ```
 
-oik.ai-konnektori: katso juuren [QUICKSTART.md](../QUICKSTART.md).
+For the oik.ai connector, see [QUICKSTART.md](../QUICKSTART.md) at the repository root.
