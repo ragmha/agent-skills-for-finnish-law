@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Kuluttajaoikeus",
+    "displayName": "Consumer law",
     "shortDescription": "Suomen kuluttajaoikeus (kuluttajansuojalaki 38/1978): kuluttajan oikeudet tavaran ja palvelun virhetilanteissa, koti- ja etämyynnin peruuttamisoikeus ja tiedon…",
     "longDescription": "Suomen kuluttajaoikeus elinkeinonharjoittajan ja kuluttajan välisessä kaupassa (kuluttajansuojalaki 38/1978): tavaran ja palvelun virhevastuu ja oikaisukeinot, etä- ja kotimyynnin peruuttamisoikeus ja tiedonantovelvollisuudet, sopimaton markkinointi sekä kuluttajariitojen ratkaisu (kuluttajariitalautakunta 8/2007 ja KKV 661/2012) ja kuluttajasaatavan hyvä perintätapa (513/1999). Pakottava kuluttajan hyväksi.",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Kuluttajaoikeus -plugaria Suomen oikeuden tehtävään."
+      "Käytä Consumer law -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"

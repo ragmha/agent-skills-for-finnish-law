@@ -1,10 +1,10 @@
 {
   "description": "Per-file counts of the safety mechanisms that carry this repository's safety properties: disclaimers, inline certainty flags, risk colour coding, three-tier certainty markers and human-review gates. Matched by Finnish OR English form, so the count survives translation while a deletion does not. AGENTS.md: \"Every disclaimer stays. Translate, never delete.\" Regenerate only when a mechanism is INTENTIONALLY removed, and say why in the commit.",
-  "takenAt": "2026-08-25",
+  "takenAt": "2026-08-27",
   "files": {
     "administrative-law/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "administrative-law/README.md": {
@@ -39,12 +39,12 @@
     "AGENTS.md": {
       "disclaimer": 1,
       "certainty-flag": 1,
-      "certainty-tier": 1,
+      "certainty-tier": 2,
       "human-review-gate": 1
     },
     "ai-regulation/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "ai-regulation/skills/ai-classification/references/ai-act-fundamentals.md": {
@@ -65,7 +65,7 @@
     },
     "banking-and-finance/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "banking-and-finance/README.md": {
@@ -88,7 +88,7 @@
     },
     "bilingual-legal-language/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "bilingual-legal-language/README.md": {
@@ -108,7 +108,7 @@
     },
     "company-law/AGENTS.md": {
       "certainty-flag": 3,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 1
     },
     "company-law/README.md": {
@@ -127,11 +127,11 @@
     "company-law/skills/shareholders-agreement/SKILL.md": {
       "disclaimer": 1,
       "certainty-flag": 1,
-      "risk-colour": 2
+      "risk-colour": 3
     },
     "competition-law/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "competition-law/README.md": {
@@ -143,7 +143,8 @@
     },
     "competition-law/skills/merger-control/SKILL.md": {
       "disclaimer": 1,
-      "certainty-flag": 6
+      "certainty-flag": 6,
+      "certainty-tier": 1
     },
     "competition-law/skills/restrictive-practices/SKILL.md": {
       "disclaimer": 1,
@@ -151,7 +152,7 @@
     },
     "consumer-law/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "consumer-law/README.md": {
@@ -181,11 +182,11 @@
     "contracts/AGENTS.md": {
       "certainty-flag": 1,
       "risk-colour": 1,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 1
     },
     "contracts/README.md": {
-      "risk-colour": 3,
+      "risk-colour": 4,
       "certainty-tier": 1
     },
     "contracts/skills/contract-drafting/SKILL.md": {
@@ -197,7 +198,7 @@
     "contracts/skills/contract-review/SKILL.md": {
       "disclaimer": 1,
       "certainty-flag": 1,
-      "risk-colour": 6,
+      "risk-colour": 8,
       "certainty-tier": 1,
       "human-review-gate": 1
     },
@@ -208,7 +209,7 @@
     },
     "criminal-law/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "criminal-law/README.md": {
@@ -223,7 +224,7 @@
     },
     "criminal-law/skills/principal-offences/SKILL.md": {
       "disclaimer": 1,
-      "certainty-tier": 1
+      "certainty-tier": 2
     },
     "criminal-law/skills/sentencing/SKILL.md": {
       "disclaimer": 1,
@@ -231,7 +232,7 @@
       "certainty-tier": 1
     },
     "criminal-procedure/AGENTS.md": {
-      "certainty-tier": 2
+      "certainty-tier": 3
     },
     "criminal-procedure/README.md": {
       "certainty-tier": 1
@@ -250,7 +251,7 @@
     },
     "data-protection/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 2
     },
     "data-protection/README.md": {
@@ -274,7 +275,7 @@
     },
     "dispute-resolution/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "dispute-resolution/README.md": {
@@ -305,7 +306,7 @@
     "employment-law/AGENTS.md": {
       "certainty-flag": 2,
       "risk-colour": 1,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 1
     },
     "employment-law/README.md": {
@@ -324,12 +325,12 @@
     "employment-law/skills/termination-of-employment/SKILL.md": {
       "disclaimer": 1,
       "certainty-flag": 2,
-      "risk-colour": 2
+      "risk-colour": 3
     },
     "environment-and-planning/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
-      "human-review-gate": 2
+      "certainty-tier": 4,
+      "human-review-gate": 1
     },
     "environment-and-planning/README.md": {
       "certainty-tier": 2
@@ -338,13 +339,17 @@
       "disclaimer": 1,
       "certainty-flag": 1
     },
+    "environment-and-planning/skills/environmental-permits-and-supervision/references/environmental-law-fundamentals.md": {
+      "certainty-tier": 1
+    },
     "environment-and-planning/skills/environmental-permits-and-supervision/SKILL.md": {
       "disclaimer": 1,
       "certainty-flag": 2
     },
     "environment-and-planning/skills/land-use-planning-and-construction/SKILL.md": {
       "disclaimer": 1,
-      "certainty-flag": 3
+      "certainty-flag": 3,
+      "certainty-tier": 1
     },
     "evals/README.md": {
       "certainty-flag": 2
@@ -361,7 +366,7 @@
     },
     "family-and-inheritance/AGENTS.md": {
       "certainty-flag": 3,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 2
     },
     "family-and-inheritance/README.md": {
@@ -396,7 +401,7 @@
     },
     "immigration-law/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 2
     },
     "immigration-law/README.md": {
@@ -420,7 +425,7 @@
     },
     "insolvency/AGENTS.md": {
       "certainty-flag": 3,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "insolvency/README.md": {
@@ -432,7 +437,8 @@
     },
     "insolvency/skills/debt-collection/SKILL.md": {
       "disclaimer": 1,
-      "certainty-flag": 1
+      "certainty-flag": 1,
+      "certainty-tier": 1
     },
     "insolvency/skills/insolvency-assessment/SKILL.md": {
       "disclaimer": 1,
@@ -441,7 +447,7 @@
     },
     "intellectual-property/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 2
     },
     "intellectual-property/README.md": {
@@ -469,7 +475,7 @@
     },
     "legal-core/AGENTS.md": {
       "certainty-flag": 3,
-      "certainty-tier": 3,
+      "certainty-tier": 4,
       "human-review-gate": 2
     },
     "legal-core/README.md": {
@@ -496,6 +502,9 @@
       "certainty-tier": 1,
       "human-review-gate": 1
     },
+    "legal-core/skills/legal-writing/references/sources.md": {
+      "certainty-tier": 1
+    },
     "legal-core/skills/legal-writing/SKILL.md": {
       "certainty-tier": 1
     },
@@ -514,14 +523,17 @@
       "certainty-tier": 3
     },
     "legislative-consultation/AGENTS.md": {
-      "certainty-tier": 2
+      "certainty-tier": 3
     },
     "legislative-consultation/skills/consultation-statement-assistant/SKILL.md": {
       "disclaimer": 1
     },
     "legislative-drafting/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 2
+      "certainty-tier": 3
+    },
+    "legislative-drafting/skills/government-bill-guidelines/SKILL.md": {
+      "certainty-tier": 1
     },
     "legislative-drafting/skills/legislative-drafting-manual/references/enacting-formula.md": {
       "certainty-tier": 6
@@ -534,7 +546,7 @@
     },
     "public-procurement/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "public-procurement/README.md": {
@@ -561,7 +573,7 @@
     },
     "real-estate-and-housing/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 2
     },
     "real-estate-and-housing/README.md": {
@@ -587,7 +599,7 @@
     },
     "references/citation-style.md": {
       "certainty-flag": 3,
-      "certainty-tier": 5,
+      "certainty-tier": 6,
       "human-review-gate": 1
     },
     "references/firm-adoption.md": {
@@ -597,19 +609,19 @@
     "references/glossary.md": {
       "disclaimer": 3,
       "certainty-flag": 8,
-      "risk-colour": 5,
-      "certainty-tier": 5,
+      "risk-colour": 6,
+      "certainty-tier": 6,
       "human-review-gate": 2
     },
     "references/liability-and-security.md": {
-      "certainty-tier": 3
+      "certainty-tier": 4
     },
     "references/template-standards.md": {
       "certainty-tier": 2
     },
     "taxation/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 2,
+      "certainty-tier": 3,
       "human-review-gate": 1
     },
     "taxation/README.md": {

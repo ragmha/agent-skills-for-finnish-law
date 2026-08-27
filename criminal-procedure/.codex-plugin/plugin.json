@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Rikosprosessi",
+    "displayName": "Criminal procedure",
     "shortDescription": "Suomen rikosprosessi ammattilaisille: esitutkinta ja pakkokeinot (805/2011 ja 806/2011), syyte ja puolustus (ROL 689/1997) sekä asianomistajan asema ja yksityi…",
     "longDescription": "Suomen rikosprosessi avustajan työhön: esitutkinta ja pakkokeinot (805/2011 ja 806/2011) kuulusteluvalmistautumisineen ja loppulausuntoineen, syyte ja vastaus tuomioesitysmenettelyineen (ROL 689/1997) sekä asianomistajan vaatimukset ja rikosvahinkokorvaus. Syyttömyysolettaman ja avustajan käytön ehdoilla.",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Rikosprosessi -plugaria Suomen oikeuden tehtävään."
+      "Käytä Criminal procedure -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"

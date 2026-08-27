@@ -16,7 +16,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Kiinteistöt ja asuminen",
+    "displayName": "Real estate and housing",
     "shortDescription": "Suomen kiinteistö- ja asunto-oikeus: kiinteistökauppa ja kirjaamisasiat (maakaari 540/1995), asuntokauppa virhevastuineen (843/1994), asunto-osakeyhtiön kunnos…",
     "longDescription": "Suomen kiinteistö- ja asunto-oikeus: kiinteistökaupan määrämuoto, kirjaukset ja virhevastuu (maakaari 540/1995), asuntokauppa RS-järjestelmineen ja reklamaatioineen (843/1994), asunto-osakeyhtiön kunnossapitovastuu ja hallinto (1599/2009) sekä asuin- ja liikehuoneistojen vuokrasopimukset pakottavuuseroineen.",
     "developerName": "Aku Nikkola",
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Kiinteistöt ja asuminen -plugaria Suomen oikeuden tehtävään."
+      "Käytä Real estate and housing -plugaria Suomen oikeuden tehtävään."
     ]
   },
   "mcpServers": "./.mcp.json"
