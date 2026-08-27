@@ -23,12 +23,15 @@ const SNAPSHOT = {
   files: {
     'domain/a.md': { '55/2001': 2, 'KKO:2019:42': 1 },
     'domain/b.md': { '410/2015': 1 },
+    // Pre-1900 statutes need their own regex; see domain/c.md below.
+    'domain/c.md': { '39/1889': 2, '4/1734': 1 },
   },
 };
 
 // One verified statute that the snapshot does NOT contain, so the
-// tracking/statutes.json cross-check can be exercised on its own.
-const STATUTES = { saadokset: [{ numero: '38/1978', nimi: 'Kuluttajansuojalaki' }] };
+// tracking/statutes.json cross-check can be exercised on its own. The registry
+// uses English keys; the gate also accepts the historical Finnish ones.
+const STATUTES = { statutes: [{ number: '38/1978', name: 'Kuluttajansuojalaki' }] };
 
 const FILE_A = [
   '# A',
@@ -39,6 +42,21 @@ const FILE_A = [
 ].join('\n');
 
 const FILE_B = ['# B', '', 'Local Government Act (kuntalaki 410/2015).', ''].join('\n');
+
+// rikoslaki 39/1889 and oikeudenkaymiskaari 4/1734 are both in force and among
+// the most cited statutes in the collection, but the 19xx/20xx pattern cannot
+// see them - they need the 17xx-18xx one. Copying an older revision of the
+// script over a newer one silently reverted that pattern once, and every
+// reference to these two immediately reported as lost. These fixtures exist so
+// that regression fails here instead of on a merge-blocking branch.
+const FILE_C = [
+  '# C',
+  '',
+  'Criminal Code (rikoslaki 39/1889) chapter 6 governs sentencing.',
+  'Code of Judicial Procedure (oikeudenkaymiskaari 4/1734) applies to the hearing.',
+  'See rikoslaki 39/1889 chapter 7 as well.',
+  '',
+].join('\n');
 
 /** Builds a throwaway repository containing just what the gate reads. */
 function makeFixture() {
@@ -56,6 +74,7 @@ function makeFixture() {
   writeFileSync(join(root, 'tracking/statutes.json'), JSON.stringify(STATUTES, null, 2));
   writeFileSync(join(root, 'domain/a.md'), FILE_A);
   writeFileSync(join(root, 'domain/b.md'), FILE_B);
+  writeFileSync(join(root, 'domain/c.md'), FILE_C);
   return root;
 }
 
@@ -82,11 +101,68 @@ function writeA(root, body) {
   writeFileSync(join(root, 'domain/a.md'), body);
 }
 
+function writeC(root, body) {
+  writeFileSync(join(root, 'domain/c.md'), body);
+}
+
 test('unchanged tree passes', () => {
   const { status, output } = withFixture(() => {});
 
   assert.equal(status, 0, output);
   assert.match(output, /no citation was invented/);
+});
+
+// --- pre-1900 statutes -----------------------------------------------------
+//
+// The guard below is the one that matters. Dropping the 17xx-18xx pattern makes
+// the matcher blind to tokens the snapshot still expects, so they all report as
+// lost - which is a FAILURE the "citation dropped" tests would happily accept.
+// Only an unchanged-tree assertion catches it, so it is stated explicitly.
+
+test('pre-1900 statutes are matched, not reported as lost', () => {
+  const { status, output } = withFixture(() => {});
+
+  assert.equal(status, 0, output);
+  assert.doesNotMatch(output, /39\/1889/);
+  assert.doesNotMatch(output, /4\/1734/);
+});
+
+test('rikoslaki 39/1889 dropped from a file is an error', () => {
+  const { status, output } = withFixture((root) => {
+    writeC(root, FILE_C.replace('rikoslaki 39/1889 chapter 7', 'the Criminal Code chapter 7'));
+  });
+
+  assert.equal(status, 1, output);
+  assert.match(output, /domain\/c\.md: citation "39\/1889" appeared 2/);
+});
+
+test('oikeudenkaymiskaari 4/1734 dropped from a file is an error', () => {
+  const { status, output } = withFixture((root) => {
+    writeC(root, FILE_C.replace('(oikeudenkaymiskaari 4/1734)', '(the Code of Judicial Procedure)'));
+  });
+
+  assert.equal(status, 1, output);
+  assert.match(output, /citation "4\/1734" appeared 1/);
+});
+
+test('an invented pre-1900 statute number is an error', () => {
+  const { status, output } = withFixture((root) => {
+    writeC(root, `${FILE_C}\nUnder laki 77/1755 the rule differs.\n`);
+  });
+
+  assert.equal(status, 1, output);
+  assert.match(output, /citation "77\/1755" appears nowhere in the snapshot/);
+});
+
+test('fractions and version strings are not mistaken for statutes', () => {
+  const { status, output } = withFixture((root) => {
+    // Bounded to 17xx-18xx precisely so these stay invisible. If the year range
+    // is ever widened, this starts failing - which is the point.
+    writeC(root, `${FILE_C}\nRatios 1/2 and 3/4, release 2/1200, build 9/1699.\n`);
+  });
+
+  assert.equal(status, 0, output);
+  assert.doesNotMatch(output, /1\/2|3\/4|2\/1200|9\/1699/);
 });
 
 test('citation dropped from a file is an error', () => {

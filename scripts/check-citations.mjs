@@ -42,12 +42,20 @@
 // A file that is renamed between snapshot and check is followed through
 // scripts/rename-map.json, so the gate survives a path migration.
 //
-// Known blind spot: PATTERNS below only recognise years 1900-2099, so pre-1900
-// statutes - rikoslaki 39/1889, oikeudenkaari 4/1734 - are invisible to the
-// gate in BOTH directions. Widening the year range would be correct, but every
-// such token is by definition absent from the current snapshot, so it would
-// land as a wave of false "invented" errors until the snapshot is retaken.
-// Close it together with the next deliberate re-snapshot, not before.
+// Pre-1900 statutes are covered, and that coverage is load-bearing. rikoslaki
+// 39/1889 and oikeudenkaymiskaari 4/1734 need their own pattern because the
+// 19xx/20xx one cannot see them; between them they account for 33 references
+// to two of the most cited statutes in Finnish law. Do not "simplify" the two
+// year patterns into one or drop the 17xx-18xx one: without it the snapshot
+// still expects those tokens while the matcher can no longer find them, and
+// every one of them reports as a loss.
+//
+// That is not hypothetical. It happened: this script was copied onto a branch
+// that already had the 17xx-18xx pattern, the copy silently reverted it, and
+// the gate produced 20 false "dropped" reports across criminal-law,
+// criminal-procedure and dispute-resolution. Every one was false. Twenty false
+// positives on a merge-blocking gate is how a gate gets switched off, so
+// tests/citation-gate.test.mjs now pins pre-1900 matching in both directions.
 
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
