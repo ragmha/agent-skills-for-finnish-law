@@ -31,14 +31,18 @@
     "administrative-law/templates/request-for-rectification.md": {
       "certainty-tier": 1
     },
+    "agent-recipes/citation-audit/README.md": {
+      "certainty-tier": 1
+    },
     "agent-recipes/precedent-watch/README.md": {
       "certainty-tier": 1
     },
     "agent-recipes/README.md": {
-      "certainty-tier": 1
+      "certainty-tier": 1,
+      "human-review-gate": 1
     },
     "agent-recipes/statute-watch/README.md": {
-      "certainty-tier": 1
+      "certainty-tier": 2
     },
     "AGENTS.md": {
       "disclaimer": 1,
@@ -391,14 +395,20 @@
       "certainty-flag": 2
     },
     "examples/fixed-term-employment-ending/04-assessment-criteria.md": {
-      "certainty-flag": 2
+      "certainty-flag": 2,
+      "certainty-tier": 1,
+      "human-review-gate": 1
+    },
+    "examples/ma-due-diligence/02-target-memorandum.md": {
+      "certainty-tier": 1
     },
     "examples/ma-due-diligence/03-assessment-criteria.md": {
       "certainty-flag": 1
     },
     "examples/residential-sale-defect/04-assessment-criteria.md": {
       "certainty-flag": 2,
-      "certainty-tier": 1
+      "certainty-tier": 1,
+      "human-review-gate": 1
     },
     "family-and-inheritance/AGENTS.md": {
       "certainty-flag": 3,
@@ -623,7 +633,8 @@
       "certainty-tier": 1
     },
     "README.md": {
-      "certainty-tier": 1
+      "certainty-tier": 1,
+      "human-review-gate": 1
     },
     "real-estate-and-housing/AGENTS.md": {
       "certainty-flag": 2,
@@ -653,25 +664,27 @@
     },
     "references/citation-style.md": {
       "certainty-flag": 3,
-      "certainty-tier": 5,
+      "certainty-tier": 6,
       "human-review-gate": 1
     },
     "references/firm-adoption.md": {
       "certainty-flag": 1,
-      "certainty-tier": 3
+      "certainty-tier": 3,
+      "human-review-gate": 1
     },
     "references/glossary.md": {
       "disclaimer": 3,
       "certainty-flag": 9,
-      "risk-colour": 5,
-      "certainty-tier": 5,
+      "risk-colour": 6,
+      "certainty-tier": 6,
       "human-review-gate": 2
     },
     "references/liability-and-security.md": {
-      "certainty-tier": 3
+      "certainty-tier": 3,
+      "human-review-gate": 1
     },
     "references/template-standards.md": {
-      "certainty-tier": 2
+      "certainty-tier": 3
     },
     "taxation/AGENTS.md": {
       "certainty-flag": 2,

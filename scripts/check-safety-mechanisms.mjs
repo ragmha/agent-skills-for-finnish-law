@@ -31,35 +31,42 @@ const SKIP = new Set(['node_modules', 'docs', 'dist', '.git']);
 // Each mechanism matches its Finnish and English forms with one regex, so the
 // count is invariant under translation. Adding a language variant here is how
 // you teach the gate a new phrasing — do not add a second mechanism for it.
+//
+// Boundaries are Unicode-aware ((?<!\p{L}) ... (?!\p{L}) with the u flag)
+// rather than \b. This is not stylistic: \b is defined against [A-Za-z0-9_],
+// so it never fires next to a Finnish ä or ö. With \b, `Älä käytä` and `VIHREÄ`
+// matched NOTHING — the "do not use" tier marker and the GREEN risk marker were
+// invisible to the gate, so deleting either during translation would not have
+// been noticed. Reported by the company+real-estate session.
 const MECHANISMS = [
   {
     id: 'disclaimer',
     // Vastuuvapaus: / Disclaimer:
-    re: /\b(vastuuvapaus|disclaimer)\s*[::]/gi,
+    re: /(?<!\p{L})(vastuuvapaus|disclaimer)\s*[::]/giu,
     what: 'disclaimer line',
   },
   {
     id: 'certainty-flag',
     // [tarkista] [varmista — ...] [muistinvarainen — ...] [mallin laskelma — ...]
     // [check] [confirm — ...] [from memory — ...] [model calculation — ...]
-    re: /\[(?:tarkista|varmista|muistinvarainen|mallin laskelma|check|confirm|from memory|model calculation)\b[^\]]*\]/gi,
+    re: /\[(?:tarkista|varmista|muistinvarainen|mallin laskelma|check|confirm|from memory|model calculation)(?!\p{L})[^\]]*\]/giu,
     what: 'inline certainty flag',
   },
   {
     id: 'risk-colour',
-    re: /\b(VIHREÄ|KELTAINEN|PUNAINEN|GREEN|YELLOW|RED)\b/g,
+    re: /(?<!\p{L})(VIHREÄ|KELTAINEN|PUNAINEN|GREEN|YELLOW|RED)(?!\p{L})/gu,
     what: 'risk colour marker',
   },
   {
     id: 'certainty-tier',
     // Varmistettu / Tarkistettava / Älä käytä -> Verified / Needs checking / Do not use
-    re: /\b(varmistettu|tarkistettava|älä käytä|ala kayta|verified|needs checking|do not use)\b/gi,
+    re: /(?<!\p{L})(varmistettu|tarkistettava|älä käytä|ala kayta|verified|needs checking|do not use)(?!\p{L})/giu,
     what: 'three-tier certainty marker',
   },
   {
     id: 'human-review-gate',
     // "ihminen tarkistaa", "human reviews", "requires a lawyer's assessment"
-    re: /\b(ihminen (tarkistaa|vastaa|hyväksyy)|human (review|approv)|juristin (arvioitava|tarkistettava)|lawyer'?s assessment)\b/gi,
+    re: /(?<!\p{L})(ihminen (tarkistaa|vastaa|hyväksyy)|human (review|approv)|juristin (arvioitava|tarkistettava)|lawyer'?s assessment)(?!\p{L})/giu,
     what: 'human-review gate',
   },
 ];
