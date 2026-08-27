@@ -36,7 +36,7 @@ An aid for drafting statutes: the Legislative Drafter’s Guide (the structure o
 | [`legislative-drafting-manual`](legislative-drafting/skills/legislative-drafting-manual/SKILL.md) | Manual for drafting Finnish legislation, based on Lainkirjoittajan opas. Covers the hierarchy of norms under perustuslaki 731/1999, the types of statute (laki, asetus, määräys), statute structure (luku, pykälä, momentti), statutory languag… |
 | [`legislative-process-guide`](legislative-drafting/skills/legislative-process-guide/SKILL.md) | Guide to the Finnish legislative preparation process from initiative to entry into force, following Lainvalmistelun prosessiopas. Covers preliminary preparation (esivalmistelu), basic preparation (perusvalmistelu), the consultation round (… |
 
-## Consultation statements
+## Legislative consultation
 
 `/plugin install legislative-consultation@agent-skills-for-finnish-law` – [`./legislative-consultation/`](./legislative-consultation/)
 
