@@ -248,7 +248,7 @@ if (status === 'ok') {
 // as unmeasured rather than scored. This is structural: no amount of regex
 // tuning can make prose a reliable signal, and the runner must not be able to
 // turn a guess into a green pass.
-if (status === 'ok' && confidence === 'low') {
+if (status === 'ok' && !sawJson) {
   status = 'unmeasured';
   reason =
     'harness produced no structured events; a text transcript cannot prove a skill ran' +
