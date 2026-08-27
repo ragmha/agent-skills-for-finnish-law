@@ -103,11 +103,11 @@
     },
     "bilingual-legal-language/AGENTS.md": {
       "certainty-flag": 1,
-      "certainty-tier": 4,
+      "certainty-tier": 5,
       "human-review-gate": 2
     },
     "bilingual-legal-language/README.md": {
-      "certainty-tier": 2
+      "certainty-tier": 3
     },
     "bilingual-legal-language/skills/language-rights-and-obligations/SKILL.md": {
       "disclaimer": 1,
@@ -140,7 +140,7 @@
     "company-law/skills/corporate-transactions/SKILL.md": {
       "disclaimer": 1,
       "certainty-flag": 2,
-      "certainty-tier": 1
+      "certainty-tier": 2
     },
     "company-law/skills/shareholders-agreement/SKILL.md": {
       "disclaimer": 1,
@@ -314,7 +314,7 @@
     },
     "dispute-resolution/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 5,
+      "certainty-tier": 6,
       "human-review-gate": 3
     },
     "dispute-resolution/README.md": {
@@ -348,16 +348,16 @@
     "employment-law/AGENTS.md": {
       "certainty-flag": 2,
       "risk-colour": 1,
-      "certainty-tier": 4,
+      "certainty-tier": 5,
       "human-review-gate": 3
     },
     "employment-law/README.md": {
-      "certainty-tier": 2
+      "certainty-tier": 3
     },
     "employment-law/skills/change-negotiations/SKILL.md": {
       "disclaimer": 1,
       "certainty-flag": 2,
-      "certainty-tier": 1,
+      "certainty-tier": 2,
       "human-review-gate": 2
     },
     "employment-law/skills/employment-contract/SKILL.md": {
@@ -453,15 +453,16 @@
     },
     "immigration-law/AGENTS.md": {
       "certainty-flag": 2,
-      "certainty-tier": 4,
+      "certainty-tier": 5,
       "human-review-gate": 3
     },
     "immigration-law/README.md": {
-      "certainty-tier": 2
+      "certainty-tier": 3
     },
     "immigration-law/skills/employer-obligations/SKILL.md": {
       "disclaimer": 1,
-      "certainty-flag": 3
+      "certainty-flag": 3,
+      "certainty-tier": 1
     },
     "immigration-law/skills/eu-and-family-based-residence/SKILL.md": {
       "disclaimer": 1,
@@ -563,7 +564,7 @@
     },
     "legal-core/skills/legal-research/SKILL.md": {
       "certainty-flag": 3,
-      "certainty-tier": 4,
+      "certainty-tier": 5,
       "human-review-gate": 1
     },
     "legal-core/skills/legal-writing/references/sources.md": {
@@ -687,8 +688,8 @@
       "disclaimer": 3,
       "certainty-flag": 9,
       "risk-colour": 6,
-      "certainty-tier": 6,
-      "human-review-gate": 2
+      "certainty-tier": 8,
+      "human-review-gate": 6
     },
     "references/liability-and-security.md": {
       "certainty-tier": 3,

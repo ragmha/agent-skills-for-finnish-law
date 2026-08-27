@@ -103,8 +103,14 @@ const MECHANISMS = [
   {
     id: 'certainty-tier',
     // Varmistettu / Tarkistettava / Älä käytä -> Verified / Needs checking / Do not use
+    //
+    // `needs?` because English verbs agree with their subject: "every value
+    // needs checking" and "the values need checking" are the same marker, and
+    // forcing the singular makes a translator choose between correct English
+    // and a passing gate. Same defect as the human-review stem — the matcher
+    // rejecting a correct rendering — found independently on this mechanism.
     re: new RegExp(
-      `${NOT_LETTER_BEFORE}(varmistettu|tarkistettava|älä${WS}käytä|ala${WS}kayta|verified|needs${WS}checking|do${WS}not${WS}use)${NOT_LETTER_AFTER}`,
+      `${NOT_LETTER_BEFORE}(varmistettu|tarkistettava|älä${WS}käytä|ala${WS}kayta|verified|needs?${WS}checking|do${WS}not${WS}use)${NOT_LETTER_AFTER}`,
       'giu',
     ),
     what: 'three-tier certainty marker',

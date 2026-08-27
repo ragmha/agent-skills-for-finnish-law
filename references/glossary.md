@@ -161,6 +161,19 @@ Translate the words; keep the mechanism identical.
 | Tarkistettava | Needs checking |
 | Älä käytä | Do not use |
 
+**These are the gate's vocabulary, not a suggestion.** `check-safety-mechanisms.mjs` counts these
+exact words, so a faithful translation that reaches for a better-sounding synonym silently deletes
+a safety marker: "to be reviewed", "the document under review" and "as settled" all read correctly
+and all drop the count. Use the word in the table even where the Finnish is being used in its plain
+sense rather than as a source-certainty tier — `tarkistettava asiakirja` is "the document that needs
+checking", not "the document under review".
+
+Grammar you do **not** have to fight: the matcher accepts subject-verb agreement (`need` as well as
+`needs`), inflections of the review gate (`human reviews`, `human reviewer`, `human approval`),
+Finnish compounds (`ympäristöjuristin arvioitava`) and a marker broken across a line. Those were all
+defects in the matcher, fixed there rather than worked around in prose. If correct English still
+appears to break the gate, that is a matcher bug — report it rather than rewording around it.
+
 ### Risk colour coding
 
 | Finnish | English |

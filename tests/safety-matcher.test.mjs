@@ -103,6 +103,19 @@ test('Finnish review-gate inflections are all counted', () => {
   assert.equal(count(body, 'human-review-gate'), 3);
 });
 
+test('the certainty tier survives subject-verb agreement', () => {
+  // "the values needs checking" is wrong English. A translator must not have to
+  // choose between correct grammar and a passing gate — the same defect as the
+  // human-review stem, on a different mechanism. Eleven real markers in the tree
+  // were invisible in the plural form before this.
+  const body = [
+    'Every value needs checking.',
+    'The values need checking.',
+    'These are drafts that need checking.',
+  ].join('\n');
+  assert.equal(count(body, 'certainty-tier'), 3);
+});
+
 // ---------------------------------------------------------------------------
 // Line wraps — a marker broken across a line is still the marker, but a marker
 // spanning a BLANK line is two paragraphs the matcher glued together.
