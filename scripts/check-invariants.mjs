@@ -55,13 +55,35 @@ if (!agentsMd.includes(upstreamSlug)) {
 }
 
 // The fork's own slug must never appear under the upstream owner.
+//
+// This is checked across every file that can carry the provenance link, not
+// just AGENTS.md. The rule was written against AGENTS.md because that is where
+// the corruption was first found — and the identical broken URL then sat on
+// docs/index.html and docs/fi/index.html, the public landing pages, where it is
+// the single most likely link a visitor clicks. A rule enforced only at the
+// place its first instance happened to appear is barely a rule.
 const ownerOfUpstream = upstreamSlug.split('/')[0];
 const forkName = 'agent-skills-for-finnish-law';
-if (agentsMd.includes(`${ownerOfUpstream}/${forkName}`)) {
-  fail(
-    'fork provenance',
-    `AGENTS.md contains '${ownerOfUpstream}/${forkName}' — the rename rewrote the upstream slug; upstream is '${upstreamSlug}'`,
-  );
+const brokenSlug = `${ownerOfUpstream}/${forkName}`;
+
+const provenanceFiles = [
+  'AGENTS.md',
+  'README.md',
+  'CONTRIBUTING.md',
+  'docs/index.html',
+  'docs/fi/index.html',
+  'docs/og-source.html',
+];
+
+for (const rel of provenanceFiles) {
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+  if (readFileSync(full, 'utf8').includes(brokenSlug)) {
+    fail(
+      'fork provenance',
+      `${rel} contains '${brokenSlug}' — the rename rewrote the upstream slug and that URL 404s; upstream is '${upstreamSlug}'`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
