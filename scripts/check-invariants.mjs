@@ -277,12 +277,58 @@ if (headingSeen.size > 1) {
 }
 
 // ---------------------------------------------------------------------------
+// 8. No skill may point at a vendor pointer shim for guardrail content
+//
+// Phase 1 converted every <domain>/CLAUDE.md into AGENTS.md and left a 6-line
+// pointer shim. The shim carries no content, but 17 references inside skill
+// files still named CLAUDE.md as the place to find the negatiivirajaus (the
+// hard refusals), the Vastuuvapaus, and the practice profile.
+//
+// An agent following one of those lands on a redirect instead of the guardrail
+// it was sent to find — and the refusal rules are the safety property most
+// worth reaching. No other gate can see this: they are prose mentions and
+// backticked names, not markdown links, so the dead-link check never resolves
+// them.
+// ---------------------------------------------------------------------------
+
+for (const rel of ls('*/skills/*')) {
+  if (!rel.endsWith('.md')) continue;
+  const text = readFileSync(join(ROOT, rel), 'utf8');
+  if (/CLAUDE\.md/.test(text)) {
+    fail(
+      'guardrail reference',
+      `${rel} points at CLAUDE.md, which is a pointer shim — guardrails live in AGENTS.md`,
+    );
+  }
+}
+
+// The shims must in fact stay contentless, or the reference above becomes
+// ambiguous again.
+for (const entry of readJSON(join(ROOT, 'marketplace.json')).plugins) {
+  const rel = `${entry.source.replace(/^\.\//, '')}/CLAUDE.md`;
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+
+  const text = readFileSync(full, 'utf8');
+  if (!/AGENTS\.md/.test(text)) {
+    fail('pointer shim', `${rel} does not point at AGENTS.md`);
+  }
+  if (text.length > 800) {
+    fail(
+      'pointer shim',
+      `${rel} is ${text.length} bytes — guidance belongs in AGENTS.md, not in the shim`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Report
 // ---------------------------------------------------------------------------
 
 console.log('\nrepository invariants');
 console.log('  rules checked: fork provenance, statute registry, statute watch, rename map,');
-console.log('                 subagent naming, stale domain slugs, practice-profile heading\n');
+console.log('                 subagent naming, stale domain slugs, practice-profile heading,');
+console.log('                 guardrail references, pointer shims\n');
 
 if (staleInSkills > 0) {
   console.log(
