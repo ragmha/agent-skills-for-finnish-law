@@ -84,16 +84,23 @@ const MECHANISMS = [
   },
   {
     id: 'certainty-flag',
-    // [tarkista] [varmista — ...] [muistinvarainen — ...] [mallin laskelma — ...]
-    // [check] [confirm — ...] [from memory — ...] [model calculation — ...]
+    // Two conventions are in use, and the gate has to see both:
+    //   keyword first  — [tarkista] [varmista — …] [check] [confirm — …]
+    //   subject first  — [limits — check from the source]
+    //                    [estimate — must be confirmed]
+    //                    [KHO:VVVV:NN — korvaa todellisella, Finlexistä
+    //                     tarkistetulla ratkaisulla]
     //
-    // `vastine` / `equivalent` are the bilingual-legal-language domain's own
-    // flag: `[vastine varmistettava]` -> `[equivalent to be confirmed]`, which
-    // marks a term the agent could not verify. In a translation domain, an
-    // invented term IS the central hazard, so that flag is a safety mechanism —
-    // and it matched neither language's pattern, so it was unprotected in both.
+    // Only the first was matched, so ten real flags were unprotected — including
+    // the one that stops a drafter pasting a fabricated case identifier into a
+    // government bill.
+    //
+    // The subject-first form is anchored on an em or en dash specifically, NOT a
+    // plain hyphen: a hyphen matches markdown link text like [`source-checker`]
+    // and would trade a real gap for a false-positive class.
     re: new RegExp(
-      `\\[(?:tarkista|varmista|muistinvarainen|mallin${WS}laskelma|vastine|check|confirm|from${WS}memory|model${WS}calculation|equivalent)${NOT_LETTER_AFTER}[^\\]]*\\]`,
+      `\\[(?:tarkista|varmista|muistinvarainen|mallin${WS}laskelma|vastine|check|confirm|from${WS}memory|model${WS}calculation|equivalent)${NOT_LETTER_AFTER}[^\\]]*\\]` +
+        `|\\[[^\\]\\n]{1,90}[—–]\\s*(?:check|confirm|must${WS}be${WS}confirmed|tarkist|varmist|korvaa)[^\\]\\n]{0,90}\\]`,
       'giu',
     ),
     what: 'inline certainty flag',

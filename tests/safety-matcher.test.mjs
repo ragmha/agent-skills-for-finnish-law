@@ -126,6 +126,26 @@ test("a domain's own uncertainty flag is protected in both languages", () => {
   assert.equal(count('Mark it `[equivalent to be confirmed]`.', 'certainty-flag'), 1);
 });
 
+test('a flag is counted whether the keyword leads or follows the subject', () => {
+  // Two conventions are in use. Only "keyword first" was matched, so twelve
+  // subject-first flags were unprotected — including the one that stops a
+  // fabricated case identifier reaching a government bill.
+  const body = [
+    '[check] the figure.',
+    'Rates `[limits — check from the source]`.',
+    'A figure `[estimate — must be confirmed]`.',
+    '`[KHO:VVVV:NN — korvaa todellisella, Finlexistä tarkistetulla ratkaisulla]`',
+  ].join('\n');
+  assert.equal(count(body, 'certainty-flag'), 4);
+});
+
+test('a hyphenated link is not mistaken for a subject-first flag', () => {
+  // The subject-first form anchors on an em or en dash, not a plain hyphen.
+  // A hyphen matches markdown link text like [`source-checker`] and would trade
+  // a real gap for a false-positive class.
+  assert.equal(count('See [`source-checker`](../agents/source-checker.md).', 'certainty-flag'), 0);
+});
+
 // ---------------------------------------------------------------------------
 // Line wraps — a marker broken across a line is still the marker, but a marker
 // spanning a BLANK line is two paragraphs the matcher glued together.

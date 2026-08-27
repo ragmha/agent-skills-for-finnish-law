@@ -90,7 +90,7 @@
       "certainty-flag": 1
     },
     "banking-and-finance/skills/financing-and-collateral/references/finance-fundamentals.md": {
-      "certainty-flag": 1,
+      "certainty-flag": 2,
       "certainty-tier": 1
     },
     "banking-and-finance/skills/financing-and-collateral/SKILL.md": {
@@ -169,6 +169,7 @@
       "human-review-gate": 1
     },
     "competition-law/skills/restrictive-practices/references/competition-law-fundamentals.md": {
+      "certainty-flag": 1,
       "certainty-tier": 1
     },
     "competition-law/skills/restrictive-practices/SKILL.md": {
@@ -202,6 +203,7 @@
       "certainty-tier": 1
     },
     "consumer-law/templates/withdrawal-notice.md": {
+      "certainty-flag": 1,
       "certainty-tier": 1
     },
     "contracts/AGENTS.md": {
@@ -450,6 +452,7 @@
       "certainty-flag": 4
     },
     "family-and-inheritance/templates/will.md": {
+      "certainty-flag": 1,
       "certainty-tier": 1
     },
     "immigration-law/AGENTS.md": {
@@ -589,16 +592,24 @@
       "certainty-tier": 3
     },
     "legislative-consultation/AGENTS.md": {
+      "certainty-flag": 1,
       "certainty-tier": 4,
       "human-review-gate": 2
     },
+    "legislative-consultation/skills/consultation-statement-assistant/references/respondent-profile.md": {
+      "certainty-flag": 1
+    },
     "legislative-consultation/skills/consultation-statement-assistant/SKILL.md": {
-      "disclaimer": 1
+      "disclaimer": 1,
+      "certainty-flag": 1
     },
     "legislative-drafting/AGENTS.md": {
-      "certainty-flag": 1,
+      "certainty-flag": 2,
       "certainty-tier": 6,
       "human-review-gate": 1
+    },
+    "legislative-drafting/skills/government-bill-guidelines/references/supplementary-bill.md": {
+      "certainty-flag": 1
     },
     "legislative-drafting/skills/government-bill-guidelines/SKILL.md": {
       "certainty-tier": 2
@@ -669,7 +680,7 @@
     },
     "real-estate-and-housing/skills/real-property-conveyance/SKILL.md": {
       "disclaimer": 1,
-      "certainty-flag": 3
+      "certainty-flag": 4
     },
     "real-estate-and-housing/skills/residential-property-sale/SKILL.md": {
       "disclaimer": 1,
@@ -697,6 +708,7 @@
       "human-review-gate": 1
     },
     "references/template-standards.md": {
+      "certainty-flag": 2,
       "certainty-tier": 3
     },
     "taxation/AGENTS.md": {
