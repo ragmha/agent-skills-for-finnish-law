@@ -192,8 +192,10 @@ for (const [path, category] of declared) {
   // above that line.
   if (/(^|\/)templates\//.test(path)) {
     const lines = text.split('\n');
-    const blockAt = lines.findIndex((l) => /output language/i.test(l));
     const bodyAt = lines.findIndex((l) => /^---\s*$/.test(l));
+    const blockAt = lines.findIndex(
+      (l, index) => index > bodyAt && /output language/i.test(l),
+    );
 
     if (bodyAt !== -1 && blockAt > bodyAt) {
       err(
