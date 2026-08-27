@@ -11,8 +11,8 @@
 // Usage:  <transcript> | node evals/read-transcript.mjs <candidate-skill>...
 //
 // Prints key=value lines:
-//   status=ok | error
-//   reason=<free text>          (only when status=error)
+//   status=ok | unmeasured | error
+//   reason=<free text>          (when status is not ok)
 //   confidence=high | low | none
 //   skills=<space separated>
 //
