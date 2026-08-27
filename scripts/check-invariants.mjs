@@ -230,8 +230,23 @@ for (const rel of ls('*.md')) {
 // some domains. Nothing else couples 24 files to one string, and nothing else
 // would notice it breaking.
 //
-// Both spellings are accepted while translation is in flight; the invariant is
-// that all 24 agree with each other.
+// Severity is split for the same reason as the stale-slug rule below.
+//
+//   ERROR   — a domain uses a heading that is NEITHER pinned form. That is the
+//             real defect (a typo, a drifted spelling), it is detectable in a
+//             single file, and whoever wrote it can fix it.
+//   WARNING — both pinned forms coexist. That is the expected mid-migration
+//             state while 24 domains are translated on separate branches.
+//
+// The distinction matters: requiring all 24 to agree makes the rule
+// unsatisfiable on any individual translation branch. It goes red the moment
+// the first domain is translated and stays red until the last one merges, so
+// every session sees a failure it did not cause and cannot fix. A gate that is
+// red for reasons outside the committer's control trains people to work around
+// it, which is the exact failure the gate exists to prevent.
+//
+// Promote the coexistence warning to an error in the same commit that deletes
+// the `inSkillFile` branch below, when the whole tree is English.
 // ---------------------------------------------------------------------------
 
 const HEADING_FI = '## Käytäntöprofiili (valinnainen)';
@@ -266,15 +281,9 @@ for (const entry of readJSON(join(ROOT, 'marketplace.json')).plugins) {
   headingSeen.get(found).push(rel);
 }
 
-if (headingSeen.size > 1) {
-  const summary = [...headingSeen.entries()]
-    .map(([h, files]) => `'${h}' in ${files.length}`)
-    .join(', ');
-  fail(
-    'practice profile heading',
-    `domains disagree on the heading (${summary}) — practice-profile writes under one exact string`,
-  );
-}
+const headingSplit = headingSeen.size > 1
+  ? [...headingSeen.entries()].map(([h, files]) => `'${h}' in ${files.length}`).join(', ')
+  : null;
 
 // ---------------------------------------------------------------------------
 // 8. No skill may point at a vendor pointer shim for guardrail content
@@ -334,6 +343,13 @@ if (staleInSkills > 0) {
   console.log(
     `  ⚠︎  ${staleInSkills} skill/reference file(s) still contain a pre-rename domain slug.\n` +
       '      Owned by the per-domain translation sessions; escalate to an error once translation lands.\n',
+  );
+}
+
+if (headingSplit) {
+  console.log(
+    `  ⚠︎  practice-profile heading is mid-migration (${headingSplit}).\n` +
+      '      Expected while domains are translated on separate branches; escalate to an error once translation lands.\n',
   );
 }
 
