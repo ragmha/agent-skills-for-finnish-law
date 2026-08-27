@@ -1,7 +1,7 @@
 {
   "name": "intellectual-property",
   "version": "0.1.0",
-  "description": "Suomen immateriaalioikeus: tavaramerkki ja toiminimi (544/2019 ja 128/1979), tekijänoikeus DSM-uudistuksineen (404/1961) ja liikesalaisuudet (595/2018) — rekisteröinti, loukkausarvio, lisensointi ja suojastrategia.",
+  "description": "Finnish intellectual property law: trade marks and trade names (544/2019 and 128/1979), copyright with the DSM reforms (404/1961) and trade secrets (595/2018) — registration, infringement assessment, licensing and protection strategy.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Intellectual property",
-    "shortDescription": "Suomen immateriaalioikeus: tavaramerkki ja toiminimi (544/2019 ja 128/1979), tekijänoikeus DSM-uudistuksineen (404/1961) ja liikesalaisuudet (595/2018) — rekis…",
-    "longDescription": "Suomen immateriaalioikeus: tavaramerkin ja toiminimen suojastrategia ja sekaannusvaara-arvio (544/2019 ja 128/1979), tekijänoikeus DSM-uudistuksineen ja lisensointi (404/1961) sekä liikesalaisuuksien suojaohjelma ja loukkaustilanteet (595/2018). Markkinaoikeus, PRH ja EUIPO -kytkennät.",
+    "shortDescription": "Finnish intellectual property law: trade marks and trade names (544/2019 and 128/1979), copyright with the DSM reforms (404/1961) and trade secrets (595/2018)…",
+    "longDescription": "Finnish intellectual property law: protection strategy and likelihood-of-confusion assessment for trade marks and trade names (544/2019 and 128/1979), copyright with the DSM reforms and licensing (404/1961), and the trade-secret protection programme and infringement situations (595/2018). Links to the Market Court, PRH and EUIPO.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Intellectual property -plugaria Suomen oikeuden tehtävään."
+      "Use Intellectual property for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

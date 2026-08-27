@@ -55,13 +55,35 @@ if (!agentsMd.includes(upstreamSlug)) {
 }
 
 // The fork's own slug must never appear under the upstream owner.
+//
+// This is checked across every file that can carry the provenance link, not
+// just AGENTS.md. The rule was written against AGENTS.md because that is where
+// the corruption was first found — and the identical broken URL then sat on
+// docs/index.html and docs/fi/index.html, the public landing pages, where it is
+// the single most likely link a visitor clicks. A rule enforced only at the
+// place its first instance happened to appear is barely a rule.
 const ownerOfUpstream = upstreamSlug.split('/')[0];
 const forkName = 'agent-skills-for-finnish-law';
-if (agentsMd.includes(`${ownerOfUpstream}/${forkName}`)) {
-  fail(
-    'fork provenance',
-    `AGENTS.md contains '${ownerOfUpstream}/${forkName}' — the rename rewrote the upstream slug; upstream is '${upstreamSlug}'`,
-  );
+const brokenSlug = `${ownerOfUpstream}/${forkName}`;
+
+const provenanceFiles = [
+  'AGENTS.md',
+  'README.md',
+  'CONTRIBUTING.md',
+  'docs/index.html',
+  'docs/fi/index.html',
+  'docs/og-source.html',
+];
+
+for (const rel of provenanceFiles) {
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+  if (readFileSync(full, 'utf8').includes(brokenSlug)) {
+    fail(
+      'fork provenance',
+      `${rel} contains '${brokenSlug}' — the rename rewrote the upstream slug and that URL 404s; upstream is '${upstreamSlug}'`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -184,29 +206,27 @@ for (const rel of ls('*/agents/*.md')) {
 // missed all 24 and no gate noticed. A pointer file naming a directory that no
 // longer exists sends a reader nowhere.
 //
-// Severity is split deliberately. A stale slug in a hand-maintained pointer or
-// subagent file is an ERROR: nobody else is going to fix it. A stale
-// `domain:skill` cross-reference inside a SKILL.md is a WARNING while the
-// translation is in flight, because the per-domain translation sessions own
-// those files and are remapping the slugs as they go. Failing on them here
-// would either block CI for the length of the translation or force a
-// tree-wide edit that collides with every running session.
+// Severity was split while the translation was in flight: a stale slug in a
+// hand-maintained pointer or subagent file was an ERROR, because nobody else was
+// going to fix it, while a stale `domain:skill` cross-reference inside a
+// SKILL.md was only a WARNING, because the per-domain translation sessions owned
+// those files and were remapping the slugs as they went. Failing on them then
+// would either have blocked CI for the length of the translation or forced a
+// tree-wide edit that collided with every running session.
 //
-// Once translation lands, delete the `inSkillFile` branch and let both fail.
+// The translation has landed: all 24 domains are English and the warning
+// reported zero hits before this branch was removed. Both forms now fail.
 // ---------------------------------------------------------------------------
 
 const oldDomains = renameMap.paths
   .filter((p) => !p.from.includes('/') && !p.to.includes('/'))
   .map((p) => p.from);
 
-let staleInSkills = 0;
-
 for (const rel of ls('*.md')) {
   // The rename map and the fork-provenance section legitimately name old paths.
   if (rel === 'scripts/rename-map.json' || rel === 'AGENTS.md') continue;
 
   const text = readFileSync(join(ROOT, rel), 'utf8');
-  const inSkillFile = /\/skills\/.+\/SKILL\.md$/.test(rel) || /\/references\/.+\.md$/.test(rel);
 
   for (const old of oldDomains) {
     // Only flag it as a path or an identifier, not as ordinary Finnish prose:
@@ -214,8 +234,7 @@ for (const rel of ls('*.md')) {
     const asPath = new RegExp(`\\b${old}/`);
     const asSlug = new RegExp(`\\b${old}:[a-z-]`);
     if (asPath.test(text) || asSlug.test(text)) {
-      if (inSkillFile) staleInSkills++;
-      else fail('stale domain slug', `${rel} references the pre-rename domain '${old}'`);
+      fail('stale domain slug', `${rel} references the pre-rename domain '${old}'`);
       break;
     }
   }
@@ -230,23 +249,26 @@ for (const rel of ls('*.md')) {
 // some domains. Nothing else couples 24 files to one string, and nothing else
 // would notice it breaking.
 //
-// Severity is split for the same reason as the stale-slug rule below.
+// Severity was split while the translation was in flight:
 //
 //   ERROR   — a domain uses a heading that is NEITHER pinned form. That is the
 //             real defect (a typo, a drifted spelling), it is detectable in a
 //             single file, and whoever wrote it can fix it.
-//   WARNING — both pinned forms coexist. That is the expected mid-migration
-//             state while 24 domains are translated on separate branches.
+//   WARNING — both pinned forms coexist. That was the expected mid-migration
+//             state while 24 domains were translated on separate branches.
 //
-// The distinction matters: requiring all 24 to agree makes the rule
+// The distinction mattered: requiring all 24 to agree makes the rule
 // unsatisfiable on any individual translation branch. It goes red the moment
 // the first domain is translated and stays red until the last one merges, so
 // every session sees a failure it did not cause and cannot fix. A gate that is
 // red for reasons outside the committer's control trains people to work around
 // it, which is the exact failure the gate exists to prevent.
 //
-// Promote the coexistence warning to an error in the same commit that deletes
-// the `inSkillFile` branch below, when the whole tree is English.
+// The translation has landed: all 24 domains carry HEADING_EN and the
+// coexistence warning reported zero hits before it was promoted. A split now
+// means real drift, so it fails. HEADING_FI is kept as an accepted spelling
+// only so that the error message can name it; if a domain reverts to it, the
+// split check below is what catches the disagreement.
 // ---------------------------------------------------------------------------
 
 const HEADING_FI = '## Käytäntöprofiili (valinnainen)';
@@ -284,6 +306,13 @@ for (const entry of readJSON(join(ROOT, 'marketplace.json')).plugins) {
 const headingSplit = headingSeen.size > 1
   ? [...headingSeen.entries()].map(([h, files]) => `'${h}' in ${files.length}`).join(', ')
   : null;
+
+if (headingSplit) {
+  fail(
+    'practice profile heading',
+    `domains disagree on the heading (${headingSplit}) — practice-profile writes under one exact string, expected '${HEADING_EN}'`,
+  );
+}
 
 // ---------------------------------------------------------------------------
 // 8. No skill may point at a vendor pointer shim for guardrail content
@@ -331,27 +360,165 @@ for (const entry of readJSON(join(ROOT, 'marketplace.json')).plugins) {
 }
 
 // ---------------------------------------------------------------------------
+// 9. Every command AGENTS.md documents must actually exist
+//
+// AGENTS.md named scripts/check-upstream-drift.mjs as *the* drift-detection
+// command while that file lived only on an unmerged branch. Anyone following
+// the documented procedure got MODULE_NOT_FOUND — and the drift bridge is what
+// carries upstream's legal corrections into this fork, so the one procedure
+// that must not silently be a no-op was exactly the one that was.
+//
+// This is the same shape as every other finding here: a rule stated in prose
+// with nothing checking it. The check is cheap and generalises to any future
+// command the documentation grows.
+// ---------------------------------------------------------------------------
+
+for (const ref of new Set(agentsMd.match(/scripts\/[a-z0-9-]+\.(?:mjs|sh)/g) ?? [])) {
+  if (!existsSync(join(ROOT, ref))) {
+    fail(
+      'documented command',
+      `AGENTS.md documents ${ref}, which does not exist — a documented command that is absent is worse than an undocumented one`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 10. Counts stated in prose must match the collection
+//
+// README.md, AGENTS.md, SKILLS.md, QUICKSTART.md and both landing pages all
+// state "24 domains", "78 skills", "6 subagents", "105 statutes". Every one of
+// those is mechanically derivable, and every one silently goes stale the moment
+// a domain or skill is added — the docs session had to verify all four by hand,
+// which is exactly the work a gate should be doing.
+//
+// This is the narrow version on purpose. The landing pages also carry
+// per-domain cards reading "Contracts 2 skills · 1 subagent", and a rule that
+// compared those against 78 and 6 would be red for a reason nobody could fix —
+// which is how a gate gets ignored.
+//
+// A card is identified by the domain slug it links to, taken from
+// marketplace.json rather than guessed. That is precise and stays correct when
+// domains are added. An earlier attempt truncated each file at the first line
+// matching a card shape, which silently swallowed README.md entirely: its
+// summary line "24 domains · 78 skills · 6 subagents" has the same shape as a
+// card, so every count in the file went unchecked while the rule reported
+// green. Exactly the failure this rule exists to prevent, in the rule itself.
+const domainSlugs = readJSON(join(ROOT, 'marketplace.json')).plugins.map((p) =>
+  p.source.replace(/^\.\//, ''),
+);
+
+// A card is either a line naming a domain directory, or a line with the card's
+// own shape — "9 skills · 2 subagents" — and no collection word on it. The
+// second test is needed because one card carries its slug on the adjacent line,
+// and it is safe because the collection summary that has the same shape
+// ("24 domains · 78 skills · 6 subagents") always states the domain count too.
+const CARD_SHAPE = /\d+\s+(?:skills?|skilliä|skilli)\s*·\s*\d+\s+(?:subagents?|aliagenttia|aliagentti)/i;
+const COLLECTION_WORD = /(?:domains?|osaamisaluetta)/i;
+
+const isCardLine = (line) =>
+  domainSlugs.some((slug) => line.includes(slug)) ||
+  (CARD_SHAPE.test(line) && !COLLECTION_WORD.test(line));
+
+const countedSkills = ls('*/skills/*/SKILL.md').length;
+const countedAgents = ls('*/agents/*.md').length;
+const countedDomains = domainSlugs.length;
+const countedStatutes = (readJSON(join(ROOT, 'tracking/statutes.json')).statutes ?? []).length;
+
+const PROSE_FILES = [
+  'README.md',
+  'AGENTS.md',
+  'SKILLS.md',
+  'QUICKSTART.md',
+  'docs/index.html',
+  'docs/fi/index.html',
+];
+
+// Finnish forms are listed because the Finnish landing page states the same
+// totals in Finnish, and an English-only pattern would report it clean while
+// never reading it.
+//
+// The boundary is (?!\p{L}) with the u flag, not \b. `säädöstä` and `skilliä`
+// end in ä, and \b is defined against [A-Za-z0-9_], so a trailing \b made those
+// two patterns silently unmatchable — the exact defect this repository has now
+// hit four times, reproduced inside the rule written to catch stale prose. A
+// negative test on the Finnish page is what surfaced it; the English half was
+// green throughout.
+const NL = '(?!\\p{L})';
+const COUNT_CLAIMS = [
+  ['domains', countedDomains, new RegExp(`(\\d{1,4})\\s+(?:practice-area\\s+)?(?:domains?|osaamisaluetta)${NL}`, 'giu')],
+  ['subagents', countedAgents, new RegExp(`(\\d{1,4})\\s+(?:subagents?|aliagenttia|aliagentti)${NL}`, 'giu')],
+  ['statutes', countedStatutes, new RegExp(`(\\d{1,4})\\s+(?:verified\\s+)?(?:statutes?|säädöstä)${NL}`, 'giu')],
+  ['skills', countedSkills, new RegExp(`(\\d{1,4})\\s+(?:skills?|skilliä|skilli)${NL}`, 'giu')],
+];
+
+for (const rel of PROSE_FILES) {
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+
+  for (const line of readFileSync(full, 'utf8').split('\n')) {
+    if (isCardLine(line)) continue;
+    for (const [label, actual, pattern] of COUNT_CLAIMS) {
+      for (const m of line.matchAll(pattern)) {
+        if (Number(m[1]) !== actual) {
+          fail(
+            'stated count',
+            `${rel} says "${m[0].trim()}" but the collection has ${actual} ${label}`,
+          );
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 11. The rename must not have rewritten a segment inside an external URL
+//
+// scripts/apply-rename.mjs replaces path segments, and a segment-exact match
+// does not know whether it is looking at a repository path or a URL. It hit
+// two third-party links:
+//
+//   kuntaliitto.fi/lausunnot        -> kuntaliitto.fi/legislative-consultation
+//   oikeusministerio.fi/lainvalmistelu -> oikeusministerio.fi/legislative-drafting
+//
+// Both 404. Nothing caught them: validate.mjs resolves relative markdown links
+// only, so an absolute URL is never followed, and a link that still parses and
+// still looks plausible reads as fine. These are the sources a drafter is being
+// sent to, so a dead one is a quiet failure of the thing the file exists for.
+//
+// The repository's OWN GitHub URLs legitimately contain a domain slug —
+// github.com/<owner>/<repo>/tree/main/<domain> is correct — so those are
+// excluded by name rather than by pattern guesswork.
+// ---------------------------------------------------------------------------
+
+const ownRepo = 'agent-skills-for-finnish-law';
+const URL_RE = /https?:\/\/[^\s`)\]<>"']+/g;
+const slugSegment = new RegExp(`/(?:${domainSlugs.join('|')})(?![A-Za-z0-9-])`);
+
+for (const rel of ls('*')) {
+  if (!/\.(md|json|html|ya?ml)$/.test(rel)) continue;
+  const full = join(ROOT, rel);
+  if (!existsSync(full)) continue;
+
+  for (const url of readFileSync(full, 'utf8').match(URL_RE) ?? []) {
+    if (url.includes(ownRepo)) continue;
+    if (slugSegment.test(url)) {
+      fail(
+        'external URL',
+        `${rel}: ${url} — an external URL whose path contains a domain slug; the rename rewrites segments and cannot tell a URL from a repository path`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Report
 // ---------------------------------------------------------------------------
 
 console.log('\nrepository invariants');
 console.log('  rules checked: fork provenance, statute registry, statute watch, rename map,');
 console.log('                 subagent naming, stale domain slugs, practice-profile heading,');
-console.log('                 guardrail references, pointer shims\n');
-
-if (staleInSkills > 0) {
-  console.log(
-    `  ⚠︎  ${staleInSkills} skill/reference file(s) still contain a pre-rename domain slug.\n` +
-      '      Owned by the per-domain translation sessions; escalate to an error once translation lands.\n',
-  );
-}
-
-if (headingSplit) {
-  console.log(
-    `  ⚠︎  practice-profile heading is mid-migration (${headingSplit}).\n` +
-      '      Expected while domains are translated on separate branches; escalate to an error once translation lands.\n',
-  );
-}
+console.log('                 guardrail references, pointer shims, documented commands,');
+console.log('                 stated counts, external URLs\n');
 
 for (const f of failures) console.log(`  ✗  ${f.rule}: ${f.detail}`);
 

@@ -1,7 +1,7 @@
 {
   "name": "taxation",
   "version": "0.1.0",
-  "description": "Suomen verotus ammattilaisille: verotusmenettely ja muutoksenhaku (VML 1558/1995), yritysverotus (EVL 360/1968) yritysjärjestelyineen sekä arvonlisäverotus (AVL 1501/1993). Verokannat ja euromäärät aina lähteestä — ei muistista.",
+  "description": "Finnish taxation for professionals: tax procedure and appeals (VML 1558/1995), corporate taxation (EVL 360/1968) including reorganisations, and value added tax (AVL 1501/1993). Tax rates and euro amounts always from the source — never from memory.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Taxation",
-    "shortDescription": "Suomen verotus ammattilaisille: verotusmenettely ja muutoksenhaku (VML 1558/1995), yritysverotus (EVL 360/1968) yritysjärjestelyineen sekä arvonlisäverotus (AV…",
-    "longDescription": "Suomen verotus ammattilaisille: verotusmenettely ja muutoksenhaku oikaisuvaatimuksesta KHO:hon (VML 1558/1995), yritysverotus konserniavustuksineen ja yritysjärjestelyineen (EVL 360/1968) sekä arvonlisäverotus (AVL 1501/1993). Verokannat ja euromäärät aina lähteestä; tulkinnanvaraisissa ennakkoratkaisu.",
+    "shortDescription": "Finnish taxation for professionals: tax procedure and appeals (VML 1558/1995), corporate taxation (EVL 360/1968) including reorganisations, and value added tax…",
+    "longDescription": "Finnish taxation for professionals: tax procedure and appeals from a request for rectification to KHO (VML 1558/1995), corporate taxation with group contributions and corporate restructurings (EVL 360/1968), and value added tax (AVL 1501/1993). Tax rates and euro amounts always from the source; an advance ruling where the matter is open to interpretation.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Taxation -plugaria Suomen oikeuden tehtävään."
+      "Use Taxation for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

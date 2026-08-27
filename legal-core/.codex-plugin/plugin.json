@@ -1,7 +1,7 @@
 {
   "name": "legal-core",
   "version": "0.1.0",
-  "description": "Läpileikkaava perusta suomalaiseen juridiseen työhön: lakikieli, pykäläviittaukset, suomen kieli, oikeustutkimus (Finlex/oik.ai) ja juridisen asiakirjan tarkistus.",
+  "description": "The cross-cutting foundation for Finnish legal work: legal language and section references, Finnish spelling, legal research into the law in force and case law (Finlex/oik.ai) and multi-stage review of a legal document.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Legal core",
-    "shortDescription": "Läpileikkaava perusta suomalaiseen juridiseen työhön: lakikieli, pykäläviittaukset, suomen kieli, oikeustutkimus (Finlex/oik.ai) ja juridisen asiakirjan tarkis…",
-    "longDescription": "Läpileikkaava perusta suomalaiseen juridiseen työhön: lakikieli ja pykäläviittaukset, suomen kielen oikeinkirjoitus, oikeustutkimus voimassa olevasta laista ja oikeuskäytännöstä (Finlex/oik.ai-MCP), sekä juridisen asiakirjan monivaiheinen tarkistus. Pohja, johon muut käytäntöaluekohtaiset plugarit nojaavat.",
+    "shortDescription": "The cross-cutting foundation for Finnish legal work: legal language and section references, Finnish spelling, legal research into the law in force and case law…",
+    "longDescription": "The cross-cutting foundation for Finnish legal work: legal language and section references, Finnish spelling, legal research into the law in force and into case law (Finlex/oik.ai MCP), and the multi-stage review of a legal document. The base that the other practice-area domains rely on.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Legal core -plugaria Suomen oikeuden tehtävään."
+      "Use Legal core for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

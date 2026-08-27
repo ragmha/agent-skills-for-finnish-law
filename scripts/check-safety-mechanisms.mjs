@@ -32,41 +32,109 @@ const SKIP = new Set(['node_modules', 'docs', 'dist', '.git']);
 // count is invariant under translation. Adding a language variant here is how
 // you teach the gate a new phrasing — do not add a second mechanism for it.
 //
-// Boundaries are Unicode-aware ((?<!\p{L}) ... (?!\p{L}) with the u flag)
-// rather than \b. This is not stylistic: \b is defined against [A-Za-z0-9_],
-// so it never fires next to a Finnish ä or ö. With \b, `Älä käytä` and `VIHREÄ`
-// matched NOTHING — the "do not use" tier marker and the GREEN risk marker were
-// invisible to the gate, so deleting either during translation would not have
-// been noticed. Reported by the company+real-estate session.
+// Boundaries are Unicode-aware ((?<!\p{L}) … (?!\p{L}) with the u flag) rather
+// than \b. This is not stylistic: \b is defined against [A-Za-z0-9_], so it
+// never fires next to a Finnish ä or ö. With \b, `Älä käytä` and `VIHREÄ` were
+// invisible to the gate whose entire job is proving those markers survive —
+// while `KELTAINEN` and `PUNAINEN` matched, which is why nobody noticed.
+// Deleting every GREEN risk marker in the repository would have passed.
+//
+// Word stems are matched with an explicit \p{L}* rather than a trailing
+// boundary, because a trailing boundary rejects the word's own inflections.
+// `human (review|approv)\b` matched "human review" but not "human reviews",
+// "human reviewer", "human approval" or "human approves" — so translating
+// `ihminen tarkistaa` into the most natural English silently dropped the count
+// and failed the gate that exists to protect it. Correct English must not be
+// the thing that breaks this.
+const NOT_LETTER_BEFORE = '(?<!\\p{L})';
+const NOT_LETTER_AFTER = '(?!\\p{L})';
+const STEM = '\\p{L}*';
+
+// Multi-word markers tolerate a line wrap, because a marker broken across a
+// line is still the marker. Four real ones were invisible for this reason — two
+// of them human-review gates written as `[confirm — requires a competition
+// lawyer's\nassessment]`.
+//
+// At most ONE newline. An earlier version used \s+, which happily spanned a
+// blank line and joined two paragraphs into a marker that nobody wrote. That
+// was a false positive introduced by the wrap fix itself, so it is fixed here
+// rather than carried.
+//
+// This still admits one prose false positive ("the skills do\n not use"), which
+// is a real but pre-existing cost: `do not use` in ordinary single-line prose
+// already matches. Whitespace tolerance widens an existing looseness rather
+// than introducing a new one, and the alternative is four markers the gate can
+// never see — the same trade already settled for the inflection fix.
+const WS = '(?:[ \\t]+|[ \\t]*\\n[ \\t]*)';
+
+// Finnish builds compounds by prefixing, so the marker word is not at a word
+// boundary: `ympäristöjuristin arvioitava` and `hankintajuristin arvioitava`
+// are the same review gate as `juristin arvioitava`, but a preceding-letter
+// guard rejects all of them. This is the same class as the ASCII \b defect and
+// it is on the Finnish side, which is where the gate's "Finnish OR English, so
+// the count survives translation" premise actually lives.
+const COMPOUND = '\\p{L}*';
+
 const MECHANISMS = [
   {
     id: 'disclaimer',
     // Vastuuvapaus: / Disclaimer:
-    re: /(?<!\p{L})(vastuuvapaus|disclaimer)\s*[::]/giu,
+    re: new RegExp(`${NOT_LETTER_BEFORE}(vastuuvapaus|disclaimer)\\s*[::]`, 'giu'),
     what: 'disclaimer line',
   },
   {
     id: 'certainty-flag',
-    // [tarkista] [varmista — ...] [muistinvarainen — ...] [mallin laskelma — ...]
-    // [check] [confirm — ...] [from memory — ...] [model calculation — ...]
-    re: /\[(?:tarkista|varmista|muistinvarainen|mallin laskelma|check|confirm|from memory|model calculation)(?!\p{L})[^\]]*\]/giu,
+    // Two conventions are in use, and the gate has to see both:
+    //   keyword first  — [tarkista] [varmista — …] [check] [confirm — …]
+    //   subject first  — [limits — check from the source]
+    //                    [estimate — must be confirmed]
+    //                    [KHO:VVVV:NN — korvaa todellisella, Finlexistä
+    //                     tarkistetulla ratkaisulla]
+    //
+    // Only the first was matched, so ten real flags were unprotected — including
+    // the one that stops a drafter pasting a fabricated case identifier into a
+    // government bill.
+    //
+    // The subject-first form is anchored on an em or en dash specifically, NOT a
+    // plain hyphen: a hyphen matches markdown link text like [`source-checker`]
+    // and would trade a real gap for a false-positive class.
+    re: new RegExp(
+      `\\[(?:tarkista|varmista|muistinvarainen|mallin${WS}laskelma|vastine|check|confirm|from${WS}memory|model${WS}calculation|equivalent)${NOT_LETTER_AFTER}[^\\]]*\\]` +
+        `|\\[[^\\]\\n]{1,90}[—–]\\s*(?:check|confirm|must${WS}be${WS}confirmed|tarkist|varmist|korvaa)[^\\]\\n]{0,90}\\]`,
+      'giu',
+    ),
     what: 'inline certainty flag',
   },
   {
     id: 'risk-colour',
-    re: /(?<!\p{L})(VIHREÄ|KELTAINEN|PUNAINEN|GREEN|YELLOW|RED)(?!\p{L})/gu,
+    re: new RegExp(
+      `${NOT_LETTER_BEFORE}(VIHREÄ|KELTAINEN|PUNAINEN|GREEN|YELLOW|RED)${NOT_LETTER_AFTER}`,
+      'gu',
+    ),
     what: 'risk colour marker',
   },
   {
     id: 'certainty-tier',
     // Varmistettu / Tarkistettava / Älä käytä -> Verified / Needs checking / Do not use
-    re: /(?<!\p{L})(varmistettu|tarkistettava|älä käytä|ala kayta|verified|needs checking|do not use)(?!\p{L})/giu,
+    //
+    // `needs?` because English verbs agree with their subject: "every value
+    // needs checking" and "the values need checking" are the same marker, and
+    // forcing the singular makes a translator choose between correct English
+    // and a passing gate. Same defect as the human-review stem — the matcher
+    // rejecting a correct rendering — found independently on this mechanism.
+    re: new RegExp(
+      `${NOT_LETTER_BEFORE}(varmistettu|tarkistettava|älä${WS}käytä|ala${WS}kayta|verified|needs?${WS}checking|do${WS}not${WS}use)${NOT_LETTER_AFTER}`,
+      'giu',
+    ),
     what: 'three-tier certainty marker',
   },
   {
     id: 'human-review-gate',
     // "ihminen tarkistaa", "human reviews", "requires a lawyer's assessment"
-    re: /(?<!\p{L})(ihminen (tarkistaa|vastaa|hyväksyy)|human (review|approv)|juristin (arvioitava|tarkistettava)|lawyer'?s assessment)(?!\p{L})/giu,
+    re: new RegExp(
+      `${NOT_LETTER_BEFORE}(ihminen${WS}(tarkista|vasta|hyväksy)${STEM}|human${WS}(review|approv)${STEM}|${COMPOUND}juristin${WS}(arvioitava|tarkistettava)|lawyer'?s${WS}assessment)`,
+      'giu',
+    ),
     what: 'human-review gate',
   },
 ];

@@ -1,7 +1,7 @@
 {
   "name": "employment-law",
   "version": "0.1.0",
-  "description": "Suomen työoikeus: työsopimuksen laatiminen ja tarkistus (työsopimuslaki 55/2001), työsuhteen päättämisen perusteen ja menettelyn arviointi sekä yhteistoiminta ja muutosneuvottelut (yhteistoimintalaki 1333/2021). Pakottavan lainsäädännön ja työehtosopimusten ehdoilla.",
+  "description": "Finnish employment law: drafting and reviewing an employment contract (Employment Contracts Act, työsopimuslaki 55/2001), assessing the grounds and procedure for ending an employment relationship, and co-operation and change negotiations (Act on Co-operation within Undertakings, yhteistoimintalaki 1333/2021). On the terms of mandatory legislation and collective agreements (TES).",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Employment law",
-    "shortDescription": "Suomen työoikeus: työsopimuksen laatiminen ja tarkistus (työsopimuslaki 55/2001), työsuhteen päättämisen perusteen ja menettelyn arviointi sekä yhteistoiminta…",
-    "longDescription": "Suomen työoikeus: työsopimuksen laatiminen ja tarkistus (työsopimuslaki 55/2001), työsuhteen päättämisen perusteen ja menettelyn arviointi sekä yhteistoiminta ja muutosneuvottelut (yhteistoimintalaki 1333/2021). Pakottavan lainsäädännön ja työehtosopimusten ehdoilla.",
+    "shortDescription": "Finnish employment law: drafting and reviewing an employment contract (Employment Contracts Act, työsopimuslaki 55/2001), assessing the grounds and procedure f…",
+    "longDescription": "Finnish employment law: drafting and reviewing an employment contract (työsopimuslaki 55/2001), assessing the grounds and the procedure for terminating employment, and co-operation and change negotiations (yhteistoimintalaki 1333/2021). On the terms of mandatory legislation and collective agreements.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Employment law -plugaria Suomen oikeuden tehtävään."
+      "Use Employment law for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

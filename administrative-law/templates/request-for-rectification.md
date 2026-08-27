@@ -1,15 +1,16 @@
-# Pohja: oikaisuvaatimus
+# Template: request for rectification
 
-Rakenteellinen luuranko oikaisuvaatimukselle viranomaisen päätökseen.
-Käyttävä skill: [`administrative-appeal`](../skills/administrative-appeal/SKILL.md) —
-tarkista ensin skillin kautta, onko oikaisuvaatimus oikea muutoksenhakutie
-tässä asiassa. Konventiot:
+The structural skeleton of a request for rectification (oikaisuvaatimus) against an
+authority's decision. Skill that uses it:
+[`administrative-appeal`](../skills/administrative-appeal/SKILL.md) — check through that
+skill first whether a request for rectification is the right appeal route in this
+matter. Conventions:
 [`references/template-standards.md`](../../references/template-standards.md).
 
-<!-- ohje: MÄÄRÄAIKA ENSIN. Oikaisuvaatimusaika ja vastaanottava
-     viranomainen ilmenevät päätökseen liitetystä oikaisuvaatimusohjeesta —
-     tarkista ne sieltä, älä muistista. Myöhästynyt vaatimus jätetään
-     tutkimatta. -->
+<!-- guidance: TIME LIMIT FIRST. The period for a request for rectification and
+     the receiving authority appear in the rectification instructions attached
+     to the decision — check them there, not from memory. A late request is
+     dismissed without being examined. -->
 
 ## Output language
 
@@ -23,52 +24,42 @@ example `notice period (irtisanomisaika)`.
 
 ---
 
-**Vastaanottaja:** [viranomainen, jolle oikaisuvaatimus osoitetaan —
-päätöksen ohjeen mukaan]
+**Addressee:** [the authority to which the request for rectification is
+addressed — as stated in the instructions attached to the decision]
 
-## Output language
+## REQUEST FOR RECTIFICATION
 
-Drafts may be produced in **English** for review, but the version actually **filed with the court
-or authority must be in Finnish or Swedish** (kielilaki 423/2003; oikeudenkäymiskaari for court
-documents). An English filing is not admissible. Always offer to produce the Finnish version, and
-state plainly that the English text is a working translation only.
+### The decision for which rectification is sought (mandatory)
 
-Keep the Finnish term alongside the English one for legally operative concepts on first use, for
-example `notice period (irtisanomisaika)`.
+- Authority that made the decision: [name]
+- Date and number or case reference of the decision: [details]
+- Date of service: [date] <!-- guidance: the basis on which the time limit is
+  calculated — record how the date is known. -->
 
-## OIKAISUVAATIMUS
+### The person making the request (mandatory)
 
-### Päätös, johon vaaditaan oikaisua (pakollinen)
+- [Name and contact details]
+- [Standing as a party — how the decision affects the person making the request]
+- [Any representative and power of attorney]
 
-- Päätöksen tehnyt viranomainen: [nimi]
-- Päätöksen päivämäärä ja numero/diaari: [tiedot]
-- Tiedoksisaantipäivä: [päivä] <!-- ohje: määräajan laskennan perusta —
-  dokumentoi, mistä päivä tiedetään. -->
+### The claim (mandatory)
 
-### Vaatimuksen esittäjä (pakollinen)
+[In what respect rectification of the decision is sought and what change is
+requested — precisely]
 
-- [Nimi ja yhteystiedot]
-- [Asianosaisasema — miten päätös vaikuttaa esittäjään]
-- [Mahdollinen asiamies ja valtakirja]
+### Grounds (mandatory)
 
-### Vaatimus (pakollinen)
+[On what basis the decision is wrong — the facts and the provisions,
+taken from source through the legal-research skill, not from memory]
 
-[Miltä osin päätökseen vaaditaan oikaisua ja mitä muutosta vaaditaan —
-täsmällisesti]
+### Appendices
 
-### Perustelut (pakollinen)
+- The decision together with its rectification instructions
+- [The evidence relied on]
+- [Power of attorney, if a representative acts]
 
-[Millä perusteella päätös on virheellinen — tosiseikat ja
-lainkohdat lähteestä oikeustutkimus-skillin kautta, ei muistista]
-
-### Liitteet
-
-- Päätös oikaisuvaatimusohjeineen
-- [Todisteet, joihin vedotaan]
-- [Valtakirja, jos asiamies]
-
-[Paikka, päiväys ja allekirjoitus]
+[Place, date and signature]
 
 ---
 
-*Luonnos. Tarkistettava ennen käyttöä; ei oikeudellista neuvontaa.*
+*A draft. Must be verified before use; not legal advice.*

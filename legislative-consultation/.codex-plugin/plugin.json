@@ -1,7 +1,7 @@
 {
   "name": "legislative-consultation",
   "version": "0.1.0",
-  "description": "Lausunnon laatiminen lakiuudistuksiin ja lakiluonnoksiin: lakiehdotuksen analyysi, vaikutusarviointi lausunnonantajan näkökulmasta, muiden lausuntojen tiivistäminen ja perustellun lausunnon kirjoittaminen. Soveltuu kunnille, kuntayhtymille, virastoille, järjestöille ja yrityksille.",
+  "description": "Drafting a consultation statement (lausunto) on a legislative reform or draft act: analysing the bill, assessing its impact from the respondent's point of view, summarising other statements and writing a reasoned statement for lausuntopalvelu.fi. Suitable for municipalities and joint municipal authorities and agencies and associations and companies.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Legislative consultation",
-    "shortDescription": "Lausunnon laatiminen lakiuudistuksiin ja lakiluonnoksiin: lakiehdotuksen analyysi, vaikutusarviointi lausunnonantajan näkökulmasta, muiden lausuntojen tiivistä…",
-    "longDescription": "Lausunnon laatiminen lakiuudistuksiin ja lakiluonnoksiin: lakiehdotuksen analyysi, vaikutusarviointi lausunnonantajan näkökulmasta, muiden lausuntojen tiivistäminen ja perustellun lausunnon kirjoittaminen. Soveltuu kunnille, kuntayhtymille, virastoille, järjestöille ja yrityksille.",
+    "shortDescription": "Drafting a consultation statement (lausunto) on a legislative reform or draft act: analysing the bill, assessing its impact from the respondent's point of view…",
+    "longDescription": "Drafting a statement on legislative reforms and draft acts: analysis of the proposal, impact assessment from the point of view of the body giving the statement, summarising other statements, and writing a reasoned statement. Suitable for municipalities, joint municipal authorities, agencies, organisations and companies.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Legislative consultation -plugaria Suomen oikeuden tehtävään."
+      "Use Legislative consultation for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

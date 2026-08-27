@@ -1,7 +1,7 @@
 {
   "name": "legislative-drafting",
   "version": "0.1.0",
-  "description": "Säädösvalmistelun apuri: Lainkirjoittajan opas (säädösten rakenne, kieli, viittaaminen, johtolause), hallituksen esitysten laatimisohjeet (HELO), lainvalmistelun prosessiopas ja lakikielen merkit ja taivutusmuodot.",
+  "description": "An assistant for Finnish legislative drafting: Lainkirjoittajan opas (statute structure and language and cross-referencing and the enacting formula), the government bill drafting instructions (HELO), the legislative process guide and the symbols and inflected forms of statutory language.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Legislative drafting",
-    "shortDescription": "Säädösvalmistelun apuri: Lainkirjoittajan opas (säädösten rakenne, kieli, viittaaminen, johtolause), hallituksen esitysten laatimisohjeet (HELO), lainvalmistel…",
-    "longDescription": "Säädösvalmistelun apuri: Lainkirjoittajan opas (säädösten rakenne, kieli, viittaaminen, johtolause), hallituksen esitysten laatimisohjeet (HELO), lainvalmistelun prosessiopas ja lakikielen merkit ja taivutusmuodot. Perustuu virallisiin oppaisiin.",
+    "shortDescription": "An assistant for Finnish legislative drafting: Lainkirjoittajan opas (statute structure and language and cross-referencing and the enacting formula), the gover…",
+    "longDescription": "An aid for drafting statutes: the Legislative Drafter’s Guide (the structure of statutes, language, cross-referencing, the enacting formula), the instructions for drafting government bills (HELO), the guide to the legislative process, and the symbols and inflected forms of statutory language. Based on the official guides.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Legislative drafting -plugaria Suomen oikeuden tehtävään."
+      "Use Legislative drafting for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

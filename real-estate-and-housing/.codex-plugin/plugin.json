@@ -1,7 +1,7 @@
 {
   "name": "real-estate-and-housing",
   "version": "0.1.0",
-  "description": "Suomen kiinteistö- ja asunto-oikeus: kiinteistökauppa ja kirjaamisasiat (maakaari 540/1995), asuntokauppa virhevastuineen (843/1994), asunto-osakeyhtiön kunnossapito ja hallinto (1599/2009) sekä asuin- ja liikehuoneistojen vuokrasopimukset.",
+  "description": "Finnish real property and housing law: conveyance of real property and registration of title (maakaari 540/1995), sale of housing-company shares and defect liability (843/1994), housing-company maintenance and governance (1599/2009) and residential and commercial leases.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Real estate and housing",
-    "shortDescription": "Suomen kiinteistö- ja asunto-oikeus: kiinteistökauppa ja kirjaamisasiat (maakaari 540/1995), asuntokauppa virhevastuineen (843/1994), asunto-osakeyhtiön kunnos…",
-    "longDescription": "Suomen kiinteistö- ja asunto-oikeus: kiinteistökaupan määrämuoto, kirjaukset ja virhevastuu (maakaari 540/1995), asuntokauppa RS-järjestelmineen ja reklamaatioineen (843/1994), asunto-osakeyhtiön kunnossapitovastuu ja hallinto (1599/2009) sekä asuin- ja liikehuoneistojen vuokrasopimukset pakottavuuseroineen.",
+    "shortDescription": "Finnish real property and housing law: conveyance of real property and registration of title (maakaari 540/1995), sale of housing-company shares and defect lia…",
+    "longDescription": "Finnish real estate and housing law: the prescribed form of a conveyance of real property, the registrations and liability for defects (maakaari 540/1995), the sale of a dwelling with the RS system and notices of defect (843/1994), the maintenance liability and governance of a housing company (1599/2009), and leases of residential and business premises with their differences in mandatory force.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Real estate and housing -plugaria Suomen oikeuden tehtävään."
+      "Use Real estate and housing for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"

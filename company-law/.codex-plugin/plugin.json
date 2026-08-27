@@ -1,7 +1,7 @@
 {
   "name": "company-law",
   "version": "0.1.0",
-  "description": "Suomen yhtiöoikeus (osakeyhtiölaki 624/2006): perustaminen ja hallinto, johdon vastuu, varojenjako, osakassopimukset ja yritysjärjestelyt.",
+  "description": "Finnish company law (osakeyhtiölaki 624/2006): incorporation and governance, directors' duties and liability, distribution of assets, shareholders' agreements and corporate transactions.",
   "author": {
     "name": "Aku Nikkola"
   },
@@ -17,8 +17,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Company law",
-    "shortDescription": "Suomen yhtiöoikeus (osakeyhtiölaki 624/2006): perustaminen ja hallinto, johdon vastuu, varojenjako, osakassopimukset ja yritysjärjestelyt.",
-    "longDescription": "Suomen yhtiöoikeus (osakeyhtiölaki 624/2006): perustaminen ja hallinto, yhtiökokous ja hallitustyö, johdon vastuu, varojenjaon kaksoistesti, osakassopimusten laatiminen ja riskitarkistus sekä yritysjärjestelyt due diligence -listoineen.",
+    "shortDescription": "Finnish company law (osakeyhtiölaki 624/2006): incorporation and governance, directors' duties and liability, distribution of assets, shareholders' agreements…",
+    "longDescription": "Finnish company law (osakeyhtiölaki 624/2006): incorporation and governance, the general meeting and board work, the liability of management, the two-part test for distributing assets, drafting and risk-checking shareholders’ agreements, and corporate transactions with their due diligence lists.",
     "developerName": "Aku Nikkola",
     "category": "Legal",
     "capabilities": [
@@ -26,7 +26,7 @@
       "MCP"
     ],
     "defaultPrompt": [
-      "Käytä Company law -plugaria Suomen oikeuden tehtävään."
+      "Use Company law for a task under Finnish law."
     ]
   },
   "mcpServers": "./.mcp.json"
